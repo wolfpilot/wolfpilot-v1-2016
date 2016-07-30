@@ -1,0 +1,5 @@
+# Ignore hidden folders like .tmp, .sass-cache, etc
+.*/
+
+# Other
+node_modules/

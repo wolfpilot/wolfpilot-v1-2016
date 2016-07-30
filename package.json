@@ -1,0 +1,65 @@
+{
+  "name": "wolfpilot",
+  "version": "0.0.1",
+  "description": "A Jekyll based personal portfolio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wolfpilot/wolfpilot.git"
+  },
+  "homepage": "http://wolfpilot.co.uk",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "author": "Razvan Negrea <howl@wolfpilot.co.uk> (http://wolfpilot.co.uk)",
+  "license": "MIT",
+  "paths": {
+    "src": "_src/",
+    "dest": "_site/",
+    "bower": "bower_components/",
+    "tasks": "gulp-tasks/",
+    "css": {
+      "src": "_src/assets/css/",
+      "dest": "_site/assets/css/"
+    },
+    "sass": {
+      "src": "_src/assets/_sass/"
+    },
+    "js": {
+      "src": "_src/assets/js/",
+      "dest": "_site/assets/js/"
+    },
+    "img": {
+      "src": "_src/assets/img/",
+      "dest": "_site/assets/img/"
+    },
+    "fonts": {
+      "src": "_src/assets/fonts/",
+      "dest": "_site/assets/fonts/"
+    }
+  },
+  "devDependencies": {
+    "browser-sync": "2.13.0",
+    "del": "2.2.1",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.0",
+    "gulp-clean-css": "2.0.12",
+    "gulp-concat": "2.6.0",
+    "gulp-eslint": "3.0.1",
+    "gulp-filesize": "0.0.6",
+    "gulp-imagemin": "3.0.2",
+    "gulp-jshint": "2.0.1",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "2.3.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "1.5.4",
+    "gulp-util": "3.0.7",
+    "gulp-watch": "4.3.9",
+    "imagemin-pngquant": "5.0.0",
+    "require-dir": "0.3.0",
+    "run-sequence": "1.2.2"
+  },
+  "dependencies": {
+
+  }
+}
