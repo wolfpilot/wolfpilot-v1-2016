@@ -4,10 +4,10 @@ var gulp        = require('gulp'),
 	cp 			= require('child_process');
 
 /**
- * Build Jekyll Task
+ * Jekyll Task
  *******************************************/
 
-gulp.task('buildJekyll', function (callback) {
+gulp.task('jekyll', function (callback) {
 
 	var env = (util.env.env === 'prod' || util.env.env === 'production') ? '_config.prod.yml' : '_config.yml';
 	

@@ -1,30 +1,31 @@
 # --------------------------------
 # Site settings
 title: Portfolio Site
-subtitle: bla
-author: Razvan Negrea 
+author: Razvan Negrea
 email: howl@wolfpilot.co.uk
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque eius earum vero quae reiciendis qui dolores molestias velit, suscipit! Dolor nostrum ad dolorem delectus praesentium, reiciendis quas officiis, eius veniam.
 
 # --------------------------------
 # Environment Settings
-environment: development
+environment: production
 source: _src
 destination: _site
 baseurl: ""
-url: "http://wolfpilot.local:4000"
+url: "http://www.wolfpilot.co.uk/"
 
 # --------------------------------
 # Paths
-css: "/assets/css/main.css"
-js: "/assets/js/main.js"
+css: "/assets/css/main.min.css"
+js: "/assets/js/main.min.js"
 
 # --------------------------------
 # Build settings
 markdown: kramdown
 safe: false
-future: true
+future: false
 # paginate: 5
+show_drafts: false
+# highlighter: true
 
 # Category Handling
 category_dir: /
@@ -36,12 +37,12 @@ github_username:  wolfpilot
 twitter_username: wolfpilot
 
 # --------------------------------
-# Includes & Excludes
+# Includes
 exclude: [
   feed.xml
 ]
 include: [
-	_pages,
-	assets/fonts,
-	CNAME
+  _pages,
+  assets/fonts,
+  CNAME
 ]

@@ -1,32 +1,29 @@
+'use strict';
+
 var gulp        = require('gulp'),
 	/** Utilities */
 	rename      = require('gulp-rename'),
 	filesize    = require('gulp-filesize'),
 	sourcemaps 	= require('gulp-sourcemaps'),
 	/** JS */
-	eslint      = require('gulp-eslint'),
 	concat      = require('gulp-concat'),
 	uglify      = require('gulp-uglify'),
 	/** Config */
-	paths 		= require('../package.json').paths;
+	paths 		= require('../../package.json').paths;
 
 /**
- * Build JS Task
+ * Optimize JS Task
  *******************************************/
 
-gulp.task('buildJs', function () {
+gulp.task('deploy:scripts', function () {
 
-	// Build JS
-	gulp.src([
+	return gulp.src([
 			paths.js.src + 'vendor/*.js',
 			paths.js.src + 'lib/*.js',
 			paths.js.src + '*.js'
 		])
 		.pipe(sourcemaps.init())
 		.pipe(concat('main.js'))
-		.pipe(eslint())
-		.pipe(eslint.format())
-		.pipe(eslint.failAfterError())
 		.pipe(uglify())
 		.pipe(rename({ extname: '.min.js' }))
 		.pipe(filesize())
