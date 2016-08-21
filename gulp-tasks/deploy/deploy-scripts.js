@@ -23,10 +23,11 @@ gulp.task('deploy:scripts', function () {
 			paths.js.src + '*.js'
 		])
 		.pipe(sourcemaps.init())
-		.pipe(concat('main.js'))
-		.pipe(uglify())
-		.pipe(rename({ extname: '.min.js' }))
-		.pipe(filesize())
+			.pipe(concat('main.js'))
+			.pipe(gulp.dest(paths.js.dest))
+			.pipe(uglify())
+			.pipe(rename({ extname: '.min.js' }))
+			.pipe(filesize())
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest(paths.js.dest));
 

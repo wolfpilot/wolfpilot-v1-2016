@@ -1,0 +1,120 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        /** Possible Errors */
+        "no-console": "warn",
+        /** Best Practices */
+        "block-scoped-var": "error",
+        "complexity": "off",
+        "consistent-return": "error",
+        "curly": "error",
+        "default-case": "error",
+        "dot-notation": "error",
+        "eqeqeq": "error",
+        "guard-for-in": "error",
+        "no-alert": "error",
+        "no-caller": "error",
+        "no-div-regex": "error",
+        "no-else-return": "error",
+        "no-eq-null": "error",
+        "no-eval": "error",
+        "no-extend-native": "error",
+        "no-extra-bind": "error",
+        "no-floating-decimal": "error",
+        "no-native-reassign": "error",
+        "no-implied-eval": "error",
+        "no-iterator": "error",
+        "no-labels": "error",
+        "no-lone-blocks": "error",
+        "no-loop-func": "error",
+        "no-multi-spaces": "error",
+        "no-multi-str": "off",
+        "no-new": "error",
+        "no-new-func": "error",
+        "no-new-wrappers": "error",
+        "no-octal-escape": "error",
+        "no-proto": "error",
+        "no-return-assign": "error",
+        "no-script-url": "error",
+        "no-self-compare": "error",
+        "no-sequences": "error",
+        "no-void": "off",
+        "no-with": "error",
+        "radix": "error",
+        "vars-on-top": "off",
+        "wrap-iife": "error",
+        "yoda": "error",
+        /** Strict Mode */
+        "strict": [
+            "error",
+            "global"
+        ],
+        /** Variables */
+        "no-catch-shadow": "error",
+        "no-label-var": "error",
+        "no-shadow": "error",
+        "no-shadow-restricted-names": "error",
+        "no-undef-init": "error",
+        "no-undefined": "error",
+        "no-use-before-define": "error",
+        /** Node.js and CommonJS */
+        "no-process-env": "error",
+        /** Stylistic Issues */
+        "array-bracket-spacing": [
+            "error",
+            "never"
+        ],
+        "brace-style": "error",
+        "eol-last": "error",
+        "no-spaced-func": "error",
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "keyword-spacing": "error",
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "new-cap": "error",
+        "new-parens": "error",
+        "no-array-constructor": "error",
+        "no-lonely-if": "error",
+        "no-multiple-empty-lines": "error",
+        "no-nested-ternary": "error",
+        "no-trailing-spaces": "error",
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "operator-assignment": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "quote-props": [
+            "error",
+            "as-needed"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "semi-spacing": [
+            "error", {
+                "before": false,
+                "after": true
+            }
+        ],
+        "space-in-parens": "error",
+        "space-infix-ops": "error",
+        "space-unary-ops": "error"
+    }
+}
