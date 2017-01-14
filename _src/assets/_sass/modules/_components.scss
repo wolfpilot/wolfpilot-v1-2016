@@ -1,0 +1,73 @@
+.bordered {
+
+	position: relative;
+	
+	display: inline-block;
+	overflow: hidden;
+	margin: 20px 0;
+	padding: 15px;
+
+}
+
+.border {
+
+	position: absolute;
+	z-index: -1;
+
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	background-color: $tertiaryColor;
+
+	&--top,
+	&--bottom {
+
+		width: 100%;
+		height: 2px;
+
+	}
+
+	&--right,
+	&--left {
+
+		top: 0;
+
+		width: 2px;
+		height: 100%;
+
+	}
+
+	&--top {
+
+		top: 0;
+
+		@include animation(border-horiz 5s linear infinite);
+
+	}
+
+	&--right {
+
+		right: 0;
+
+		@include animation(border-vert 5s linear infinite reverse -2.5s);
+
+	}
+
+	&--bottom {
+
+		bottom: 0;
+
+		@include animation(border-horiz 5s linear infinite reverse);
+
+	}
+
+	&--left {
+
+		left: 0;
+
+		@include animation(border-vert 5s linear -2.5s infinite);
+
+	}
+
+}

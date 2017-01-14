@@ -1,0 +1,82 @@
+/**
+ * BASE
+ *******************************************/
+// Default colour for objects’ borders etc.
+$base-ui-color: #333 !default;
+
+// Base font-family
+$base-font-family: sans-serif!default;
+
+// Using 1.618 Golden Ratio - find it here http://type-scale.com/
+// Base stuff - in px --> to be converted to rems
+$base-font-size:	15 !default;
+
+$base-line-height: $base-font-size * 1.25 !default;
+
+// Headings
+$alpha-size:		50	!default; // h1, .h_alpha
+$beta-size:			30	!default; // h2, .h_beta
+$gamma-size:		25	!default; // h3, .h_gamma
+$delta-size:		20	!default; // h4, .h_delta
+$epsilon-size:		18	!default; // h5, .h_epsilon
+$zeta-size:			16	!default; // h6, .h_zeta
+$eta-size:			14	!default; // h6, .h_zeta for mobile resolutions
+
+$p-size:            $base-font-size !default;
+
+
+/**
+ * FONTS
+ *******************************************/
+
+$primaryFont: "Roboto Slab", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$secondaryFont: "Bebas Neue", Georgia, 'Times New Roman', serif;
+$tertiaryFont: 'Roboto Condensed', "Trebuchet MS", Helvetica, Arial, sans-serif;
+
+$fonticon: 'customicon';
+
+$baseFont: normal #{$base-font-size}px / #{$base-line-height}px $primaryFont;
+
+$base-spacing-unit: $base-line-height!default;
+$half-spacing-unit: $base-spacing-unit / 2!default;
+$line-height-ratio: $base-line-height / $base-font-size;
+
+// Weights
+$reg: 400;
+$bold: 700;
+
+
+/**
+ * COLOUR VARIABLES
+ *******************************************/
+
+$black:		#000;
+$white:		#fff;
+$grey:		#ccc;
+
+$d-grey:	#454545;
+$orange:	salmon;
+
+$primaryColor: 		$black;
+$secondaryColor: 	$white;
+$tertiaryColor:		$orange;
+$quaternaryColor:	$d-grey;
+
+
+/**
+ * BASE MEDIA QUERY BREAKPOINTS
+ *******************************************/
+
+$mq-mob: 480px!default;
+$mq-mob--sml: 320px!default;
+$mq-mob--lrg: 640px!default;
+
+
+$mq-tab: 768px!default;
+$mq-tab--sml: 765px!default;
+$mq-tab--lrg: 820px!default;
+
+
+$mq-desk: 1024px!default;
+$mq-desk--sml: 960px!default;
+$mq-desk--lrg: 1280px!default;

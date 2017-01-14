@@ -1,0 +1,76 @@
+body {
+
+}
+
+.header {
+
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	left: 0;
+
+	height: 60px;
+	padding: 0 15px;
+
+	background: $secondaryColor;
+	border-top: 3px solid $tertiaryColor;
+	border-bottom: 1px solid $grey;
+
+	&__logo {
+
+		float: right;
+		height: 100%;
+		padding: 0 15px;
+
+		img {
+
+			max-height: 100%;
+			width: auto;
+
+		}
+
+	}
+
+}
+
+.main {
+
+	padding-top: 120px;
+
+}
+
+.footer {
+
+	padding: 100px 0;
+
+	text-align: center;
+
+	&__social {
+
+		a {
+
+			display: inline-block;
+			width: 30px;
+			margin: 15px 5px;
+
+			svg {
+
+				max-width: 100%;
+
+				fill: $white;
+
+			}
+
+		}
+
+	}
+
+}
+
+.logo {
+
+	margin-top: 60px;
+	margin-bottom: 60px;
+
+}

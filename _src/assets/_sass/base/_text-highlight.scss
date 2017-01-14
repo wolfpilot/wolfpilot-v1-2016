@@ -1,0 +1,27 @@
+/* Mozilla based browsers */
+::-moz-selection {
+	background-color: $tertiaryColor;
+	color: $primaryColor;
+}
+
+/* Works in Safari */
+::selection {
+	background-color: $tertiaryColor;
+	color: $primaryColor;
+}
+
+/* Works in Opera */
+::-o-selection {
+	background-color: $tertiaryColor;
+	color: $primaryColor;
+}
+::-ms-selection {
+	background-color: $tertiaryColor;
+	color: $primaryColor;
+}
+
+/* Works in Internet Explorer */
+::-webkit-selection {
+	background-color: $tertiaryColor;
+	color: $primaryColor;
+}

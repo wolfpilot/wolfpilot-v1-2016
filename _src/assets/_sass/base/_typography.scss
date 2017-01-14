@@ -1,0 +1,217 @@
+/**
+ * Typography
+ *******************************************/
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('/assets/fonts/bebas-neue-bold.woff') format('woff')
+        url('/assets/fonts/bebas-neue-bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+}
+
+// important to define 62.5% for [rem] font conversion
+html {
+
+    font-size: 62.5%;
+    -webkit-text-size-adjust: 62.5%;
+    -ms-text-size-adjust: 62.5%;
+
+}
+
+body {
+
+    color: $quaternaryColor;
+
+    font-family: $primaryFont;
+    @include font-size($base-font-size);
+    font-weight: normal;
+    text-align: left;
+
+}
+
+p {
+
+    margin: 0 0 10px;
+
+    color: $primaryColor;
+
+    font-family: $primaryFont;
+    @include font-size($p-size);
+
+    a {
+
+        color: $tertiaryColor;
+
+        &:hover {
+
+            color: $tertiaryColor;
+
+        }
+
+    }
+
+}
+
+li {
+
+    font-family: $primaryFont;
+    @include font-size($p-size);
+
+}
+
+a {
+
+    color: $primaryColor;
+
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+
+        color: $primaryColor;
+
+        text-decoration: none;
+
+    }
+
+}
+
+p a,
+address a {
+
+    &:hover {
+
+        text-decoration: underline;
+
+    }
+
+}
+
+
+/**
+ * HEADINGS
+ *******************************************/
+
+%headings {
+
+    margin: 0 0 10px 0;
+
+    font-family: $secondaryFont;
+    font-weight: normal;
+
+}
+
+h1, .h--alpha {
+
+    @extend %headings;
+    @include font-size($alpha-size);
+
+    @include mq($mq-mob--lrg) {
+
+        @include font-size($beta-size);
+
+    }
+
+}
+
+h2, .h--beta {
+
+    @extend %headings;
+    @include font-size($beta-size);
+
+    @include mq($mq-mob--lrg) {
+
+        @include font-size($gamma-size);
+
+    }
+
+}
+
+h3, .h--gamma {
+
+    @extend %headings;
+    @include font-size($gamma-size);
+
+    @include mq($mq-mob--lrg) {
+
+        @include font-size($delta-size);
+
+    }
+
+}
+
+h4, .h--delta {
+
+    @extend %headings;
+    @include font-size($delta-size);
+
+    @include mq($mq-mob--lrg) {
+
+        @include font-size($epsilon-size);
+
+    }
+
+}
+
+h5, .h--epsilon {
+
+    @extend %headings;
+    @include font-size($epsilon-size);
+
+    @include mq($mq-mob--lrg) {
+
+        @include font-size($zeta-size);
+
+    }
+
+}
+
+h6, .h--epsilon {
+
+    @extend %headings;
+    @include font-size($zeta-size);
+
+    @include mq($mq-mob--lrg) {
+
+        @include font-size($eta-size);
+
+    }
+
+}
+
+.heading {
+
+    text-align: center;
+    @include font-size(160, 120);
+    text-transform: uppercase;
+    font-weight: $bold;
+
+}
+
+.subheading {
+
+    margin-bottom: 80px;
+
+    font-family: $tertiaryFont;
+    @include font-size(24, 30);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+
+    span {
+
+        @include font-size(16);
+        font-weight: $reg;
+
+    }
+
+}
+
+.text {
+
+    color: #474e59;
+
+    line-height: 28px;
+
+}

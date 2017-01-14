@@ -1,38 +1,48 @@
-<footer class="site-footer">
+<footer id="footer" class="footer">
 
-  <div class="wrapper">
+	<div class="container">
+<!-- 
+		<h2 class="heading">
+			{{ site.author }}
+		</h2> -->
 
-    <h2 class="footer-heading">{{ site.title }}</h2>
+		<h3 class="subheading">
+			{{ site.author }}<br />
+			<span>Web development &amp; design &#149; Concept art &#149; Illustration</span>
+		</h3>
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.author }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
+		<div class="footer__contact">
+			
+			<!-- back to top orange triangle that spins or flips or something
+				when you hover over it -->
+			<div class="t--center">
 
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
+				<a href="{{ site.baseurl }}/">
+					<img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=logo&w=64&h=64" alt="Logo illustration of a wolf" />
+				</a>
+				
+			</div>
 
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
+		</div>
 
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
-    </div>
+		<div class="footer__social">
 
-  </div>
+			{% if site.github_username %}
+			<a href="https://github.com/{{ site.github_username }}" target="_blank">
+				{% include svg/icon-github.svg %}
+			</a>
+			{% endif %}
+
+			{% if site.twitter_username %}
+			<a href="https://twitter.com/{{ site.twitter_username }}" target="_blank">
+				{% include svg/icon-twitter.svg %}
+			</a>
+			{% endif %}
+
+		</div>
+
+		</div>
+
+	</div>
 
 </footer>
