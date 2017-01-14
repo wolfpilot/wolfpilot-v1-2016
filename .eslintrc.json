@@ -15,7 +15,7 @@
         "default-case": "error",
         "dot-notation": "error",
         "eqeqeq": "error",
-        "guard-for-in": "error",
+        "guard-for-in": "warn",
         "no-alert": "error",
         "no-caller": "error",
         "no-div-regex": "error",
@@ -24,14 +24,16 @@
         "no-eval": "error",
         "no-extend-native": "error",
         "no-extra-bind": "error",
-        "no-floating-decimal": "error",
+        "no-extra-semi": "warn",
+        "no-floating-decimal": "warn",
         "no-native-reassign": "error",
         "no-implied-eval": "error",
         "no-iterator": "error",
         "no-labels": "error",
         "no-lone-blocks": "error",
         "no-loop-func": "error",
-        "no-multi-spaces": "error",
+        "no-mixed-spaces-and-tabs": "warn",
+        "no-multi-spaces": "warn",
         "no-multi-str": "off",
         "no-new": "error",
         "no-new-func": "error",
@@ -46,7 +48,7 @@
         "no-with": "error",
         "radix": "error",
         "vars-on-top": "off",
-        "wrap-iife": "error",
+        "wrap-iife": "warn",
         "yoda": "error",
         /** Strict Mode */
         "strict": [
@@ -56,10 +58,13 @@
         /** Variables */
         "no-catch-shadow": "error",
         "no-label-var": "error",
-        "no-shadow": "error",
+        "no-shadow": "warn",
         "no-shadow-restricted-names": "error",
-        "no-undef-init": "error",
-        "no-undefined": "error",
+        "no-redeclare": "warn",
+        "no-undef": "warn",
+        "no-undef-init": "warn",
+        "no-undefined": "warn",
+        "no-unused-vars": "warn",
         "no-use-before-define": "error",
         /** Node.js and CommonJS */
         "no-process-env": "error",
@@ -68,11 +73,11 @@
             "error",
             "never"
         ],
-        "brace-style": "error",
+        "brace-style": "warn",
         "eol-last": "error",
         "no-spaced-func": "error",
         "indent": [
-            "error",
+            "warn",
             "tab"
         ],
         "keyword-spacing": "error",
@@ -86,7 +91,7 @@
         "no-lonely-if": "error",
         "no-multiple-empty-lines": "error",
         "no-nested-ternary": "error",
-        "no-trailing-spaces": "error",
+        "no-trailing-spaces": "warn",
         "object-curly-spacing": [
             "error",
             "never"
@@ -96,7 +101,7 @@
             "always"
         ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "quote-props": [
@@ -108,13 +113,13 @@
             "always"
         ],
         "semi-spacing": [
-            "error", {
+            "warn", {
                 "before": false,
                 "after": true
             }
         ],
-        "space-in-parens": "error",
-        "space-infix-ops": "error",
-        "space-unary-ops": "error"
+        "space-in-parens": "warn",
+        "space-infix-ops": "warn",
+        "space-unary-ops": "warn"
     }
 }
