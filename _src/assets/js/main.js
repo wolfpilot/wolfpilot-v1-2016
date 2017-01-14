@@ -7,10 +7,6 @@ var Module = (function() {
 	 * Settings
 	 ***********************************************/
 
-	var init = function() {
-
-	};
-
 	// Thanks go to Paul Irish for this little snippet of code
 	var requestAnimFrame = (function() {
 
@@ -23,85 +19,100 @@ var Module = (function() {
 
 	}());
 
-	var scrollToY = function(scrollTarget, speed, easing) {
+	var scrollToY = function() {
 
-		var scrollY = window.scrollY || document.documentElement.scrollTop,
-			scrollTarget = scrollTarget || 0,
-			speed = speed || 250, // In px/s
-			easing = easing || 'easeInSine',
-			currentTime = 0;
+		var scrollTo = function(hash, speed, easing) {
 
-		// Min time 0.1s, max 0.8s
-		var time = Math.max(0.1, Math.min(Math.abs(scrollY - scrollTarget) / speed, 0.8));
+			var scrollY = window.scrollY || document.documentElement.scrollTop,
+				headerHeight = document.getElementById('header').offsetHeight,
+				scrollTarget = document.getElementById(hash).offsetTop,
+				currentTime = 0;
 
-		// Source: https://github.com/danro/easing-js/blob/master/easing.js
-		var easingEquations = {
+			// Min time 0.1s, max 0.8s
+			// Always substract the header's height from the scrolling distance
+			var time = Math.max(0.1, Math.min(Math.abs(scrollY - scrollTarget - headerHeight) / speed, 0.8));
 
-			easeInSine: function (pos) {
-				return -Math.cos(pos * (Math.PI / 2)) + 1;
-			},
-			easeOutSine: function (pos) {
-				return Math.sin(pos * (Math.PI / 2));
-			},
-			easeInOutSine: function (pos) {
-				return (-0.5 * (Math.cos(Math.PI * pos) - 1));
-			},
-			easeInOutQuint: function (pos) {
-				if ((pos /= 0.5) < 1) {
-					return 0.5 * Math.pow(pos, 5);
+			// Source: https://github.com/danro/easing-js/blob/master/easing.js
+			var easingEquations = {
+
+				easeInSine: function (pos) {
+					return -Math.cos(pos * (Math.PI / 2)) + 1;
+				},
+				easeOutSine: function (pos) {
+					return Math.sin(pos * (Math.PI / 2));
+				},
+				easeInOutSine: function (pos) {
+					return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+				},
+				easeInOutQuint: function (pos) {
+					if ((pos /= 0.5) < 1) {
+						return 0.5 * Math.pow(pos, 5);
+					}
+					return 0.5 * (Math.pow((pos - 2), 5) + 2);
 				}
-				return 0.5 * (Math.pow((pos - 2), 5) + 2);
+
+			};
+
+			var	_tick = function() {
+
+				currentTime += 1 / 60;
+
+				var p = currentTime / time,
+					t = easingEquations[easing](p);
+
+				if (p < 1) {
+
+					requestAnimFrame(_tick);
+
+					window.scrollTo(0, scrollY + ((scrollTarget - scrollY) * t));
+
+				}
+
+			};
+
+			_tick();
+
+		};
+
+		var handleClickEvents = function() {
+
+			var el = document.getElementsByClassName('js-scroll');
+
+			for (var i = 0; i < el.length; i++) {
+
+				el[i].addEventListener('click', scrollTo.bind(null, el[i].getAttribute('data-target'), 50, 'easeInSine'), false);
+
 			}
 
 		};
 
-		function tick() {
+		var scrollOnLoad = function() {
 
-			currentTime += 1 / 60;
+			// Strip location of hash sign
+			var hash = location.hash.replace('#','');
 
-			var p = currentTime / time,
-				t = easingEquations[easing](p);
+			if (hash !== '') {
 
-			if (p < 1) {
-
-				requestAnimFrame(tick);
-
-				window.scrollTo(0, scrollY + ((scrollTarget - scrollY) * t));
+				scrollTo(hash, 50, 'easeInSine');
 
 			}
-			// else {
 
-			// 	window.scrollTo(0, scrollTarget - scrollY);
+		};
 
-			// }
+		var init = function() {
 
-		}
+			scrollOnLoad();
+			handleClickEvents();
 
-		tick();
+		};
 
-	};
-
-	var scrollToEl = function() {
-
-		var el = document.getElementsByClassName('js-scroll'),
-			headerHeight = document.getElementById("header").offsetHeight;
-
-		for (var i = 0; i < el.length; i++) {
-
-			el[i].addEventListener('click', function() {
-
-				var data = this.getAttribute('data-target'),
-					target = document.getElementById(data);
-
-				scrollToY(target.offsetTop - headerHeight, 50, 'easeInSine');
-
-			}, false);
-
-		}
+		init();
 
 	};
 
 	var _privateMethod = function() {
+
+		console.log('private');
 
 	};
 
@@ -112,8 +123,7 @@ var Module = (function() {
 	};
 
 	return {
-		init: init,
-		scrollToEl: scrollToEl,
+		scrollToY: scrollToY,
 		publicMethod: publicMethod
 	};
 
@@ -122,8 +132,7 @@ var Module = (function() {
 // Automate task by looping through the return object?!?
 document.addEventListener('DOMContentLoaded', function() {
 
-	Module.init();
-	Module.scrollToEl();
+	Module.scrollToY();
 	Module.publicMethod();
 
 });
