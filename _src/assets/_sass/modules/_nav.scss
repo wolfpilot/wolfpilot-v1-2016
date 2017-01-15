@@ -1,16 +1,20 @@
 .nav {
 
+	position: relative;
 	float: left;
+	min-width: 250px;
 	height: 100%;
 
 	@include font-size(0);
 
 	&__item {
 
-		display: inline-block;
 		position: relative;
+		display: inline-block;
+		width: 33.33%;
 		height: 100%;
-		margin: 0 15px;
+		padding-right: 15px;
+		padding-left: 15px;
 
 		color: $quaternaryColor;
 
@@ -18,40 +22,59 @@
 		@include font-size(10, 60);
 		text-transform: uppercase;
 		letter-spacing: 2px;
+		text-align: center;
 
-		&:hover {
+		// For the sake of specificity, we'll have to double up these loops
+		@for $i from 1 through 3 {
 
-			&:after {
+			&:nth-child(#{$i}) {
 
-				max-width: 100%;
+				&.is-active {
+
+					& ~ .nav__highlight {
+
+						@include transform(translateX( ($i - 1) * 100%));
+
+					}
+
+				}
 
 			}
 
 		}
 
-		&.is-active {
+		@for $i from 1 through 3 {
 
-			border-bottom: 2px solid $tertiaryColor;
+			&:nth-child(#{$i}) {
 
-		}
+				&:hover {
 
-		&:after {
+					& ~ .nav__highlight {
 
-		    content: "";
-		    position: absolute;
-		    top: 50%;
-		    left: 0;
-		    right: 0;
-		    max-width: 0;
-		    margin: 1px 0 0;
+						@include transform(translateX( ($i - 1) * 100%));
 
-		    border-top: 1px $tertiaryColor solid;
+					}
 
-		    @include transition(all 0.15s ease-in-out);
+				}
 
-		    // @include transform(rotate(90deg));
+			}
 
 		}
+
+	}
+
+	&__highlight {
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		width: 33.33%;
+		height: 0.2rem;
+
+		background: $tertiaryColor;
+
+		transition: transform 0.25s ease-in-out;
 
 	}
 

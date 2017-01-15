@@ -110,6 +110,64 @@ var Module = (function() {
 
 	};
 
+	var navigation = function() {
+
+		var nav = document.getElementById('nav'),
+			navItems = nav.getElementsByClassName('nav__item');
+
+		var handler = function(target) {
+
+			for (var i = 0; i < navItems.length; i++) {
+
+				navItems[i].classList.remove('is-active');
+
+			}
+
+			target.classList.add('is-active');
+
+		};
+
+		var delegateEvents = function() {
+
+			nav.addEventListener('click', function(e) {
+
+				handler(e.target);
+
+			});
+
+		};
+
+		var hashToggle = function() {
+
+			var hash = window.location.hash.substr(1);
+
+			if (hash.length > 0) {
+
+				for (var i = 0; i < navItems.length; i++) {
+
+					if (navItems[i].getAttribute('data-target') === hash) {
+
+						handler(navItems[i]);
+
+					}
+
+				}
+
+			}
+
+		};
+
+		var init = function() {
+
+			hashToggle();
+			delegateEvents();
+
+		};
+
+		init();
+
+	};
+
 	var _privateMethod = function() {
 
 		console.log('private');
@@ -121,6 +179,14 @@ var Module = (function() {
 		_privateMethod();
 
 	};
+
+	var _init = function() {
+
+		navigation();
+
+	};
+
+	_init();
 
 	return {
 		scrollToY: scrollToY,

@@ -1,28 +1,20 @@
 <header id="header" class="header">
 
-	<nav class="nav">
+	<nav id="nav" class="nav" role="navigation">
 
-<!-- 		{% assign pages = site.pages | sort : "order" %}
-
-		{% for my_page in pages %}
-			{% if my_page.title %}
-				<a class="nav__item {% if my_page.url == page.url %}is-active{% endif %}" href="{{ my_page.url | prepend: site.baseurl }}">
-					{{ my_page.title }}
-				</a>
-			{% endif %}
-		{% endfor %} -->
-
-		<button class="nav__item js-scroll" data-target="about">
+		<a class="nav__item js-scroll" href="#about" data-target="about">
 			About
-		</button>
+		</a>
 
-		<button class="nav__item js-scroll" data-target="work">
+		<a class="nav__item js-scroll" href="#work" data-target="work">
 			Work
-		</button>
+		</a>
 
-		<button class="nav__item js-scroll" data-target="footer">
+		<a class="nav__item js-scroll" href="#contact" data-target="contact">
 			Contact
-		</button>
+		</a>
+
+		<div class="nav__highlight"></div>
 
 	</nav>
 
