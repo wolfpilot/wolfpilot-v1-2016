@@ -16,7 +16,7 @@
         "dot-notation": "error",
         "eqeqeq": "error",
         "guard-for-in": "warn",
-        "no-alert": "error",
+        "no-alert": "warn",
         "no-caller": "error",
         "no-div-regex": "error",
         "no-else-return": "error",
@@ -80,7 +80,7 @@
             "warn",
             "tab"
         ],
-        "keyword-spacing": "error",
+        "keyword-spacing": "warn",
         "linebreak-style": [
             "error",
             "windows"
@@ -89,15 +89,15 @@
         "new-parens": "error",
         "no-array-constructor": "error",
         "no-lonely-if": "error",
-        "no-multiple-empty-lines": "error",
+        "no-multiple-empty-lines": "warn",
         "no-nested-ternary": "error",
         "no-trailing-spaces": "warn",
         "object-curly-spacing": [
-            "error",
+            "warn",
             "never"
         ],
         "operator-assignment": [
-            "error",
+            "off",
             "always"
         ],
         "quotes": [
