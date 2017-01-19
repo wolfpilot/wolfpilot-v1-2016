@@ -38,7 +38,8 @@ twitter_username: wolfpilot
 # --------------------------------
 # Includes & Excludes
 exclude: [
-  feed.xml
+  feed.xml,
+  assets/js
 ]
 include: [
 	_pages,
