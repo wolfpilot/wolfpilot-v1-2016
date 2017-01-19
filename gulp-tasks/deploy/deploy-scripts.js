@@ -20,7 +20,7 @@ gulp.task('deploy:scripts', function () {
 	return gulp.src([
 			paths.js.src + 'vendor/*.js',
 			paths.js.src + 'lib/*.js',
-			paths.js.src + '*.js'
+			paths.js.src + 'scripts/*.js'
 		])
 		.pipe(sourcemaps.init())
 			.pipe(concat('main.js'))
