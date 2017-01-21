@@ -42,7 +42,6 @@ exclude: [
   assets/js
 ]
 include: [
-	_pages,
 	assets/fonts,
 	CNAME
 ]
