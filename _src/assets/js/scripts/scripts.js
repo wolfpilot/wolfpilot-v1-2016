@@ -1,15 +1,13 @@
-'use strict';
+/** Stuffz */
 
-// Redefine: window, document, undefined.
-var Module = (function() {
+var Wolfpilot = window.Wolfpilot || {};
 
-	/***********************************************
-	 * Settings
-	 ***********************************************/
+Wolfpilot = (function Wolfpilot() {
 
-	// Thanks go to Paul Irish for this little snippet of code
-	var requestAnimFrame = (function() {
+	'use strict';
 
+	var _raf = (function _raf() {
+		// Thanks go to Paul Irish for this little snippet of code
 		return window.requestAnimationFrame ||
 			window.webkitRequestAnimationFrame ||
 			window.mozRequestAnimationFrame ||
@@ -19,9 +17,9 @@ var Module = (function() {
 
 	}());
 
-	var scrollToY = function() {
+	var scrollToY = (function scrollToY() {
 
-		var scrollTo = function(hash, speed, easing) {
+		var scrollTo = function scrollTo(hash, speed, easing) {
 
 			var scrollY = window.scrollY || document.documentElement.scrollTop,
 				headerHeight = document.getElementById('header').offsetHeight,
@@ -62,7 +60,7 @@ var Module = (function() {
 
 				if (p < 1) {
 
-					requestAnimFrame(_tick);
+					_raf(_tick);
 
 					window.scrollTo(0, scrollY + ((scrollTarget - scrollY) * t));
 
@@ -74,7 +72,7 @@ var Module = (function() {
 
 		};
 
-		var handleClickEvents = function() {
+		var _handleClickEvents = function _handleClickEvents() {
 
 			var el = document.getElementsByClassName('js-scroll');
 
@@ -86,7 +84,7 @@ var Module = (function() {
 
 		};
 
-		var scrollOnLoad = function() {
+		var _scrollOnLoad = function _scrollOnLoad() {
 
 			// Strip location of hash sign
 			var hash = location.hash.replace('#','');
@@ -99,23 +97,27 @@ var Module = (function() {
 
 		};
 
-		var init = function() {
+		var _init = function _init() {
 
-			scrollOnLoad();
-			handleClickEvents();
+			_scrollOnLoad();
+			_handleClickEvents();
 
 		};
 
-		init();
+		_init();
 
-	};
+		return {
+			scrollTo: scrollTo
+		};
 
-	var navigation = function() {
+	}());
+
+	var _navigation = (function _navigation() {
 
 		var nav = document.getElementById('nav'),
 			navItems = nav.getElementsByClassName('nav__item');
 
-		var handler = function(target) {
+		var handler = function handler(target) {
 
 			for (var i = 0; i < navItems.length; i++) {
 
@@ -127,7 +129,7 @@ var Module = (function() {
 
 		};
 
-		var delegateEvents = function() {
+		var _delegateEvents = function _delegateEvents() {
 
 			nav.addEventListener('click', function(e) {
 
@@ -137,7 +139,7 @@ var Module = (function() {
 
 		};
 
-		var hashToggle = function() {
+		var _hashToggle = function _hashToggle() {
 
 			var hash = window.location.hash.substr(1);
 
@@ -157,48 +159,19 @@ var Module = (function() {
 
 		};
 
-		var init = function() {
+		var _init = function _init() {
 
-			hashToggle();
-			delegateEvents();
+			_hashToggle();
+			_delegateEvents();
 
 		};
 
-		init();
+		_init();
 
-	};
-
-	var _privateMethod = function() {
-
-		console.log('private');
-
-	};
-
-	var publicMethod = function() {
-
-		_privateMethod();
-
-	};
-
-	var _init = function() {
-
-		navigation();
-
-	};
-
-	_init();
+	}());
 
 	return {
-		scrollToY: scrollToY,
-		publicMethod: publicMethod
+		scrollToY: scrollToY
 	};
 
 }());
-
-// Automate task by looping through the return object?!?
-document.addEventListener('DOMContentLoaded', function() {
-
-	Module.scrollToY();
-	Module.publicMethod();
-
-});
