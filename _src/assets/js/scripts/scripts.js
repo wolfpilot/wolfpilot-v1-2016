@@ -112,6 +112,47 @@ Wolfpilot = (function Wolfpilot() {
 
 	}());
 
+	var overlay = (function overlay() {
+
+		var el = document.getElementById('overlay'),
+			status = 'closed';
+
+		var open = function open() {
+
+			status = 'open';
+			el.classList.add('is-active');
+
+		};
+
+		var close = function close() {
+
+			status = 'closed';
+			el.classList.remove('is-active');
+
+		};
+
+		var handler = function handler() {
+
+			if (status === 'closed') {
+
+				open();
+
+			} else {
+
+				close();
+
+			}
+
+		};
+
+		return {
+			handler: handler,
+			open: open,
+			close: close
+		};
+
+	}());
+
 	var _navigation = (function _navigation() {
 
 		var nav = document.getElementById('nav'),
@@ -171,7 +212,8 @@ Wolfpilot = (function Wolfpilot() {
 	}());
 
 	return {
-		scrollToY: scrollToY
+		scrollToY: scrollToY,
+		overlay: overlay
 	};
 
 }());
