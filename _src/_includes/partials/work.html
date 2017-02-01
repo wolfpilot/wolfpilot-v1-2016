@@ -2,32 +2,108 @@
 
 	<div class="t--center">
 
-		<h6 class="subheading bordered">
-			Work<br />
-			<span>Go go power rangers!</span>
+		<div class="bordered">
 
-				<div class="border border--top"></div>
-				<div class="border border--right"></div>
-				<div class="border border--bottom"></div>
-				<div class="border border--left"></div>
+			<div class="border border--top"></div>
+			<div class="border border--right"></div>
+			<div class="border border--bottom"></div>
+			<div class="border border--left"></div>
 
-		</h6>
+			<h4 class="heading">
+				Work<br />
+			</h4>
+
+			<h6 class="subheading">
+				Go go power rangers!
+			</h6>
+			
+		</div>
 
 	</div>
 
-	<div class="showcase">
+	<div id="js-showcase" class="showcase">
 
-		<div class="showcase__header">
+		<div id="js-showcase-nav" class="showcase__nav">
 			
-			<button class="btn btn--simple">
-				Featured
-			</button>
+			{% for category in site.data.projects.categories %}
+
+				<button class="showcase__nav-item {% if forloop.first == true %}is-active{% endif %}" data-category="{{ category }}">
+					{{ category }}
+				</button>
+
+			{% endfor %}
 
 		</div>
 
-		<div class="showcase__content">
-			
+		<div id="js-showcase-content" class="showcase__content js-showcase">
 
+			{% for project in site.data.projects.projects %}
+
+				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
+
+					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/img/projects/{{ project.name }}/thumb.jpg" alt="" />
+
+					<div class="showcase__project-overlay">
+
+						<div class="showcase__project-details">
+
+							<h2 class="showcase__project-name">
+								{{ project.name }}
+							</h2>
+
+							<p class="showcase__project-description">
+								{{ project.description }}
+							</p>
+
+							<div class="showcase__project-footer">
+
+								{% if project.links %}
+
+									{% for link in project.links %}
+
+										<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank"{% endif %}>
+											{% if link.type == "int" %}
+												{% include svg/link-internal.svg %}
+											{% else %}
+												{% include svg/link-external.svg %}
+											{% endif %}
+										</a>
+
+									{% endfor %}
+
+								{% endif %}
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+
+		<div id="js-modal" class="modal modal--showcase">
+
+		    <div class="table">
+
+		        <div class="table__cell table__cell--middle">
+
+		            <div id="js-modal-wrapper" class="modal__wrapper">
+
+		                <button id="js-modal--close" class="btn modal__close js-modal--close" data-target="#modal-showcase">
+		                    x
+		                </button>
+
+						<img class="showcase__modal-img" src="{{ site.baseurl }}/assets/img/projects/01/full.jpg" alt="" />
+
+		            </div>
+
+		        </div>
+
+		    </div>
 
 		</div>
 		

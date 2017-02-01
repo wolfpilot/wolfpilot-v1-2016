@@ -2,9 +2,11 @@
 
 var Wolfpilot = window.Wolfpilot || {};
 
-Wolfpilot = (function Wolfpilot() {
+Wolfpilot = (function() {
 
 	'use strict';
+
+	/** HELPERS */
 
 	var _raf = (function _raf() {
 		// Thanks go to Paul Irish for this little snippet of code
@@ -16,6 +18,20 @@ Wolfpilot = (function Wolfpilot() {
 			};
 
 	}());
+
+	var lazyload = function lazyload(el) {
+
+		if (el.hasAttribute('data-lazyload-src')) {
+
+			el.setAttribute('src', el.getAttribute('data-lazyload-src'));
+			el.removeAttribute('data-lazyload-src');
+
+		}
+
+	};
+
+
+	/** MAIN */
 
 	var scrollToY = (function scrollToY() {
 
@@ -153,6 +169,98 @@ Wolfpilot = (function Wolfpilot() {
 
 	}());
 
+	var modal = (function modal() {
+
+		var showcase = document.getElementById('js-showcase-content'),
+			modall = document.getElementById('js-modal'),
+			wrapper = document.getElementById('js-modal-wrapper'),
+			closeBtn = document.getElementById('js-modal--close'),
+			status = 'closed';
+
+		var open = function open(target) {
+
+			status = 'open';
+
+			overlay.handler();
+			modall.classList.add('is-active');
+			// target.classList.add('is-visible');
+
+		};
+
+		var close = function close(target) {
+
+			status = 'closed';
+
+			overlay.handler();
+			modall.classList.remove('is-active');
+			// target.classList.remove('is-visible');
+
+		};
+
+		var handler = function handler(target) {
+
+			if (status === 'closed') {
+
+				open(target);
+
+			} else {
+
+				close(target);
+
+			}
+
+		};
+
+		var _delegateEvents = function _delegateEvents() {
+
+			showcase.addEventListener('click', function(e) {
+
+				if (e.target.classList.contains('showcase__project-overlay')) {
+
+					handler(e.target.parentNode.parentNode);
+
+				}
+
+			});
+
+			closeBtn.addEventListener('click', function() {
+
+				handler();
+
+			});
+
+			/* if modal is open and
+			 * the target is not the modal's wrapper nor the trigger
+			 * then forward to event handler */
+			document.addEventListener('mousedown', function(e) {
+
+				if (status === 'open' && !wrapper.contains(e.target)) {
+
+					handler();
+
+				}
+
+			});
+
+		};
+
+		var _init = function _init() {
+
+			_delegateEvents();
+
+		};
+
+		_init();
+
+		return {
+			status: status,
+			open: open,
+			close: close,
+			handler: handler
+		};
+
+	}());
+
 	var _navigation = (function _navigation() {
 
 		var nav = document.getElementById('nav'),
@@ -211,9 +319,119 @@ Wolfpilot = (function Wolfpilot() {
 
 	}());
 
+	var showcase = (function showcase() {
+
+		var wrapper = document.getElementById('js-showcase'),
+			nav = wrapper.querySelector('#js-showcase-nav'),
+			navTags = nav.getElementsByClassName('showcase__nav-item'),
+			projects = wrapper.getElementsByClassName('js-showcase-project');
+
+		var showCategory = function showCategory(category) {
+
+			setTimeout(function() {
+
+				for (var i = 0; i < projects.length; i++) {
+
+					var tags = projects[i].getAttribute('data-tag').split(', ');
+
+					for (var j = 0; j < tags.length; j++) {
+
+						if (tags[j] === category) {
+
+							projects[i].classList.add('is-visible');
+							lazyload(projects[i].firstElementChild);
+
+						}
+
+					}
+
+				}
+
+			}, 500);
+
+		};
+
+		var showAll = function hideEverything() {
+
+			setTimeout(function() {
+
+				for (var i = 0; i < projects.length; i++) {
+
+					projects[i].classList.add('is-visible');
+					lazyload(projects[i].firstElementChild);
+
+				}
+			}, 500);
+
+		};
+
+		var hideAll = function hideEverything() {
+
+			for (var i = 0; i < projects.length; i++) {
+
+				projects[i].classList.remove('is-visible');
+
+			}
+
+		};
+
+		var handler = function handler(category) {
+
+			hideAll();
+
+			if (category === 'all') {
+
+				showAll();
+
+			} else {
+
+				showCategory(category);
+
+			}
+
+		};
+
+		var toggleNav = function toggleNav(category) {
+
+			for (var i = 0; i < navTags.length; i++) {
+
+				navTags[i].classList.remove('is-active');
+
+			}
+
+			category.classList.add('is-active');
+
+		};
+
+		var _delegateEvents = (function _delegateEvents() {
+
+			nav.addEventListener('click', function(e) {
+
+				if (e.target.classList.contains('showcase__nav-item') && !e.target.classList.contains('is-active')) {
+
+					toggleNav(e.target);
+					handler(e.target.getAttribute('data-category'));
+
+				}
+
+			});
+
+		}());
+
+		return {
+			showCategory: showCategory,
+			showAll: showAll,
+			hideAll: hideAll,
+			toggleNav: toggleNav
+		};
+
+	}());
+
 	return {
 		scrollToY: scrollToY,
-		overlay: overlay
+		overlay: overlay,
+		modal: modal,
+		showcase: showcase
 	};
 
 }());

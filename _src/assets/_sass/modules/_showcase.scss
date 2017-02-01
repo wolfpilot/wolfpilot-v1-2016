@@ -1,0 +1,294 @@
+.showcase {
+
+	&__nav {
+
+		margin-bottom: 30px;
+
+		@include mq($mq-tab--lrg, min) {
+
+			border-bottom: 1px solid $grey;
+
+		}
+
+	}
+
+	&__nav-item {
+
+		display: block;
+		width: 100%;
+		margin: 5px 0;
+
+		border-top: 1px dotted $grey;
+		border-bottom: 1px dotted $grey;
+		color: $quaternaryColor;
+
+		text-align: center;
+
+		@include transition(
+			border-color 0.15s ease-in-out,
+			color 0.15s ease-in-out
+		);
+
+		@include mq($mq-tab--lrg, min) {
+
+			display: inline-block;
+			width: auto;
+			margin: auto;
+
+			background: transparent;
+			border: none;
+
+		}
+
+		&.is-active,
+		&:hover {
+
+			border-top: 1px solid $orange-dark;
+			border-bottom: 1px solid $orange-dark;
+			color: $orange-dark;
+
+			@include mq($mq-tab--lrg, min) {
+
+				border: none;
+				
+			}
+
+		}
+
+	}
+
+	&__content {
+
+		@include font-size(0);
+
+		@include mq($mq-mob, min) {
+
+			column-count: 2;
+			column-gap: 15px;
+			
+		}
+
+		@include mq($mq-tab--lrg, min) {
+
+			column-count: 3;
+
+		}
+
+	}
+
+	&__project {
+
+		position: relative;
+		display: inline-block;
+		margin-bottom: 15px;
+
+		@include opacity(0);
+		@include transform(translateY(20px));
+		max-height: 0;
+
+		overflow: hidden;
+		cursor: url('/assets/img/magnifying-glass.cur') 10 10, zoom-in;
+
+		/* max-height
+		 * delay so it doesn't trigger a reflow
+		 * when the 'is-visible' class is removed
+		 */
+		@include transition(
+			opacity 0.5s ease-in-out,
+			transform 0.5s ease-in-out,
+			max-height 0s linear 0.5s
+		);
+
+		@include mq($mq-mob--lrg, min) {
+
+			@include transform(translateY(50px));
+
+		}
+
+		@include mq($mq-tab--lrg, min) {
+
+			@include transform(translateY(100px));
+
+		}
+			
+		&.is-visible {
+
+			@include opacity(1);
+			@include transform(translateY(0));
+			max-height: 1000px;
+
+			/* max-height
+			 * no delay allows allows the layout to expand while invisible
+			 * thus avoiding column reflows
+			 */
+			@include transition(
+				opacity 0.5s ease-in-out,
+				transform 0.5s ease-in-out,
+				max-height 0s linear
+			);
+
+		}
+
+		&-img {
+
+			max-height: 0;
+			overflow: hidden;
+
+			@include transition(max-height 0s linear 0.5s); 
+
+			.showcase__project.is-visible & {
+				max-height: 1000px;
+				@include transition(max-height 0s linear);
+			}
+
+		}
+
+		&-overlay {
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			background: transparentize($secondaryColor, 0.05);
+
+			@include opacity(0);
+
+			@include transition(opacity 0.35s linear);
+
+			.showcase__project:hover & {
+
+				@include opacity(1);
+
+			}
+
+		}
+
+		&-pop {
+
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			@include opacity(0.1);
+
+			svg {
+
+				width: 200px;
+
+			}
+
+		}
+
+		&-details {
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 15px;
+
+			@include transform(translateY(15px));
+			@include filter(hue-rotate, -270deg);
+
+			@include transition(
+				transform 0.35s linear,
+				filter 0.35s linear
+			);
+
+			.showcase__project:hover & {
+
+				@include transform(translateY(0));
+				@include filter(hue-rotate, 0);
+
+			}
+
+		}
+
+		&-name {
+
+			color: $orange-dark;
+
+			font-family: $secondaryFont;
+			line-height: 64px;
+
+		}
+
+		&-description {
+
+			color: $orange-dark;
+
+		}
+
+		&-footer {
+
+			position: absolute;
+			bottom: 20px;
+			left: 15px;
+
+		}
+
+		&-tag {
+
+		}
+
+		&-link {
+
+			display: inline-block;
+			margin-right: 10px;
+
+			&:hover {
+
+				.arrow {
+
+					@include transform(translate(5px, -5px));
+					
+				}
+
+				.chain {
+
+					&__top {
+
+						@include transform(translate(20px, -10px));
+						    transform: translate(19%, -19%);
+
+					}
+
+					&__bottom {
+						    transform: translate(-19%, 19%);
+					}
+
+				}
+
+			}
+
+			svg {
+
+				overflow: visible;
+
+				fill: $orange-dark;
+
+				path {
+
+					@include transition(transform 0.25s ease-in-out);
+
+				}
+
+			}
+
+		}
+
+	}
+
+}

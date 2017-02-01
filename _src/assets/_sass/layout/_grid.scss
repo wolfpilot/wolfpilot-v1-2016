@@ -73,6 +73,16 @@
 		
 	}
 
+	&-1,
+	&-4 {
+		height: 33.33%;
+	}
+
+	&-2,
+	&-8 {
+		height: 66.66%;
+	}
+
 }
 
 .columns:last-child:not(:first-child) {
@@ -93,5 +103,35 @@
     padding-right: 0;
     margin-left: 0;
     margin-right: 0;
-    
+
+}
+
+
+.table {
+
+	display: table;
+	width: 100%;
+	height: 100%;
+
+    > .column,
+    > .columns,
+    > [class*="column"] + [class*="column"]:last-child,
+    > [class*="columns"] + [class*="columns"]:last-child {
+
+        float: none;
+
+    }
+
+    &__cell {
+
+    	display: table-cell;
+
+		&--middle {
+
+			vertical-align: middle;
+
+		}
+
+    }
+	
 }

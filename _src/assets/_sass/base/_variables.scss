@@ -14,12 +14,12 @@ $base-font-size:	15 !default;
 $base-line-height: $base-font-size * 1.25 !default;
 
 // Headings
-$alpha-size:		50	!default; // h1, .h_alpha
-$beta-size:			30	!default; // h2, .h_beta
-$gamma-size:		25	!default; // h3, .h_gamma
-$delta-size:		20	!default; // h4, .h_delta
+$alpha-size:		100	!default; // h1, .h_alpha
+$beta-size:			64	!default; // h2, .h_beta
+$gamma-size:		40	!default; // h3, .h_gamma
+$delta-size:		24	!default; // h4, .h_delta
 $epsilon-size:		18	!default; // h5, .h_epsilon
-$zeta-size:			16	!default; // h6, .h_zeta
+$zeta-size:			15	!default; // h6, .h_zeta
 $eta-size:			14	!default; // h6, .h_zeta for mobile resolutions
 
 $p-size:            $base-font-size !default;
@@ -50,12 +50,13 @@ $bold: 700;
  * COLOUR VARIABLES
  *******************************************/
 
-$black:		#000;
-$white:		#fff;
-$grey:		#ccc;
+$black:				#000;
+$white:				#fff;
+$grey:				#e0e0e0;
 
-$d-grey:	#454545;
-$orange:	salmon;
+$d-grey:			#454545;
+$orange:			#fa8072;
+$orange-dark: 		#ff5541;
 
 $primaryColor: 		$black;
 $secondaryColor: 	$white;
