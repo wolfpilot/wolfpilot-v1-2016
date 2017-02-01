@@ -53,7 +53,7 @@
         /** Strict Mode */
         "strict": [
             "error",
-            "global"
+            "safe"
         ],
         /** Variables */
         "no-catch-shadow": "error",
