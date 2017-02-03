@@ -215,7 +215,7 @@ Wolfpilot = (function() {
 
 			showcase.addEventListener('click', function(e) {
 
-				if (e.target.classList.contains('showcase__project-overlay')) {
+				if (e.target.classList.contains('showcase__project-details')) {
 
 					handler(e.target.parentNode.parentNode);
 
