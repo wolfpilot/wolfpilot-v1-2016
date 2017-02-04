@@ -8,6 +8,28 @@ Wolfpilot = (function() {
 
 	/** HELPERS */
 
+	// Get nearest parent element matching selector
+	var getClosest = function getClosest(el, selector) {
+
+		var matchesSelector = el.matches
+			|| el.webkitMatchesSelector
+			|| el.mozMatchesSelector
+			|| el.msMatchesSelector;
+
+		while (el) {
+
+			if (matchesSelector.call(el, selector)) {
+				break;
+			}
+
+			el = el.parentElement;
+
+		}
+
+		return el;
+
+	};
+
 	var _raf = (function _raf() {
 		// Thanks go to Paul Irish for this little snippet of code
 		return window.requestAnimationFrame ||
