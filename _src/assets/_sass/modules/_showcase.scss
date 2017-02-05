@@ -204,7 +204,7 @@
 			.showcase__project:hover & {
 
 				@include transform(translateY(0));
-				@include filter(hue-rotate, 0);
+				@include filter(hue-rotate, 0deg);
 
 			}
 
