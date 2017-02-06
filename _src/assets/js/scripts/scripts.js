@@ -594,24 +594,31 @@ Wolfpilot = (function() {
 
 			// listen for project clicks
 			wrapper.addEventListener('click', function(e) {
+				
+				/* Stop the modal from opening on window width/height smaller than 480px
+				 * as there's no point in opening the modal for devices that are so small
+				 */
+				if (Wolfpilot.windowSize.getDimensions().wWidth >= 480 && Wolfpilot.windowSize.getDimensions().wHeight >= 480) {
 
-				if (e.target.classList.contains('showcase__project-details')) {
+					if (e.target.classList.contains('showcase__project-details')) {
 
-					var project = Wolfpilot.getClosest(e.target, '.js-showcase-project'),
-						el = document.getElementById(project.getAttribute('data-target')),
-						target = project.getAttribute('data-target');
+						var project = Wolfpilot.getClosest(e.target, '.js-showcase-project'),
+							el = document.getElementById(project.getAttribute('data-target')),
+							target = project.getAttribute('data-target');
 
-					for (var i = 0; i < showcasedProjects.length; i++) {
+						for (var i = 0; i < showcasedProjects.length; i++) {
 
-						if (showcasedProjects[i] === target) {
-							/* Pass both the modal image we're opening
-							 * and its index in the currently showcased projects.
-							 *
-							 * This will open the image in a modal
-							 * and determine its position in the slider,
-							 * as well as the order of the previous and next elements.
-							 */
-							Wolfpilot.modal.handler(el, i);
+							if (showcasedProjects[i] === target) {
+								/* Pass both the modal image we're opening
+								 * and its index in the currently showcased projects.
+								 *
+								 * This will open the image in a modal
+								 * and determine its position in the slider,
+								 * as well as the order of the previous and next elements.
+								 */
+								Wolfpilot.modal.handler(el, i);
+
+							}
 
 						}
 
