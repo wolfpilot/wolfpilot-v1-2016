@@ -193,70 +193,156 @@ Wolfpilot = (function() {
 
 	var modal = (function modal() {
 
-		var showcase = document.getElementById('js-showcase-content'),
-			modall = document.getElementById('js-modal'),
-			wrapper = document.getElementById('js-modal-wrapper'),
-			closeBtn = document.getElementById('js-modal--close'),
-			status = 'closed';
+		var wrapper = document.getElementById('js-modal'),
+			images = wrapper.getElementsByClassName('modal__img'),
 
-		var open = function open(target) {
+			btnPrev = document.getElementById('js-modal--prev'),
+			btnNext = document.getElementById('js-modal--next'),
+			btnClose = document.getElementById('js-modal--close'),
+
+			status = 'closed',
+
+			showcasedItems,
+			activeItem,
+			index,
+			prevItem,
+			nextItem;
+
+		var setShowcasedItems = function setShowcasedItems(newShowcasedItems) {
+
+			showcasedItems = newShowcasedItems;
+
+		};
+
+		var getShowcasedItems = function getShowcasedItems() {
+
+			return showcasedItems;
+
+		};
+
+		var setActiveItem = function setActiveItem(el, i) {
+
+			activeItem = el;
+			index = i;
+
+		};
+
+		var getActiveItem = function getActiveItem() {
+
+			return {
+				activeItem,
+				index
+			};
+
+		};
+
+		var prev = function prev() {
+
+			var i;
+
+			// Go to the previous slide unless we've reached the first one
+			if (showcasedItems[index] !== showcasedItems[0]) {
+
+				prevItem = document.getElementById(showcasedItems[index - 1]);
+				i = index - 1;
+
+			} else { // otherwise, loop around
+
+				prevItem = document.getElementById(showcasedItems[showcasedItems.length - 1]);
+				i = showcasedItems.length - 1;
+
+			}
+
+			lazyload(prevItem);
+			activeItem.classList.remove('is-visible');
+			prevItem.classList.add('is-visible');
+
+			setActiveItem(prevItem, i);
+
+		};
+
+		var next = function next() {
+
+			var i;
+
+			// Go to the next slide unless we've reached the last one
+			if (showcasedItems[index] !== showcasedItems[showcasedItems.length - 1]) {
+
+				nextItem = document.getElementById(showcasedItems[index + 1]);
+				i = index + 1;
+
+			} else { // otherwise, loop around
+
+				nextItem = document.getElementById(showcasedItems[0]);
+				i = 0;
+
+			}
+
+			lazyload(nextItem);
+			activeItem.classList.remove('is-visible');
+			nextItem.classList.add('is-visible');
+
+			setActiveItem(nextItem, i);
+
+		};
+
+		var open = function open() {
 
 			status = 'open';
 
 			overlay.handler();
-			modall.classList.add('is-active');
-			// target.classList.add('is-visible');
+			wrapper.classList.add('is-active');
+
+			lazyload(activeItem);
+			activeItem.classList.add('is-visible');
 
 		};
 
-		var close = function close(target) {
+		var close = function close() {
 
 			status = 'closed';
+			setActiveItem(null);
 
 			overlay.handler();
-			modall.classList.remove('is-active');
-			// target.classList.remove('is-visible');
+			wrapper.classList.remove('is-active');
 
-		};
+			for (var i = 0; i < images.length; i++) {
 
-		var handler = function handler(target) {
-
-			if (status === 'closed') {
-
-				open(target);
-
-			} else {
-
-				close(target);
+				images[i].classList.remove('is-visible');
 
 			}
 
 		};
 
-		var _delegateEvents = function _delegateEvents() {
+		var handler = function handler(el, newIndex) {
 
-			showcase.addEventListener('click', function(e) {
+			setActiveItem(el, newIndex);
 
-				if (e.target.classList.contains('showcase__project-details')) {
+			status === 'closed' ? open() : close();
 
-					handler(e.target.parentNode.parentNode);
+		};
 
+		var delegateEvents = function delegateEvents() {
+
+			wrapper.addEventListener('click', function(e) {
+
+				if (e.target === btnClose) {
+					handler();
+				}
+
+				if (e.target === btnPrev) {
+					prev();
+				}
+
+				if (e.target === btnNext) {
+					next();
 				}
 
 			});
 
-			closeBtn.addEventListener('click', function() {
-
-				handler();
-
-			});
-
-			/* if modal is open and
-			 * the target is not the modal's wrapper nor the trigger
-			 * then forward to event handler */
 			document.addEventListener('mousedown', function(e) {
 
-				if (status === 'open' && !wrapper.contains(e.target)) {
+				if (status === 'open' && e.target === wrapper) {
 
 					handler();
 
@@ -266,16 +352,19 @@ Wolfpilot = (function() {
 
 		};
 
-		var _init = function _init() {
+		document.addEventListener('DOMContentLoaded', function init() {
 
-			_delegateEvents();
+			delegateEvents();
 
-		};
-
-		_init();
+		});
 
 		return {
 			status: status,
+			getActiveItem: getActiveItem,
+			setShowcasedItems: setShowcasedItems,
+			getShowcasedItems: getShowcasedItems,
+			prev: prev,
+			next: next,
 			open: open,
 			close: close,
 			handler: handler
@@ -344,11 +433,40 @@ Wolfpilot = (function() {
 	var showcase = (function showcase() {
 
 		var wrapper = document.getElementById('js-showcase'),
-			nav = wrapper.querySelector('#js-showcase-nav'),
-			navTags = nav.getElementsByClassName('showcase__nav-item'),
-			projects = wrapper.getElementsByClassName('js-showcase-project');
+			nav = document.getElementById('js-showcase-nav'),
+			navTags = wrapper.getElementsByClassName('showcase__nav-item'),
+			projects = wrapper.getElementsByClassName('js-showcase-project'),
+			category = 'featured', // set initial category
+			showcasedProjects = [];
 
-		var showCategory = function showCategory(category) {
+		var setShowcasedProjects = function setShowcasedProjects(newShowcasedProjects) {
+
+			showcasedProjects = newShowcasedProjects;
+
+		};
+
+		var getShowcasedProjects = function getShowcasedProjects() {
+
+			return showcasedProjects;
+
+		};
+
+		var setCategory = function setCategory(newCategory) {
+
+			category = newCategory;
+
+		};
+
+		var getCategory = function getCategory() {
+
+			return category;
+
+		};
+
+		var showCategory = function showCategory(newCategory) {
+
+			// Reset the array before repopulating it again
+			showcasedProjects = [];
 
 			setTimeout(function() {
 
@@ -358,10 +476,12 @@ Wolfpilot = (function() {
 
 					for (var j = 0; j < tags.length; j++) {
 
-						if (tags[j] === category) {
+						if (tags[j] === newCategory) {
 
-							projects[i].classList.add('is-visible');
 							lazyload(projects[i].firstElementChild);
+							projects[i].classList.add('is-visible');
+
+							showcasedProjects.push(projects[i].getAttribute('data-target'));
 
 						}
 
@@ -371,23 +491,36 @@ Wolfpilot = (function() {
 
 			}, 500);
 
+			// Update the list of currently visible projects
+			setShowcasedProjects(showcasedProjects);
+			Wolfpilot.modal.setShowcasedItems(showcasedProjects);
+
 		};
 
-		var showAll = function hideEverything() {
+		var showAll = function showAll() {
+
+			// Reset the array before repopulating it again
+			showcasedProjects = [];
 
 			setTimeout(function() {
 
 				for (var i = 0; i < projects.length; i++) {
 
-					projects[i].classList.add('is-visible');
 					lazyload(projects[i].firstElementChild);
+					projects[i].classList.add('is-visible');
+
+					showcasedProjects.push(projects[i].getAttribute('data-target'));
 
 				}
 			}, 500);
 
+			// Update the list of currently visible projects
+			setShowcasedProjects(showcasedProjects);
+			Wolfpilot.modal.setShowcasedItems(showcasedProjects);
+
 		};
 
-		var hideAll = function hideEverything() {
+		var hideAll = function hideAll() {
 
 			for (var i = 0; i < projects.length; i++) {
 
@@ -397,23 +530,15 @@ Wolfpilot = (function() {
 
 		};
 
-		var handler = function handler(category) {
+		var handler = function handler() {
 
 			hideAll();
 
-			if (category === 'all') {
-
-				showAll();
-
-			} else {
-
-				showCategory(category);
-
-			}
+			category === 'all' ? showAll() : showCategory(category);
 
 		};
 
-		var toggleNav = function toggleNav(category) {
+		var toggleNav = function toggleNav(navItem) {
 
 			for (var i = 0; i < navTags.length; i++) {
 
@@ -421,35 +546,77 @@ Wolfpilot = (function() {
 
 			}
 
-			category.classList.add('is-active');
+			navItem.classList.add('is-active');
 
 		};
 
-		var _delegateEvents = (function _delegateEvents() {
+		var delegateEvents = function delegateEvents() {
 
-			nav.addEventListener('click', function(e) {
+			// listen for project clicks
+			wrapper.addEventListener('click', function(e) {
 
-				if (e.target.classList.contains('showcase__nav-item') && !e.target.classList.contains('is-active')) {
+				if (e.target.classList.contains('showcase__project-details')) {
 
-					toggleNav(e.target);
-					handler(e.target.getAttribute('data-category'));
+					var project = Wolfpilot.getClosest(e.target, '.js-showcase-project'),
+						el = document.getElementById(project.getAttribute('data-target')),
+						target = project.getAttribute('data-target');
+
+					for (var i = 0; i < showcasedProjects.length; i++) {
+
+						if (showcasedProjects[i] === target) {
+							/* Pass both the modal image we're opening
+							 * and its index in the currently showcased projects.
+							 *
+							 * This will open the image in a modal
+							 * and determine its position in the slider,
+							 * as well as the order of the previous and next elements.
+							 */
+							Wolfpilot.modal.handler(el, i);
+
+						}
+
+					}
 
 				}
 
 			});
 
-		}());
+			// listen for category changes
+			nav.addEventListener('click', function(e) {
+
+				if (e.target.classList.contains('showcase__nav-item') && !e.target.classList.contains('is-active')) {
+
+					setCategory(e.target.getAttribute('data-category'));
+					toggleNav(e.target);
+					handler();
+
+				}
+
+			});
+
+		};
+
+		document.addEventListener('DOMContentLoaded', function init() {
+
+			showCategory(category);
+			delegateEvents();
+
+		});
 
 		return {
+			getShowcasedProjects: getShowcasedProjects,
+			getCategory: getCategory,
 			showCategory: showCategory,
 			showAll: showAll,
 			hideAll: hideAll,
+			handler: handler,
 			toggleNav: toggleNav
 		};
 
 	}());
 
 	return {
+		getClosest: getClosest,
 		scrollToY: scrollToY,
 		overlay: overlay,
 		modal: modal,

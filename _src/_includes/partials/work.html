@@ -39,7 +39,7 @@
 
 			{% for project in site.data.projects.projects %}
 
-				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
+				<div class="showcase__project js-showcase-project" data-target="modal-{{ project.name | replace: ' ', '-' | downcase }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
 
 					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/img/projects/{{ project.name }}/thumb.jpg" alt="" />
 
@@ -86,29 +86,37 @@
 			{% endfor %}
 
 		</div>
+		
+	</div>
 
-		<div id="js-modal" class="modal modal--showcase">
+	<div id="js-modal" class="modal">
 
-		    <div class="table">
+		<button id="js-modal--close" class="btn modal__close" data-target="#modal-showcase">
+			x
+		</button>
 
-		        <div class="table__cell table__cell--middle">
+		<div class="modal__slider">
 
-		            <div id="js-modal-wrapper" class="modal__wrapper">
+			{% for project in site.data.projects.projects %}
 
-		                <button id="js-modal--close" class="btn modal__close js-modal--close" data-target="#modal-showcase">
-		                    x
-		                </button>
+				<img class="modal__img" id="modal-{{ project.name | replace: ' ', '-' | downcase }}" data-lazyload-src="{{ site.baseurl }}/assets/img/projects/{{ project.name }}/full.jpg" alt="" />
 
-						<img class="showcase__modal-img" src="{{ site.baseurl }}/assets/img/projects/01/full.jpg" alt="" />
-
-		            </div>
-
-		        </div>
-
-		    </div>
+			{% endfor %}
 
 		</div>
-		
+
+		<div class="modal__nav">
+			
+			<button id="js-modal--prev" class="btn btn__ctrl btn__ctrl-prev">
+				{% include svg/prev.svg %}
+			</button>
+
+			<button id="js-modal--next" class="btn btn__ctrl btn__ctrl-next">
+				{% include svg/next.svg %}
+			</button>
+
+		</div>
+
 	</div>
 
 </div>

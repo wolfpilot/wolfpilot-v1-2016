@@ -78,6 +78,12 @@
 
 	&__project {
 
+		/* Normally, setting this to inline-block would prevent empty gaps in the columns.
+		 *
+		 * Unfortunately, it looks like no two browser vendors could agree upon
+		 * how the columns would in fact be laid out, therefore regardless of setting the element
+		 * to block or inline-block, it will differ across browser. Sorry :(
+		 */
 		display: inline-block;
 		margin-bottom: 15px;
 
@@ -114,7 +120,7 @@
 
 			@include opacity(1);
 			@include transform(translateY(0));
-			max-height: 1000px;
+			max-height: 1250px;
 
 			/* max-height
 			 * no delay allows allows the layout to expand while invisible
@@ -136,7 +142,7 @@
 			@include transition(max-height 0s linear 0.5s); 
 
 			.showcase__project.is-visible & {
-				max-height: 1000px;
+				max-height: 1250px;
 				@include transition(max-height 0s linear);
 			}
 
@@ -241,10 +247,6 @@
 			position: absolute;
 			bottom: 20px;
 			left: 15px;
-
-		}
-
-		&-tag {
 
 		}
 

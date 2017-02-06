@@ -15,4 +15,89 @@ button,
 
 	cursor: pointer;
 
+    &__ctrl {
+
+		margin-right: 10px;
+		margin-left: 10px;
+        padding: 0 3px;
+
+        &:hover {
+
+            svg {
+
+                fill: $orange-dark;
+
+            }
+
+        }
+
+        svg {
+            /* allows clicking the parent element
+             * without setting pointer-events: none
+             */
+            position: relative;
+            z-index: -1;
+
+            fill: $quaternaryColor;
+
+            overflow: visible;
+
+            @include transition(fill 0.15s ease-in-out);
+
+        }
+
+    }
+
+    &__ctrl-prev {
+
+        &:hover {
+
+            .path__triangle {
+
+                @include transform(translateX(-3px));
+
+            }
+
+        }
+
+        .path {
+
+            &__triangle {
+
+                @include transform(translateX(0));
+
+                @include transition(transform 0.15s ease-in-out);
+
+            }
+
+        }
+
+    }
+
+    &__ctrl-next {
+
+        &:hover {
+
+            .path__triangle {
+
+                @include transform(translateX(3px));
+
+            }
+
+        }
+
+        .path {
+
+            &__triangle {
+
+                @include transform(translateX(0));
+
+                @include transition(transform 0.15s ease-in-out);
+
+            }
+
+        }
+
+    }
+
 }
