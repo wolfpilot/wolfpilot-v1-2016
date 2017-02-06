@@ -8,6 +8,46 @@ Wolfpilot = (function() {
 
 	/** HELPERS */
 
+	// Get the inner width and height of the window
+	var windowSize = (function windowSize() {
+
+		var wWidth,
+			wHeight,
+			timeout = false,
+			delay = 250; // time to wait before running the callback
+
+		var _setDimensions = function _setDimensions() {
+
+			wWidth = window.innerWidth;
+			wHeight = window.innerHeight;
+
+		};
+
+		var getDimensions = function getDimensions() {
+
+			return {
+				wWidth,
+				wHeight
+			};
+
+		};
+
+		window.addEventListener('resize', function() {
+
+			clearTimeout(timeout);
+
+			timeout = setTimeout(_setDimensions, delay);
+
+		});
+
+		_setDimensions();
+
+		return {
+			getDimensions
+		};
+
+	}());
+
 	// Get nearest parent element matching selector
 	var getClosest = function getClosest(el, selector) {
 
@@ -616,6 +656,7 @@ Wolfpilot = (function() {
 	}());
 
 	return {
+		windowSize: windowSize,
 		getClosest: getClosest,
 		scrollToY: scrollToY,
 		overlay: overlay,
