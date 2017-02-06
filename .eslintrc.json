@@ -74,7 +74,7 @@
             "never"
         ],
         "brace-style": "warn",
-        "eol-last": "error",
+        "eol-last": "warn",
         "no-spaced-func": "error",
         "indent": [
             "warn",
