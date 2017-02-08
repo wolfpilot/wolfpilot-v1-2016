@@ -8,6 +8,18 @@ Wolfpilot = (function() {
 
 	/** HELPERS */
 
+	// Set up Request Animation Frame and fallback
+	var _raf = (function _raf() {
+		// Thanks go to Paul Irish for this little snippet of code
+		return window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			function(callback) {
+				window.setTimeout(callback, 1000 / 60);
+			};
+
+	}());
+
 	// Get the inner width and height of the window
 	var windowSize = (function windowSize() {
 
@@ -49,7 +61,7 @@ Wolfpilot = (function() {
 	}());
 
 	// Get nearest parent element matching selector
-	var getClosest = function getClosest(el, selector) {
+	var getClosestParent = function getClosestParent(el, selector) {
 
 		var matchesSelector = el.matches
 			|| el.webkitMatchesSelector
@@ -70,64 +82,41 @@ Wolfpilot = (function() {
 
 	};
 
-	var _raf = (function _raf() {
-		// Thanks go to Paul Irish for this little snippet of code
-		return window.requestAnimationFrame ||
-			window.webkitRequestAnimationFrame ||
-			window.mozRequestAnimationFrame ||
-			function(callback) {
-				window.setTimeout(callback, 1000 / 60);
-			};
-
-	}());
-
-	var lazyload = function lazyload(el) {
-
-		if (el.hasAttribute('data-lazyload-src')) {
-
-			el.setAttribute('src', el.getAttribute('data-lazyload-src'));
-			el.removeAttribute('data-lazyload-src');
-
-		}
-
-	};
-
-
-	/** MAIN */
-
+	// Scroll vertically to element
 	var scrollToY = (function scrollToY() {
+
+		var headerHeight = document.getElementById('header').offsetHeight;
+
+		// Source: https://github.com/danro/easing-js/blob/master/easing.js
+		var easingEquations = {
+
+			easeInSine: function (pos) {
+				return -Math.cos(pos * (Math.PI / 2)) + 1;
+			},
+			easeOutSine: function (pos) {
+				return Math.sin(pos * (Math.PI / 2));
+			},
+			easeInOutSine: function (pos) {
+				return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+			},
+			easeInOutQuint: function (pos) {
+				if ((pos /= 0.5) < 1) {
+					return 0.5 * Math.pow(pos, 5);
+				}
+				return 0.5 * (Math.pow((pos - 2), 5) + 2);
+			}
+
+		};
 
 		var scrollTo = function scrollTo(hash, speed, easing) {
 
 			var scrollY = window.scrollY || document.documentElement.scrollTop,
-				headerHeight = document.getElementById('header').offsetHeight,
 				scrollTarget = document.getElementById(hash).offsetTop,
 				currentTime = 0;
 
 			// Min time 0.1s, max 0.8s
 			// Always substract the header's height from the scrolling distance
 			var time = Math.max(0.1, Math.min(Math.abs(scrollY - scrollTarget - headerHeight) / speed, 0.8));
-
-			// Source: https://github.com/danro/easing-js/blob/master/easing.js
-			var easingEquations = {
-
-				easeInSine: function (pos) {
-					return -Math.cos(pos * (Math.PI / 2)) + 1;
-				},
-				easeOutSine: function (pos) {
-					return Math.sin(pos * (Math.PI / 2));
-				},
-				easeInOutSine: function (pos) {
-					return (-0.5 * (Math.cos(Math.PI * pos) - 1));
-				},
-				easeInOutQuint: function (pos) {
-					if ((pos /= 0.5) < 1) {
-						return 0.5 * Math.pow(pos, 5);
-					}
-					return 0.5 * (Math.pow((pos - 2), 5) + 2);
-				}
-
-			};
 
 			var	_tick = function() {
 
@@ -150,7 +139,7 @@ Wolfpilot = (function() {
 
 		};
 
-		var _handleClickEvents = function _handleClickEvents() {
+		(function bindEvents() {
 
 			var el = document.getElementsByClassName('js-scroll');
 
@@ -160,9 +149,9 @@ Wolfpilot = (function() {
 
 			}
 
-		};
+		}());
 
-		var _scrollOnLoad = function _scrollOnLoad() {
+		(function scrollOnLoad() {
 
 			// Strip location of hash sign
 			var hash = location.hash.replace('#','');
@@ -173,16 +162,7 @@ Wolfpilot = (function() {
 
 			}
 
-		};
-
-		var _init = function _init() {
-
-			_scrollOnLoad();
-			_handleClickEvents();
-
-		};
-
-		_init();
+		}());
 
 		return {
 			scrollTo: scrollTo
@@ -190,10 +170,34 @@ Wolfpilot = (function() {
 
 	}());
 
+	// Use to lazy load images
+	var lazyload = function lazyload(el) {
+
+		if (el.hasAttribute('data-lazyload-src')) {
+
+			el.setAttribute('src', el.getAttribute('data-lazyload-src'));
+			el.removeAttribute('data-lazyload-src');
+
+		}
+
+	};
+
+
+	/** MAIN */
+
+	// Global overlay
 	var overlay = (function overlay() {
 
 		var el = document.getElementById('overlay'),
 			status = 'closed';
+
+		var getStatus = function getStatus() {
+
+			return {
+				status
+			};
+
+		};
 
 		var open = function open() {
 
@@ -224,6 +228,7 @@ Wolfpilot = (function() {
 		};
 
 		return {
+			getStatus: getStatus,
 			handler: handler,
 			open: open,
 			close: close
@@ -231,6 +236,7 @@ Wolfpilot = (function() {
 
 	}());
 
+	// Showcase image modal
 	var modal = (function modal() {
 
 		var wrapper = document.getElementById('js-modal'),
@@ -242,35 +248,43 @@ Wolfpilot = (function() {
 
 			status = 'closed',
 
-			showcasedItems,
-			activeItem,
+			showcasedProjects,
+			activeProject,
 			index,
-			prevItem,
-			nextItem;
+			prevProject,
+			nextProject;
 
-		var setShowcasedItems = function setShowcasedItems(newShowcasedItems) {
+		var getStatus = function getStatus() {
 
-			showcasedItems = newShowcasedItems;
-
-		};
-
-		var getShowcasedItems = function getShowcasedItems() {
-
-			return showcasedItems;
+			return {
+				status
+			};
 
 		};
 
-		var setActiveItem = function setActiveItem(el, i) {
+		var setShowcasedProjects = function setShowcasedProjects(newShowcasedProjects) {
 
-			activeItem = el;
+			showcasedProjects = newShowcasedProjects;
+
+		};
+
+		var getShowcasedProjects = function getShowcasedProjects() {
+
+			return showcasedProjects;
+
+		};
+
+		var setActiveProject = function setActiveProject(el, i) {
+
+			activeProject = el;
 			index = i;
 
 		};
 
-		var getActiveItem = function getActiveItem() {
+		var getActiveProject = function getActiveProject() {
 
 			return {
-				activeItem,
+				activeProject,
 				index
 			};
 
@@ -281,23 +295,23 @@ Wolfpilot = (function() {
 			var i;
 
 			// Go to the previous slide unless we've reached the first one
-			if (showcasedItems[index] !== showcasedItems[0]) {
+			if (showcasedProjects[index] !== showcasedProjects[0]) {
 
-				prevItem = document.getElementById(showcasedItems[index - 1]);
+				prevProject = document.getElementById(showcasedProjects[index - 1]);
 				i = index - 1;
 
 			} else { // otherwise, loop around
 
-				prevItem = document.getElementById(showcasedItems[showcasedItems.length - 1]);
-				i = showcasedItems.length - 1;
+				prevProject = document.getElementById(showcasedProjects[showcasedProjects.length - 1]);
+				i = showcasedProjects.length - 1;
 
 			}
 
-			lazyload(prevItem);
-			activeItem.classList.remove('is-visible');
-			prevItem.classList.add('is-visible');
+			lazyload(prevProject);
+			activeProject.classList.remove('is-visible');
+			prevProject.classList.add('is-visible');
 
-			setActiveItem(prevItem, i);
+			setActiveProject(prevProject, i);
 
 		};
 
@@ -306,23 +320,23 @@ Wolfpilot = (function() {
 			var i;
 
 			// Go to the next slide unless we've reached the last one
-			if (showcasedItems[index] !== showcasedItems[showcasedItems.length - 1]) {
+			if (showcasedProjects[index] !== showcasedProjects[showcasedProjects.length - 1]) {
 
-				nextItem = document.getElementById(showcasedItems[index + 1]);
+				nextProject = document.getElementById(showcasedProjects[index + 1]);
 				i = index + 1;
 
 			} else { // otherwise, loop around
 
-				nextItem = document.getElementById(showcasedItems[0]);
+				nextProject = document.getElementById(showcasedProjects[0]);
 				i = 0;
 
 			}
 
-			lazyload(nextItem);
-			activeItem.classList.remove('is-visible');
-			nextItem.classList.add('is-visible');
+			lazyload(nextProject);
+			activeProject.classList.remove('is-visible');
+			nextProject.classList.add('is-visible');
 
-			setActiveItem(nextItem, i);
+			setActiveProject(nextProject, i);
 
 		};
 
@@ -333,15 +347,15 @@ Wolfpilot = (function() {
 			overlay.handler();
 			wrapper.classList.add('is-active');
 
-			lazyload(activeItem);
-			activeItem.classList.add('is-visible');
+			lazyload(activeProject);
+			activeProject.classList.add('is-visible');
 
 		};
 
 		var close = function close() {
 
 			status = 'closed';
-			setActiveItem(null);
+			setActiveProject(null);
 
 			overlay.handler();
 			wrapper.classList.remove('is-active');
@@ -356,13 +370,13 @@ Wolfpilot = (function() {
 
 		var handler = function handler(el, newIndex) {
 
-			setActiveItem(el, newIndex);
+			setActiveProject(el, newIndex);
 
 			status === 'closed' ? open() : close();
 
 		};
 
-		var delegateEvents = function delegateEvents() {
+		(function delegateEvents() {
 
 			wrapper.addEventListener('click', function(e) {
 
@@ -380,6 +394,9 @@ Wolfpilot = (function() {
 
 			});
 
+			/* Prevent modal from closing when accidentally dragging
+			 * from the image to outside its container
+			 */
 			document.addEventListener('mousedown', function(e) {
 
 				if (status === 'open' && e.target === wrapper) {
@@ -390,19 +407,13 @@ Wolfpilot = (function() {
 
 			});
 
-		};
-
-		document.addEventListener('DOMContentLoaded', function init() {
-
-			delegateEvents();
-
-		});
+		}());
 
 		return {
-			status: status,
-			getActiveItem: getActiveItem,
-			setShowcasedItems: setShowcasedItems,
-			getShowcasedItems: getShowcasedItems,
+			getStatus: getStatus,
+			getActiveProject: getActiveProject,
+			setShowcasedProjects: setShowcasedProjects,
+			getShowcasedProjects: getShowcasedProjects,
 			prev: prev,
 			next: next,
 			open: open,
@@ -412,12 +423,13 @@ Wolfpilot = (function() {
 
 	}());
 
-	var _navigation = (function _navigation() {
+	// Main nav
+	var navigation = (function navigation() {
 
 		var nav = document.getElementById('nav'),
 			navItems = nav.getElementsByClassName('nav__item');
 
-		var handler = function handler(target) {
+		var goTo = function goTo(target) {
 
 			for (var i = 0; i < navItems.length; i++) {
 
@@ -429,17 +441,17 @@ Wolfpilot = (function() {
 
 		};
 
-		var _delegateEvents = function _delegateEvents() {
+		(function _delegateEvents() {
 
 			nav.addEventListener('click', function(e) {
 
-				handler(e.target);
+				goTo(e.target);
 
 			});
 
-		};
+		}());
 
-		var _hashToggle = function _hashToggle() {
+		(function _hashToggle() {
 
 			var hash = window.location.hash.substr(1);
 
@@ -449,7 +461,7 @@ Wolfpilot = (function() {
 
 					if (navItems[i].getAttribute('data-target') === hash) {
 
-						handler(navItems[i]);
+						goTo(navItems[i]);
 
 					}
 
@@ -457,19 +469,15 @@ Wolfpilot = (function() {
 
 			}
 
+		}());
+
+		return {
+			goTo: goTo
 		};
-
-		var _init = function _init() {
-
-			_hashToggle();
-			_delegateEvents();
-
-		};
-
-		_init();
 
 	}());
 
+	// Projects grid gallery
 	var showcase = (function showcase() {
 
 		var wrapper = document.getElementById('js-showcase'),
@@ -533,7 +541,7 @@ Wolfpilot = (function() {
 
 			// Update the list of currently visible projects
 			setShowcasedProjects(showcasedProjects);
-			Wolfpilot.modal.setShowcasedItems(showcasedProjects);
+			Wolfpilot.modal.setShowcasedProjects(showcasedProjects);
 
 		};
 
@@ -556,7 +564,7 @@ Wolfpilot = (function() {
 
 			// Update the list of currently visible projects
 			setShowcasedProjects(showcasedProjects);
-			Wolfpilot.modal.setShowcasedItems(showcasedProjects);
+			Wolfpilot.modal.setShowcasedProjects(showcasedProjects);
 
 		};
 
@@ -590,11 +598,11 @@ Wolfpilot = (function() {
 
 		};
 
-		var delegateEvents = function delegateEvents() {
+		(function delegateEvents() {
 
 			// listen for project clicks
 			wrapper.addEventListener('click', function(e) {
-				
+
 				/* Stop the modal from opening on window width/height smaller than 480px
 				 * as there's no point in opening the modal for devices that are so small
 				 */
@@ -602,7 +610,7 @@ Wolfpilot = (function() {
 
 					if (e.target.classList.contains('showcase__project-details')) {
 
-						var project = Wolfpilot.getClosest(e.target, '.js-showcase-project'),
+						var project = Wolfpilot.getClosestParent(e.target, '.js-showcase-project'),
 							el = document.getElementById(project.getAttribute('data-target')),
 							target = project.getAttribute('data-target');
 
@@ -641,12 +649,12 @@ Wolfpilot = (function() {
 
 			});
 
-		};
+		}());
 
 		document.addEventListener('DOMContentLoaded', function init() {
 
+			// Get the showcased projects list
 			showCategory(category);
-			delegateEvents();
 
 		});
 
@@ -663,8 +671,12 @@ Wolfpilot = (function() {
 	}());
 
 	return {
+		/** Helpers */
 		windowSize: windowSize,
-		getClosest: getClosest,
+		getClosestParent: getClosestParent,
+		lazyload: lazyload,
+		/** MAIN */
+		navigation: navigation,
 		scrollToY: scrollToY,
 		overlay: overlay,
 		modal: modal,
