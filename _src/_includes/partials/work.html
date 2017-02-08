@@ -39,7 +39,7 @@
 
 			{% for project in site.data.projects.projects %}
 
-				<div class="showcase__project js-showcase-project" data-target="modal-{{ project.name | replace: ' ', '-' | downcase }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
+				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-target="modal-{{ project.name | replace: ' ', '-' | downcase }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
 
 					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/img/projects/{{ project.name }}/thumb.jpg" alt="" />
 
@@ -47,33 +47,37 @@
 
 						<div class="showcase__project-details">
 
-							<h2 class="showcase__project-name">
-								{{ project.name }}
-							</h2>
+							<div class="showcase__stopEvents">
 
-							<div class="clear"></div>
+								<h2 class="showcase__project-name">
+									{{ project.name }}
+								</h2>
 
-							<p class="showcase__project-description">
-								{{ project.description }}
-							</p>
+								<div class="clear"></div>
 
-							<div class="showcase__project-footer">
+								<p class="showcase__project-description">
+									{{ project.description }}
+								</p>
 
-								{% if project.links %}
+								<div class="showcase__project-footer">
 
-									{% for link in project.links %}
+									{% if project.links %}
 
-										<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank"{% endif %}>
-											{% if link.type == "int" %}
-												{% include svg/link-internal.svg %}
-											{% else %}
-												{% include svg/link-external.svg %}
-											{% endif %}
-										</a>
+										{% for link in project.links %}
 
-									{% endfor %}
+											<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank"{% endif %}>
+												{% if link.type == "int" %}
+													{% include svg/link-internal.svg %}
+												{% else %}
+													{% include svg/link-external.svg %}
+												{% endif %}
+											</a>
 
-								{% endif %}
+										{% endfor %}
+
+									{% endif %}
+
+								</div>
 
 							</div>
 
