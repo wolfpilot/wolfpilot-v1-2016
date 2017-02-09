@@ -8,6 +8,143 @@ Wolfpilot = (function() {
 
 	/** HELPERS */
 
+	// Pub / sub (Observer) decoupling function
+	var pubSub = (function pubSub() {
+		// Credits go to Addy Osmani for most of the code below
+
+		/* (Possible) real-life example use case:
+
+		 * Create subscriber / observer
+
+			var subscriber = function(topics, data){
+			    console.log('Currently on ' + topics + ': ' + data );
+			};
+
+		 * Add function to the list of subscribers on the topic of 'Spotify'
+		 * This enables the subscriber to listen to any data changes on the topic
+
+			var subscription = Wolfpilot.pubSub.subscribe('Spotify', subscriber);
+
+		 * Check the topics list
+
+		 	Wolfpilot.pubSub.getTopics();
+
+		 * Publish / emit some data to the topic 'Spotify'
+		 * The subscribers of this topic will now be made aware of the data change
+
+			Wolfpilot.pubSub.publish('Spotify', 'Hello! Is it me you\'re looking for?'); // * drama *
+
+		 * Remove original subscriber
+
+			Wolfpilot.pubSub.unsubscribe('0'); // arg needs to be a string!!!
+
+		 * Ensure that the subscriber's been removed
+
+		 	Wolfpilot.pubSub.getTopics();
+
+		 * Sudden thought process: the pub / sub pattern helps separate concerns:
+		 * the subscribers only React (ha!) to the Flow (ha#2 and sudden Eurika moment) of the data,
+		 * whilst the pubSub function itself is only concerned with handling said data!
+		 *
+		 * Amazing, if only I'd invented this pattern * sigh *
+		 */
+
+		var topics = {},
+			subID = -1;
+
+		// Simple getter to facilitate debugging
+		var getTopics = function getTopics() {
+
+			return topics;
+
+		};
+
+		/* Publish data
+		 * @topic: Topic to be published
+		 * @data: Arguments passed to the subscribers
+		 */
+		var publish = function publish(topic, data) {
+
+			if (!topics[topic]) {
+				return false;
+			}
+
+			setTimeout(function() {
+
+				var subscribers = topics[topic],
+					len = subscribers ? subscribers.length : 0;
+
+				while (len--) {
+					subscribers[len].func(topic, data);
+				}
+
+			}, 0);
+
+			return true;
+
+		};
+
+		/* Unsubscribe listener from topic using unique token
+		 * NOTE: The token specifies the function to be unsubscribed
+		 */
+		var unsubscribe = function unsubscribe(token) {
+			// Loop through each topic
+			for (var i in topics) {
+				// If a topic exists
+				if (topics[i]) {
+					// Loop through each subscriber of the topic
+					for (var j = 0; j < topics[i].length; j++) {
+						// If the subscriber of the topic has the same token as the one we passed
+						if (topics[i][j].token === token) {
+							// Remove subscriber
+							topics[i].splice(j, 1);
+							// and return its token
+							return token;
+
+						}
+
+					}
+
+				}
+
+			}
+
+			return false;
+
+		};
+
+		/* Subscribe listeners to topic
+		 * @topic: Topic to subscribe to
+		 * @func: Function to be called when a new topic is published
+		 */
+		var subscribe = function subscribe(topic, func) {
+
+			if (!topics[topic]) {
+				topics[topic] = [];
+			}
+
+			// Unique token used to identify the function
+			var token = (++subID).toString();
+
+			// Store both token and function
+			topics[topic].push({
+				token: token,
+				func: func
+			});
+
+			return token;
+
+		};
+
+		return {
+			getTopics: getTopics,
+			publish: publish,
+			subscribe: subscribe,
+			unsubscribe: unsubscribe
+		};
+
+	}());
+
 	// Set up Request Animation Frame and fallback
 	var _raf = (function _raf() {
 		// Thanks go to Paul Irish for this little snippet of code
@@ -672,6 +809,7 @@ Wolfpilot = (function() {
 
 	return {
 		/** Helpers */
+		pubSub: pubSub,
 		windowSize: windowSize,
 		getClosestParent: getClosestParent,
 		lazyload: lazyload,
