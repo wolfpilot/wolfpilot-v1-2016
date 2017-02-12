@@ -55,58 +55,6 @@
 
 }
 
-.columns {
-
-	float: left;
-	width: 100%;
-	padding-left: 0.625rem;
-	padding-right: 0.625rem;
-
-	@media screen and (min-width: 40em) {
-
-		.columns {
-
-			padding-left: 0.9375rem;
-			padding-right: 0.9375rem;
-
-		}
-		
-	}
-
-	&-1,
-	&-4 {
-		height: 33.33%;
-	}
-
-	&-2,
-	&-8 {
-		height: 66.66%;
-	}
-
-}
-
-.columns:last-child:not(:first-child) {
-
-    float: right;
-
-}
-
-.row.row.columns {
-
-    float: none;
-
-}
-
-.row .row.row.columns {
-
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-
-}
-
-
 .table {
 
 	display: table;
