@@ -386,22 +386,13 @@ Wolfpilot = (function() {
 			status = 'closed',
 
 			showcasedProjects,
-			activeProject,
-			index,
+			activeProject = [],
 			prevProject,
 			nextProject;
 
 		var getStatus = function getStatus() {
 
-			return {
-				status
-			};
-
-		};
-
-		var setShowcasedProjects = function setShowcasedProjects(newShowcasedProjects) {
-
-			showcasedProjects = newShowcasedProjects;
+			return status;
 
 		};
 
@@ -411,19 +402,9 @@ Wolfpilot = (function() {
 
 		};
 
-		var setActiveProject = function setActiveProject(el, i) {
-
-			activeProject = el;
-			index = i;
-
-		};
-
 		var getActiveProject = function getActiveProject() {
 
-			return {
-				activeProject,
-				index
-			};
+			return activeProject;
 
 		};
 
@@ -432,10 +413,10 @@ Wolfpilot = (function() {
 			var i;
 
 			// Go to the previous slide unless we've reached the first one
-			if (showcasedProjects[index] !== showcasedProjects[0]) {
+			if (showcasedProjects[activeProject.index] !== showcasedProjects[0]) {
 
-				prevProject = document.getElementById(showcasedProjects[index - 1]);
-				i = index - 1;
+				prevProject = document.getElementById(showcasedProjects[activeProject.index - 1]);
+				i = activeProject.index - 1;
 
 			} else { // otherwise, loop around
 
@@ -445,10 +426,11 @@ Wolfpilot = (function() {
 			}
 
 			lazyload(prevProject);
-			activeProject.classList.remove('is-visible');
+			activeProject.el.classList.remove('is-visible');
 			prevProject.classList.add('is-visible');
 
-			setActiveProject(prevProject, i);
+			activeProject.el = prevProject;
+			activeProject.index = i;
 
 		};
 
@@ -457,10 +439,10 @@ Wolfpilot = (function() {
 			var i;
 
 			// Go to the next slide unless we've reached the last one
-			if (showcasedProjects[index] !== showcasedProjects[showcasedProjects.length - 1]) {
+			if (showcasedProjects[activeProject.index] !== showcasedProjects[showcasedProjects.length - 1]) {
 
-				nextProject = document.getElementById(showcasedProjects[index + 1]);
-				i = index + 1;
+				nextProject = document.getElementById(showcasedProjects[activeProject.index + 1]);
+				i = activeProject.index + 1;
 
 			} else { // otherwise, loop around
 
@@ -470,10 +452,11 @@ Wolfpilot = (function() {
 			}
 
 			lazyload(nextProject);
-			activeProject.classList.remove('is-visible');
+			activeProject.el.classList.remove('is-visible');
 			nextProject.classList.add('is-visible');
 
-			setActiveProject(nextProject, i);
+			activeProject.el = nextProject;
+			activeProject.index = i;
 
 		};
 
@@ -484,15 +467,14 @@ Wolfpilot = (function() {
 			overlay.handler();
 			wrapper.classList.add('is-active');
 
-			lazyload(activeProject);
-			activeProject.classList.add('is-visible');
+			lazyload(activeProject.el);
+			activeProject.el.classList.add('is-visible');
 
 		};
 
 		var close = function close() {
 
 			status = 'closed';
-			setActiveProject(null);
 
 			overlay.handler();
 			wrapper.classList.remove('is-active');
@@ -505,11 +487,32 @@ Wolfpilot = (function() {
 
 		};
 
-		var handler = function handler(el, newIndex) {
+		var _handler = function _handler(topic, data) {
 
-			setActiveProject(el, newIndex);
+			switch (topic) {
 
-			status === 'closed' ? open() : close();
+			case 'Showcased projects':
+
+				showcasedProjects = data;
+
+				break;
+
+			case 'Active project':
+
+				activeProject.el = data.el;
+				activeProject.index = data.index;
+
+				open();
+
+				break;
+
+			default:
+
+				return false;
+
+			}
+
+			return true;
 
 		};
 
@@ -518,7 +521,7 @@ Wolfpilot = (function() {
 			wrapper.addEventListener('click', function(e) {
 
 				if (e.target === btnClose) {
-					handler();
+					close();
 				}
 
 				if (e.target === btnPrev) {
@@ -538,7 +541,7 @@ Wolfpilot = (function() {
 
 				if (status === 'open' && e.target === wrapper) {
 
-					handler();
+					close();
 
 				}
 
@@ -546,16 +549,23 @@ Wolfpilot = (function() {
 
 		}());
 
+		document.addEventListener('DOMContentLoaded', function init() {
+
+			// Subscribe the _handler method to listen
+			// to any changes in the topics below
+			Wolfpilot.pubSub.subscribe('Active project', _handler);
+			Wolfpilot.pubSub.subscribe('Showcased projects', _handler);
+
+		});
+
 		return {
 			getStatus: getStatus,
 			getActiveProject: getActiveProject,
-			setShowcasedProjects: setShowcasedProjects,
 			getShowcasedProjects: getShowcasedProjects,
 			prev: prev,
 			next: next,
 			open: open,
-			close: close,
-			handler: handler
+			close: close
 		};
 
 	}());
@@ -621,14 +631,9 @@ Wolfpilot = (function() {
 			nav = document.getElementById('js-showcase-nav'),
 			navTags = wrapper.getElementsByClassName('showcase__nav-item'),
 			projects = wrapper.getElementsByClassName('js-showcase-project'),
-			category = 'featured', // set initial category
-			showcasedProjects = [];
-
-		var setShowcasedProjects = function setShowcasedProjects(newShowcasedProjects) {
-
-			showcasedProjects = newShowcasedProjects;
-
-		};
+			showcasedCategory = 'featured', // set initial category
+			showcasedProjects,
+			activeProject = [];
 
 		var getShowcasedProjects = function getShowcasedProjects() {
 
@@ -636,23 +641,18 @@ Wolfpilot = (function() {
 
 		};
 
-		var setCategory = function setCategory(newCategory) {
+		var getShowcasedCategory = function getShowcasedCategory() {
 
-			category = newCategory;
-
-		};
-
-		var getCategory = function getCategory() {
-
-			return category;
+			return showcasedCategory;
 
 		};
 
 		var showCategory = function showCategory(newCategory) {
 
-			// Reset the array before repopulating it again
-			showcasedProjects = [];
+			showcasedCategory = newCategory;
+			showcasedProjects = []; // Reset the array before repopulating it again
 
+			// Setting a timeout allows the visible projects to hide first
 			setTimeout(function() {
 
 				for (var i = 0; i < projects.length; i++) {
@@ -665,7 +665,7 @@ Wolfpilot = (function() {
 
 							lazyload(projects[i].firstElementChild);
 							projects[i].classList.add('is-visible');
-
+							// Update the list of currently visible projects
 							showcasedProjects.push(projects[i].getAttribute('data-target'));
 
 						}
@@ -676,32 +676,31 @@ Wolfpilot = (function() {
 
 			}, 500);
 
-			// Update the list of currently visible projects
-			setShowcasedProjects(showcasedProjects);
-			Wolfpilot.modal.setShowcasedProjects(showcasedProjects);
+			// Publish the list of currently visible projects
+			Wolfpilot.pubSub.publish('Showcased projects', showcasedProjects);
 
 		};
 
 		var showAll = function showAll() {
 
-			// Reset the array before repopulating it again
-			showcasedProjects = [];
+			showcasedCategory = 'all';
+			showcasedProjects = []; // Reset the array before repopulating it again
 
+			// Setting a timeout allows the visible projects to hide first
 			setTimeout(function() {
 
 				for (var i = 0; i < projects.length; i++) {
 
 					lazyload(projects[i].firstElementChild);
 					projects[i].classList.add('is-visible');
-
+					// Update the list of currently visible projects
 					showcasedProjects.push(projects[i].getAttribute('data-target'));
 
 				}
 			}, 500);
 
-			// Update the list of currently visible projects
-			setShowcasedProjects(showcasedProjects);
-			Wolfpilot.modal.setShowcasedProjects(showcasedProjects);
+			// Publish the list of currently visible projects
+			Wolfpilot.pubSub.publish('Showcased projects', showcasedProjects);
 
 		};
 
@@ -715,11 +714,11 @@ Wolfpilot = (function() {
 
 		};
 
-		var handler = function handler() {
+		var _handler = function _handler(topic, newCategory) {
 
 			hideAll();
 
-			category === 'all' ? showAll() : showCategory(category);
+			newCategory === 'all' ? showAll() : showCategory(newCategory);
 
 		};
 
@@ -761,7 +760,10 @@ Wolfpilot = (function() {
 								 * and determine its position in the slider,
 								 * as well as the order of the previous and next elements.
 								 */
-								Wolfpilot.modal.handler(el, i);
+								activeProject.el = el;
+								activeProject.index = i;
+								// Publish the newly-opened project
+								Wolfpilot.pubSub.publish('Active project', activeProject);
 
 							}
 
@@ -778,9 +780,9 @@ Wolfpilot = (function() {
 
 				if (e.target.classList.contains('showcase__nav-item') && !e.target.classList.contains('is-active')) {
 
-					setCategory(e.target.getAttribute('data-category'));
+					Wolfpilot.pubSub.publish('Showcased category', e.target.getAttribute('data-category'));
+
 					toggleNav(e.target);
-					handler();
 
 				}
 
@@ -790,18 +792,23 @@ Wolfpilot = (function() {
 
 		document.addEventListener('DOMContentLoaded', function init() {
 
-			// Get the showcased projects list
-			showCategory(category);
+			// Subscribe the _handler method to Listen
+			// to any changes in the 'Showcased category' topic
+			Wolfpilot.pubSub.subscribe('Showcased category', _handler);
+
+			// Calling the showCategory method publishes the list of visible projects
+			// so that it can be used by the modal before any further category switches
+			showCategory(showcasedCategory);
 
 		});
 
+
 		return {
 			getShowcasedProjects: getShowcasedProjects,
-			getCategory: getCategory,
+			getShowcasedCategory: getShowcasedCategory,
 			showCategory: showCategory,
 			showAll: showAll,
 			hideAll: hideAll,
-			handler: handler,
 			toggleNav: toggleNav
 		};
 
