@@ -66,6 +66,8 @@ a {
 
     text-decoration: none;
 
+    @include transition(color 0.15s ease-in-out);
+
     &:hover,
     &:active {
 
@@ -216,8 +218,44 @@ h6, .h--epsilon {
 
 .text {
 
-    color: #474e59;
-
     line-height: 28px;
+
+    &--lrg {
+
+        margin-bottom: 20px;
+
+        @include font-size(20);
+
+    }
+
+}
+
+.hyperlink {
+
+    &--alt {
+
+        color: #909090;
+
+        &:hover {
+
+            color: $primaryColor;
+
+        }
+
+    }
+
+    &--lrg {
+
+        font-family: $tertiaryFont;
+        @include font-size(20);
+        letter-spacing: 2px;
+
+        &:hover {
+
+            color: $orange-dark;
+
+        }
+
+    }
 
 }
