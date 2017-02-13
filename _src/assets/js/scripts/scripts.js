@@ -162,6 +162,7 @@ Wolfpilot = (function() {
 
 		var wWidth,
 			wHeight,
+			size = [],
 			timeout = false,
 			delay = 250; // time to wait before running the callback
 
@@ -169,6 +170,11 @@ Wolfpilot = (function() {
 
 			wWidth = window.innerWidth;
 			wHeight = window.innerHeight;
+
+			size.width = window.innerWidth;
+			size.height = window.innerHeight;
+
+			Wolfpilot.pubSub.publish('Window size', size);
 
 		};
 
@@ -189,7 +195,11 @@ Wolfpilot = (function() {
 
 		});
 
-		_setDimensions();
+		document.addEventListener('DOMContentLoaded', function init() {
+
+			_setDimensions();
+
+		});
 
 		return {
 			getDimensions
@@ -573,8 +583,27 @@ Wolfpilot = (function() {
 	// Main nav
 	var navigation = (function navigation() {
 
-		var nav = document.getElementById('nav'),
-			navItems = nav.getElementsByClassName('nav__item');
+		var header = document.getElementById('header'),
+			nav = document.getElementById('nav'),
+			navItems = nav.getElementsByClassName('nav__item'),
+			burger = document.getElementById('js-burger'),
+			status = 'closed';
+
+		var open = function open() {
+
+			status = 'open';
+
+			header.classList.add('is-active');
+
+		};
+
+		var close = function close() {
+
+			status = 'closed';
+
+			header.classList.remove('is-active');
+
+		};
 
 		var goTo = function goTo(target) {
 
@@ -588,11 +617,54 @@ Wolfpilot = (function() {
 
 		};
 
+		var _onResize = function _navOnResize(topic, wSize) {
+
+			// Ensures that the nav and overlay are closed if opening the nav on mobile
+			// then turning the phone in landscape mode
+			if ((status === 'open') && (wSize.width >= 480)) {
+
+				Wolfpilot.overlay.close();
+				close();
+
+			}
+
+		};
+
+		var _handler = function _handler() {
+
+			status === 'closed' ? open() : close();
+
+		};
+
 		(function _delegateEvents() {
 
+			// listen for category changes
 			nav.addEventListener('click', function(e) {
 
-				goTo(e.target);
+				if (e.target.classList.contains('nav__item')) {
+
+					goTo(e.target);
+
+					if (Wolfpilot.windowSize.getDimensions().wWidth < 480) {
+
+						// Add a small delay to smooth out the transition
+						setTimeout(function() {
+
+							Wolfpilot.overlay.close();
+							close();
+
+						}, 150);
+
+					}
+
+				}
+
+			});
+
+			burger.addEventListener('click', function() {
+
+				Wolfpilot.overlay.handler();
+				_handler();
 
 			});
 
@@ -618,7 +690,17 @@ Wolfpilot = (function() {
 
 		}());
 
+		document.addEventListener('DOMContentLoaded', function init() {
+
+			// Subscribe the _handler method to Listen
+			// to any changes in the 'Showcased category' topic
+			Wolfpilot.pubSub.subscribe('Window size', _onResize);
+
+		});
+
 		return {
+			open: open,
+			close: close,
 			goTo: goTo
 		};
 

@@ -1,17 +1,50 @@
 .nav {
 
-	position: relative;
-	float: left;
-	min-width: 250px;
-	height: 100%;
+	position: fixed;
+	width: 100%;
+	top: 50%;
+	left: 0;
+
+	@include transform(translateY(-50%));
 
 	@include font-size(0);
 
-	&__item {
+	visibility: hidden;
+	@include opacity(0);
+
+	@include transition(
+		visibility 0.25s ease-in-out,
+		opacity 0.25s ease-in-out
+	);
+
+	.header.is-active & {
+
+		visibility: visible;
+		@include opacity(1);
+
+	}
+
+	@include mq($mq-mob, min) {
 
 		position: relative;
-		display: inline-block;
-		width: 33.33%;
+		float: left;
+		top: auto;
+		width: auto;;
+		height: 100%;
+		min-width: 250px;
+
+		@include transform(none);
+
+		@include opacity(1);
+		visibility: visible;
+
+	}
+
+	&__item {
+
+		display: block;
+
+		position: relative;
 		height: 100%;
 		padding-right: 15px;
 		padding-left: 15px;
@@ -19,21 +52,82 @@
 		color: $quaternaryColor;
 
 		font-family: $tertiaryFont;
-		@include font-size(10, 60);
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		@include font-size(30, 72);
 		text-align: center;
+		letter-spacing: 4px;
 
-		// For the sake of specificity, we'll have to double up these loops
+		@include opacity(0);
+		@include transform(translateY(-20px));
+
+		@include transition(
+			color 0.35s ease-in-out,
+			opacity 0.35s ease-in-out,
+			transform 0.35s ease-in-out
+		);
+
 		@for $i from 1 through 3 {
 
 			&:nth-child(#{$i}) {
 
-				&.is-active {
+				transition-delay: 0.1s * $i;
 
-					& ~ .nav__highlight {
+			}
 
-						@include transform(translateX( ($i - 1) * 100%));
+		}
+
+		&:hover,
+		&.is-active {
+
+			color: $tertiaryColor;
+
+			@include mq($mq-mob, min) {
+
+				color: $primaryColor;
+
+			}
+
+		}
+
+		.header.is-active & {
+
+			@include opacity(1);
+			@include transform(translateY(0));
+
+		}
+
+		@include mq(400px, min) {
+
+			@include font-size(36, 90);
+
+		}
+
+		@include mq($mq-mob, min) {
+
+			display: inline-block;
+			width: 33.33%;
+
+			@include font-size(10, 60);
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-align: center;
+
+			@include opacity(1);
+			@include transform(none);
+
+			@include transition(color 0.25s ease-in-out);
+
+			// For the sake of specificity, we'll have to double up these loops
+			@for $i from 1 through 3 {
+
+				&:nth-child(#{$i}) {
+
+					&.is-active {
+
+						& ~ .nav__highlight {
+
+							@include transform(translateX( ($i - 1) * 100%));
+
+						}
 
 					}
 
@@ -41,17 +135,17 @@
 
 			}
 
-		}
+			@for $i from 1 through 3 {
 
-		@for $i from 1 through 3 {
+				&:nth-child(#{$i}) {
 
-			&:nth-child(#{$i}) {
+					&:hover {
 
-				&:hover {
+						& ~ .nav__highlight {
 
-					& ~ .nav__highlight {
+							@include transform(translateX( ($i - 1) * 100%));
 
-						@include transform(translateX( ($i - 1) * 100%));
+						}
 
 					}
 
@@ -65,8 +159,10 @@
 
 	&__highlight {
 
+		display: none;
+
 		position: absolute;
-		bottom: 0;
+		bottom: -1px;
 		left: 0;
 
 		width: 33.33%;
@@ -75,6 +171,12 @@
 		background: $tertiaryColor;
 
 		transition: transform 0.25s ease-in-out;
+
+		@include mq($mq-mob, min) {
+
+			display: block;
+
+		}
 
 	}
 
