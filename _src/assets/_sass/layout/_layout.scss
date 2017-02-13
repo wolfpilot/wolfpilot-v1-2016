@@ -9,9 +9,9 @@
 	left: 0;
 	height: 54px;
 
-	background: $secondaryColor;
-	border-top: 3px solid $tertiaryColor;
-	border-bottom: 1px solid $grey;
+	background: $white;
+	border-top: 3px solid $accent-1;
+	border-bottom: 1px solid $l-grey;
 
 	@include mq($mq-mob, min) {
 
@@ -45,7 +45,7 @@
 			margin-top: 6px;
 			margin-bottom: 6px;
 
-			background-color: $tertiaryColor;
+			background-color: $accent-1;
 
 			@include transition(transform 0.25s ease-in-out);
 

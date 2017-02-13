@@ -21,7 +21,7 @@ html {
 
 body {
 
-    color: $quaternaryColor;
+    color: $d-grey;
 
     font-family: $primaryFont;
     @include font-size($base-font-size);
@@ -34,18 +34,18 @@ p {
 
     margin: 0 0 10px;
 
-    color: $primaryColor;
+    color: $black;
 
     font-family: $primaryFont;
     @include font-size($p-size);
 
     a {
 
-        color: $tertiaryColor;
+        color: $accent-1;
 
         &:hover {
 
-            color: $tertiaryColor;
+            color: $accent-1;
 
         }
 
@@ -62,7 +62,7 @@ li {
 
 a {
 
-    color: $primaryColor;
+    color: $black;
 
     text-decoration: none;
 
@@ -71,7 +71,7 @@ a {
     &:hover,
     &:active {
 
-        color: $primaryColor;
+        color: $black;
 
         text-decoration: none;
 
@@ -234,11 +234,11 @@ h6, .h--epsilon {
 
     &--alt {
 
-        color: #909090;
+        color: $grey;
 
         &:hover {
 
-            color: $primaryColor;
+            color: $black;
 
         }
 
@@ -252,7 +252,7 @@ h6, .h--epsilon {
 
         &:hover {
 
-            color: $orange-dark;
+            color: $accent-1;
 
         }
 

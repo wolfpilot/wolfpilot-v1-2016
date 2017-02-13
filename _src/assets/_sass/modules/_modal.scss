@@ -85,9 +85,9 @@
         height: 40px;
         padding: 0;
 
-        background: $primaryColor;
-        border: 1px solid $primaryColor; // fix blur due to transform
-        color: $secondaryColor;
+        background: $black;
+        border: 1px solid $black; // fix blur due to transform
+        color: $white;
 
         @include font-size(16, 40);
         font-weight: bold;
@@ -113,8 +113,8 @@
 
         &:hover {
 
-            background: $orange-dark;
-            border-color: $orange-dark;
+            background: $accent-1;
+            border-color: $accent-1;
             @include transform(scale(0.9));
 
         }
