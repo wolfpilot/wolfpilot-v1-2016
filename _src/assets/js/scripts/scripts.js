@@ -386,6 +386,10 @@ Wolfpilot = (function() {
 	// Showcase image modal
 	var modal = (function modal() {
 
+		if (!document.getElementById('js-modal')) {
+			return false;
+		}
+
 		var wrapper = document.getElementById('js-modal'),
 			images = wrapper.getElementsByClassName('modal__img'),
 
@@ -708,6 +712,10 @@ Wolfpilot = (function() {
 
 	// Projects grid gallery
 	var showcase = (function showcase() {
+
+		if (!document.getElementById('js-showcase')) {
+			return false;
+		}
 
 		var wrapper = document.getElementById('js-showcase'),
 			nav = document.getElementById('js-showcase-nav'),
