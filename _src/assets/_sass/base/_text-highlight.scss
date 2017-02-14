@@ -1,27 +1,27 @@
 /* Mozilla based browsers */
 ::-moz-selection {
-	background-color: $accent-1;
+	background-color: transparentize($accent-2, 0.6);
 	color: $black;
 }
 
 /* Works in Safari */
 ::selection {
-	background-color: $accent-1;
+	background-color: transparentize($accent-2, 0.6);
 	color: $black;
 }
 
 /* Works in Opera */
 ::-o-selection {
-	background-color: $accent-1;
+	background-color: transparentize($accent-2, 0.6);
 	color: $black;
 }
 ::-ms-selection {
-	background-color: $accent-1;
+	background-color: transparentize($accent-2, 0.6);
 	color: $black;
 }
 
 /* Works in Internet Explorer */
 ::-webkit-selection {
-	background-color: $accent-1;
+	background-color: transparentize($accent-2, 0.6);
 	color: $black;
 }
