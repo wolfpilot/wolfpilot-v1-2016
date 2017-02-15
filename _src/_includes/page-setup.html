@@ -1,0 +1,10 @@
+{% if page.url == "/" %}
+
+	{% assign page_class = 'index' %}
+
+{% else %}
+
+	{% assign url_segments = page.url | split: "/" %}
+	{% assign page_class = url_segments[1] %}
+
+{% endif %}
