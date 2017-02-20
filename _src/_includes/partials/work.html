@@ -25,7 +25,7 @@
 
 		<div id="js-showcase-nav" class="showcase__nav">
 			
-			{% for category in site.data.projects.categories %}
+			{% for category in site.data.work.categories %}
 
 				<button class="showcase__nav-item {% if forloop.first == true %}is-active{% endif %}" data-category="{{ category }}">
 					{{ category }}
@@ -37,11 +37,11 @@
 
 		<div id="js-showcase-content" class="showcase__content js-showcase">
 
-			{% for project in site.data.projects.projects %}
+			{% for project in site.data.work.projects %}
 
-				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-target="modal-{{ project.name | replace: ' ', '-' | downcase }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
+				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-target="modal-{{ project.id }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
 
-					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/img/projects/{{ project.name }}/thumb.jpg" alt="" />
+					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/img/projects/{{ project.id }}/thumb.jpg" alt="" />
 
 					<div class="showcase__project-overlay">
 
@@ -54,7 +54,7 @@
 							<div class="clear"></div>
 
 							<p class="showcase__project-description">
-								{{ project.description }}
+								{{ project.tagline }}
 							</p>
 
 							<div class="showcase__project-footer">
@@ -97,9 +97,9 @@
 
 		<div class="modal__slider">
 
-			{% for project in site.data.projects.projects %}
+			{% for project in site.data.work.projects %}
 
-				<img class="modal__img" id="modal-{{ project.name | replace: ' ', '-' | downcase }}" data-lazyload-src="{{ site.baseurl }}/assets/img/projects/{{ project.name }}/full.jpg" alt="" />
+				<img class="modal__img" id="modal-{{ project.id }}" data-lazyload-src="{{ site.baseurl }}/assets/img/projects/{{ project.id }}/full.jpg" alt="" />
 
 			{% endfor %}
 
