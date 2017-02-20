@@ -41,11 +41,17 @@ p {
 
     a {
 
+        padding-bottom: 0px;
+
         color: $accent-1;
+        border-bottom: 1px dotted $accent-1;
 
         &:hover {
 
             color: $accent-1;
+            border: none;
+
+            text-decoration: none;
 
         }
 
@@ -79,7 +85,6 @@ a {
 
 }
 
-p a,
 address a {
 
     &:hover {
