@@ -264,3 +264,26 @@ h6, .h--epsilon {
     }
 
 }
+
+.list {
+
+    list-style: circle;
+
+    &__item {
+
+        @include font-size($base-font-size, $delta-size);
+
+    }
+
+}
+
+// ASCII symbols
+.symbol {
+
+    &--heart { // &#10084;
+
+        color: $red;
+        
+    }
+
+}
