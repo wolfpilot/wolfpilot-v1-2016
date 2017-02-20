@@ -904,6 +904,71 @@ Wolfpilot = (function() {
 
 	}());
 
+	var videoPlayer = (function videoPlayer() {
+
+		var videos = document.getElementsByClassName('js-video'),
+			video,
+			player,
+			status = 'paused';
+
+		var getStatus = function getStatus() {
+
+			return status;
+
+		};
+
+		var pause = function pause(target) {
+
+			video = Wolfpilot.getClosestParent(target, '.js-video');
+			player = video.getElementsByClassName('js-video-player')[0];
+
+			video.classList.remove('is-playing');
+			player.pause();
+
+			status = 'paused';
+
+		};
+
+		var play = function play(target) {
+
+			video = Wolfpilot.getClosestParent(target, '.js-video');
+			player = video.getElementsByClassName('js-video-player')[0];
+
+			video.classList.add('is-playing');
+			player.play();
+
+			status = 'playing';
+
+		};
+
+		var _handler = function _handler(target) {
+
+			status === 'paused' ? play(target) : pause(target);
+
+		};
+
+		(function delegateEvents() {
+
+			for (var i = 0; i < videos.length; i++) {
+
+				videos[i].addEventListener('click', function(e) {
+
+					_handler(e.target);
+
+				});
+
+			}
+
+		}());
+
+		return {
+			getStatus: getStatus,
+			play: play,
+			pause: pause
+		};
+
+	}());
+
 	return {
 		/** Helpers */
 		pubSub: pubSub,
@@ -915,7 +980,8 @@ Wolfpilot = (function() {
 		scrollToY: scrollToY,
 		overlay: overlay,
 		modal: modal,
-		showcase: showcase
+		showcase: showcase,
+		videoPlayer: videoPlayer
 	};
 
 }());

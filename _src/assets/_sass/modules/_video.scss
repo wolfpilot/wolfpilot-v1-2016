@@ -1,0 +1,142 @@
+.video {
+
+	position: relative;
+
+	cursor: pointer;
+
+	&:hover {
+
+		.video__play {
+
+			@include opacity(1);
+
+		}
+
+	}
+
+	&.is-playing {
+
+		.video__play {
+
+			z-index: -1;
+			@include opacity(0);
+
+		}
+
+	}
+
+	&__preview {
+
+		// Setting this as a block gets rid of a 4px bottom margin
+		// that offsets the image and the video
+		display: block;
+
+	}
+
+	&__player {
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+
+		max-width: 100%;
+
+	}
+
+	&__overlay {
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+	}
+
+	&__play {
+
+		position: absolute;
+		z-index: 1;
+		top: 50%;
+		right: 0;
+		left: 0;
+		width: 30px;
+		height: 30px;
+		margin-right: auto;
+		margin-left: auto;
+
+		@include opacity(0.75);
+
+		@include transform(translateY(-50%));
+
+		@include transition(
+			z-index 0.25s ease-in-out,
+			opacity 0.25s ease-in-out
+		);
+
+		cursor: pointer;
+
+		@include mq($mq-mob, min) {
+
+			width: 40px;
+			height: 40px;
+
+		}
+
+		&:before {
+
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: -15px;
+			right: -15px;
+			bottom: -15px;
+			left: -15px;
+			width: 60px;
+			height: 60px;
+
+			background: transparentize($black, 0.4);
+			border-radius: 50%;
+
+			@include mq($mq-mob, min) {
+			
+				top: -20px;
+				right: -20px;
+				bottom: -20px;
+				left: -20px;
+				width: 80px;
+				height: 80px;
+
+			}
+
+		}
+
+		svg {
+
+			position: relative;
+			z-index: -1;
+			width: 30px;
+			height: 30px;
+
+			fill: $white;
+
+			pointer-events: none;
+
+			@include mq($mq-mob, min) {
+
+				width: 40px;
+				height: 40px;
+
+			}
+
+		}
+
+	}
+
+}

@@ -58,4 +58,32 @@
 
 	</section>
 
+	<section class="section section--article">
+
+		<h4 class="article__subheading subheading">
+			Preview
+		</h4>
+
+		<div class="video js-video">
+
+			<img class="video__preview" src="{{ site.baseurl }}/assets/img{{ page.url }}case-study/preview.jpg" alt="" />
+
+			<video class="video__player js-video-player" loop muted preload="none">
+				<source src="{{ site.baseurl }}/assets/img{{ page.url }}case-study/video.mp4" type="video/mp4">
+				<source src="{{ site.baseurl }}/assets/img{{ page.url }}case-study/video.webm" type="video/webm">
+				Sorry, it looks like your browser doesn't support HTML5 video in MP4 or WebM formats.
+			</video>
+
+			<div class="video__overlay">
+				
+				<div class="video__play">
+					{% include svg/play.svg %}
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
 </div>
