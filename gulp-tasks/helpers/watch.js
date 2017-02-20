@@ -61,7 +61,7 @@ gulp.task('watch', function() {
 	// Markup / Posts / Data
 	gulp.watch([
 		paths.src + '*',
-		paths.src + '_data/*',
+		paths.src + '_data/**/*',
 		paths.src + '_plugins/*',
 		paths.src + '**/*.md',
 		paths.src + '**/*.html',
