@@ -1,0 +1,14 @@
+{% comment %}
+	Automagically get the currently visible project and all of its data
+{% endcomment %}
+
+{% for project in site.data.work.projects %}
+
+	{% if project.id == url_segments[2] %}
+
+		{% assign project = project %}
+		{% break %}
+
+	{% endif %}
+
+{% endfor %}
