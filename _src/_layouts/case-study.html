@@ -2,14 +2,15 @@
 layout: default
 ---
 
-{% include page-setup.html %}
-{% include project-setup.html %}
+{% include helpers/setup-page.html %}
+{% include helpers/setup-project.html %}
+{% include helpers/setup-assets.html %}
 
 <div class="splash splash-from--{{ page.splash-from }}">
 
 	<div class="splash__spacer"></div>
 
-	<div class="splash__image" style="background: url('{{ site.baseurl }}/assets/img{{ page.url }}case-study/header.jpg');">
+	<div class="splash__image" style="background: url('{{ assets_path }}header.jpg');">
 		
 		<div class="splash__overlay" style="background-color: {{ page.splash-from }}"></div>
 
@@ -23,7 +24,7 @@ layout: default
 						
 						<h1 class="splash__heading heading">
 							<span>
-								{{ project.name }}
+								{{ page.title }}
 							</span>
 						</h1>
 
