@@ -1,11 +1,11 @@
 'use strict';
 
-var gulp 			= require('gulp'),
-	/** Utils */
-	runSequence 	= require('run-sequence'),
-	util 			= require('gulp-util'),
-	/** Config */
-	paths 			= require("../../package.json").paths;
+var gulp            = require('gulp'),
+    /** Utils */
+    runSequence     = require('run-sequence'),
+    util            = require('gulp-util'),
+    /** Config */
+    paths           = require("../../package.json").paths;
 
 /**
  * Watch task

@@ -32,7 +32,10 @@
         "no-labels": "error",
         "no-lone-blocks": "error",
         "no-loop-func": "error",
-        "no-mixed-spaces-and-tabs": "warn",
+        "no-mixed-spaces-and-tabs": [
+            "warn",
+            "smart-tabs"
+        ],
         "no-multi-spaces": "warn",
         "no-multi-str": "off",
         "no-new": "error",
@@ -76,10 +79,6 @@
         "brace-style": "warn",
         "eol-last": "warn",
         "no-spaced-func": "error",
-        "indent": [
-            "warn",
-            "tab"
-        ],
         "keyword-spacing": "warn",
         "linebreak-style": [
             "error",

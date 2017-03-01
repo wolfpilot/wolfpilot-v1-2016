@@ -50,7 +50,7 @@ Wolfpilot = (function() {
 		 */
 
 		var topics = {},
-			subID = -1;
+		    subID = -1;
 
 		// Simple getter to facilitate debugging
 		var getTopics = function getTopics() {
@@ -72,7 +72,7 @@ Wolfpilot = (function() {
 			setTimeout(function() {
 
 				var subscribers = topics[topic],
-					len = subscribers ? subscribers.length : 0;
+				    len = subscribers ? subscribers.length : 0;
 
 				while (len--) {
 					subscribers[len].func(topic, data);
@@ -149,11 +149,11 @@ Wolfpilot = (function() {
 	var _raf = (function _raf() {
 		// Thanks go to Paul Irish for this little snippet of code
 		return window.requestAnimationFrame ||
-			window.webkitRequestAnimationFrame ||
-			window.mozRequestAnimationFrame ||
-			function(callback) {
-				window.setTimeout(callback, 1000 / 60);
-			};
+		       window.webkitRequestAnimationFrame ||
+		       window.mozRequestAnimationFrame ||
+		       function(callback) {
+		          window.setTimeout(callback, 1000 / 60);
+		       };
 
 	}());
 
@@ -161,10 +161,10 @@ Wolfpilot = (function() {
 	var windowSize = (function windowSize() {
 
 		var wWidth,
-			wHeight,
-			size = [],
-			timeout = false,
-			delay = 250; // time to wait before running the callback
+		    wHeight,
+		    size = [],
+		    timeout = false,
+		    delay = 250; // time to wait before running the callback
 
 		var _setDimensions = function _setDimensions() {
 
@@ -213,8 +213,8 @@ Wolfpilot = (function() {
 	var getQueryString = function getQueryString(field) {
 
 		var href = window.location.href,
-			reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i'),
-			string = reg.exec(href);
+		    reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i'),
+		    string = reg.exec(href);
 
 		return string ? string[1] : null;
 
@@ -224,9 +224,9 @@ Wolfpilot = (function() {
 	var getClosestParent = function getClosestParent(el, selector) {
 
 		var matchesSelector = el.matches
-			|| el.webkitMatchesSelector
-			|| el.mozMatchesSelector
-			|| el.msMatchesSelector;
+		                   || el.webkitMatchesSelector
+		                   || el.mozMatchesSelector
+		                   || el.msMatchesSelector;
 
 		while (el) {
 
@@ -271,8 +271,8 @@ Wolfpilot = (function() {
 		var scrollTo = function scrollTo(hash, speed, easing) {
 
 			var scrollY = window.scrollY || document.documentElement.scrollTop,
-				scrollTarget = document.getElementById(hash).offsetTop,
-				currentTime = 0;
+			    scrollTarget = document.getElementById(hash).offsetTop,
+			    currentTime = 0;
 
 			// Min time 0.1s, max 0.8s
 			// Always substract the header's height from the scrolling distance
@@ -283,7 +283,7 @@ Wolfpilot = (function() {
 				currentTime += 1 / 60;
 
 				var p = currentTime / time,
-					t = easingEquations[easing](p);
+				    t = easingEquations[easing](p);
 
 				if (p < 1) {
 
@@ -349,7 +349,7 @@ Wolfpilot = (function() {
 	var overlay = (function overlay() {
 
 		var el = document.getElementById('overlay'),
-			status = 'closed';
+		    status = 'closed';
 
 		var getStatus = function getStatus() {
 
@@ -404,18 +404,18 @@ Wolfpilot = (function() {
 		}
 
 		var wrapper = document.getElementById('js-modal'),
-			images = wrapper.getElementsByClassName('modal__img'),
+		    images = wrapper.getElementsByClassName('modal__img'),
 
-			btnPrev = document.getElementById('js-modal--prev'),
-			btnNext = document.getElementById('js-modal--next'),
-			btnClose = document.getElementById('js-modal--close'),
+		    btnPrev = document.getElementById('js-modal--prev'),
+		    btnNext = document.getElementById('js-modal--next'),
+		    btnClose = document.getElementById('js-modal--close'),
 
-			status = 'closed',
+		    status = 'closed',
 
-			showcasedProjects,
-			activeProject = [],
-			prevProject,
-			nextProject;
+		    showcasedProjects,
+		    activeProject = [],
+		    prevProject,
+		    nextProject;
 
 		var getStatus = function getStatus() {
 
@@ -601,10 +601,10 @@ Wolfpilot = (function() {
 	var navigation = (function navigation() {
 
 		var header = document.getElementById('header'),
-			nav = document.getElementById('nav'),
-			navItems = nav.getElementsByClassName('nav__item'),
-			burger = document.getElementById('js-burger'),
-			status = 'closed';
+		    nav = document.getElementById('nav'),
+		    navItems = nav.getElementsByClassName('nav__item'),
+		    burger = document.getElementById('js-burger'),
+		    status = 'closed';
 
 		var open = function open() {
 
@@ -731,12 +731,12 @@ Wolfpilot = (function() {
 		}
 
 		var wrapper = document.getElementById('js-showcase'),
-			nav = document.getElementById('js-showcase-nav'),
-			navTags = wrapper.getElementsByClassName('showcase__nav-item'),
-			projects = wrapper.getElementsByClassName('js-showcase-project'),
-			showcasedCategory = 'featured', // set initial category
-			showcasedProjects,
-			activeProject = [];
+		    nav = document.getElementById('js-showcase-nav'),
+		    navTags = wrapper.getElementsByClassName('showcase__nav-item'),
+		    projects = wrapper.getElementsByClassName('js-showcase-project'),
+		    showcasedCategory = 'featured', // set initial category
+		    showcasedProjects,
+		    activeProject = [];
 
 		var getShowcasedProjects = function getShowcasedProjects() {
 
@@ -850,8 +850,8 @@ Wolfpilot = (function() {
 					if (e.target.classList.contains('showcase__project-details')) {
 
 						var project = Wolfpilot.getClosestParent(e.target, '.js-showcase-project'),
-							el = document.getElementById(project.getAttribute('data-target')),
-							target = project.getAttribute('data-target');
+						    el = document.getElementById(project.getAttribute('data-target')),
+						    target = project.getAttribute('data-target');
 
 						for (var i = 0; i < showcasedProjects.length; i++) {
 
@@ -920,9 +920,9 @@ Wolfpilot = (function() {
 	var videoPlayer = (function videoPlayer() {
 
 		var videos = document.getElementsByClassName('js-video'),
-			video,
-			player,
-			status = 'paused';
+		    video,
+		    player,
+		    status = 'paused';
 
 		var getStatus = function getStatus() {
 
@@ -985,12 +985,12 @@ Wolfpilot = (function() {
 	var caseStudies = (function caseStudies() {
 
 		var itemsWrapper = document.getElementById('case-studies-items'),
-			navItems = document.getElementsByClassName('case-studies__nav-item'),
-			articles = document.getElementsByClassName('case-studies__item'),
-			tags,
-			tag,
-			json,
-			countVisible = 0;
+		    navItems = document.getElementsByClassName('case-studies__nav-item'),
+		    articles = document.getElementsByClassName('case-studies__item'),
+		    tags,
+		    tag,
+		    json,
+		    countVisible = 0;
 
 		var showCategory = function showCategory(newTag) {
 

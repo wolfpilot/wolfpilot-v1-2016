@@ -58,6 +58,6 @@ exclude: [
   assets/js
 ]
 include: [
-	assets/fonts,
-	CNAME
+  assets/fonts,
+  CNAME
 ]

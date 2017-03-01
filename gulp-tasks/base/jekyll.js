@@ -1,7 +1,7 @@
 var gulp        = require('gulp'),
-	/** Utilities */
-	util 		= require('gulp-util'),
-	cp 			= require('child_process');
+    /** Utilities */
+    util        = require('gulp-util'),
+    cp          = require('child_process');
 
 /**
  * Jekyll Task

@@ -1,11 +1,11 @@
 'use strict';
 
 var gulp        = require('gulp'),
-	/** Images */
-	imagemin 	= require('gulp-imagemin'),
-	pngquant	= require('imagemin-pngquant'),
-	/** Config */
-	paths 		= require('../../package.json').paths;
+    /** Images */
+    imagemin    = require('gulp-imagemin'),
+    pngquant    = require('imagemin-pngquant'),
+    /** Config */
+    paths       = require('../../package.json').paths;
 
 /**
  * Optimize Images Task

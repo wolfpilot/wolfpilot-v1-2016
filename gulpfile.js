@@ -1,12 +1,12 @@
 'use strict';
 
-var gulp 			= require('gulp'),
-	/** Utils */
-	requireDir 		= require('require-dir'),
-	runSequence 	= require('run-sequence'),
-	util 			= require('gulp-util'),
-	/** Import Main Tasks */
-	tasks 			= requireDir('./gulp-tasks', { recurse: true } );
+var gulp           = require('gulp'),
+    /** Utils */
+    requireDir     = require('require-dir'),
+    runSequence    = require('run-sequence'),
+    util           = require('gulp-util'),
+    /** Import Main Tasks */
+    tasks          = requireDir('./gulp-tasks', { recurse: true } );
 
 /**
  * Main Tasks
