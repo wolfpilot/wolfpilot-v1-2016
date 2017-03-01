@@ -24,14 +24,14 @@
 
 	}
 
-	@include mq($mq-mob, min) {
+	@include mq($mq-mob--lrg, min) {
 
 		position: relative;
-		float: left;
+		float: right;
 		top: auto;
 		width: auto;;
 		height: 100%;
-		min-width: 250px;
+		min-width: 400px;
 
 		@include transform(none);
 
@@ -65,7 +65,7 @@
 			transform 0.35s ease-in-out
 		);
 
-		@for $i from 1 through 3 {
+		@for $i from 1 through 4 {
 
 			&:nth-child(#{$i}) {
 
@@ -80,7 +80,7 @@
 
 			color: $accent-1;
 
-			@include mq($mq-mob, min) {
+			@include mq($mq-mob--lrg, min) {
 
 				color: $black;
 
@@ -101,10 +101,12 @@
 
 		}
 
-		@include mq($mq-mob, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			display: inline-block;
-			width: 33.33%;
+			width: 25%;
+			padding-right: 8px;
+			padding-left: 8px;
 
 			@include font-size(10, 60);
 			text-transform: uppercase;
@@ -117,7 +119,7 @@
 			@include transition(color 0.25s ease-in-out);
 
 			// For the sake of specificity, we'll have to double up these loops
-			@for $i from 1 through 3 {
+			@for $i from 1 through 4 {
 
 				&:nth-child(#{$i}) {
 
@@ -125,7 +127,7 @@
 
 						& ~ .nav__highlight {
 
-							@include transform(translateX( ($i - 1) * 100%));
+							@include transform(translateX( ($i - 5) * 100%));
 
 						}
 
@@ -135,7 +137,7 @@
 
 			}
 
-			@for $i from 1 through 3 {
+			@for $i from 1 through 4 {
 
 				&:nth-child(#{$i}) {
 
@@ -143,7 +145,7 @@
 
 						& ~ .nav__highlight {
 
-							@include transform(translateX( ($i - 1) * 100%));
+							@include transform(translateX( ($i - 5) * 100%));
 
 						}
 
@@ -163,16 +165,18 @@
 
 		position: absolute;
 		bottom: -1px;
-		left: 0;
+		right: -25%;
 
-		width: 33.33%;
+		width: 25%;
 		height: 0.2rem;
 
 		background: $accent-1;
 
+		@include transform(translateX(15px)); // slide offscreen when not active
+
 		transition: transform 0.25s ease-in-out;
 
-		@include mq($mq-mob, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			display: block;
 

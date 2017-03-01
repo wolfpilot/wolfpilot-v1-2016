@@ -14,16 +14,15 @@ body {
 	top: 0;
 	right: 0;
 	left: 0;
-	height: 54px;
+	height: 60px;
 
 	background: $white;
 	border-top: 3px solid $accent-1;
 	border-bottom: 1px solid $l-grey;
 
-	@include mq($mq-mob, min) {
+	@include mq($mq-mob--lrg, min) {
 
 		z-index: 100;
-		height: 60px;
 		padding-right: 15px;
 		padding-left: 15px;
 
@@ -32,13 +31,14 @@ body {
 	&__burger {
 
 		display: inline-block;
+		float: right;
 		width: 60px;
 	    height: 100%;
 	    padding: 10px 15px;
 
 		line-height: inherit;
 
-		@include mq($mq-mob, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			display: none;
 
@@ -106,7 +106,7 @@ body {
 
 	&__logo {
 
-		float: right;
+		float: left;
 		height: 100%;
 		padding: 0 15px;
 
