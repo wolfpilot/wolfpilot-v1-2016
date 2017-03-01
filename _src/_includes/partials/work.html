@@ -41,7 +41,7 @@
 
 				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-target="modal-{{ project.id }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
 
-					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/img/projects/{{ project.id }}/thumb.jpg" alt="" />
+					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/projects/{{ project.id }}/thumb.jpg" alt="" />
 
 					<div class="showcase__project-overlay">
 
@@ -99,7 +99,7 @@
 
 			{% for project in site.data.work.projects %}
 
-				<img class="modal__img" id="modal-{{ project.id }}" data-lazyload-src="{{ site.baseurl }}/assets/img/projects/{{ project.id }}/full.jpg" alt="" />
+				<img class="modal__img" id="modal-{{ project.id }}" data-lazyload-src="{{ site.baseurl }}/assets/projects/{{ project.id }}/full.jpg" alt="" />
 
 			{% endfor %}
 

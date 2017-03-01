@@ -1,0 +1,31 @@
+.article {
+
+	@include mq($mq-mob--lrg, min) {
+
+		float: left;
+		width: 70%;
+		padding-right: 10%;
+		
+	}
+
+	&__heading {
+
+		margin-bottom: 40px;
+
+		text-transform: initial;
+
+	}
+
+	&__subheading {
+
+		margin-bottom: 20px;
+
+	}
+
+	&__image {
+
+		margin-bottom: 20px;
+
+	}
+
+}

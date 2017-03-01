@@ -1,3 +1,13 @@
+/** Helpers */
+
+// Fade out
+@include keyframes(fade-out) {
+
+    0%   { @include opacity(1); }
+    100% { @include opacity(0); }
+
+}
+
 // Border - YEY, no more paints!
 @include keyframes(border-horiz) {
 

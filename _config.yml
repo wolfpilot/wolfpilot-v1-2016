@@ -20,6 +20,21 @@ css: "/assets/css/main.css"
 js: "/assets/js/main.js"
 
 # --------------------------------
+# Collections
+collections:
+  case-studies:
+    output: true
+    permalink: /:collection/:title/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "case-studies"
+    values:
+      layout: "case-study"
+
+# --------------------------------
 # Build settings
 markdown: kramdown
 safe: false

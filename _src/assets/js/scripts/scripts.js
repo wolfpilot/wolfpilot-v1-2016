@@ -207,6 +207,19 @@ Wolfpilot = (function() {
 
 	}());
 
+	/* Get the value of a querystring
+	 * @field: The field we're getting the value of, such as 'cat' in '?cat='
+	 */
+	var getQueryString = function getQueryString(field) {
+
+		var href = window.location.href,
+			reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i'),
+			string = reg.exec(href);
+
+		return string ? string[1] : null;
+
+	};
+
 	// Get nearest parent element matching selector
 	var getClosestParent = function getClosestParent(el, selector) {
 
@@ -904,10 +917,167 @@ Wolfpilot = (function() {
 
 	}());
 
+	var videoPlayer = (function videoPlayer() {
+
+		var videos = document.getElementsByClassName('js-video'),
+			video,
+			player,
+			status = 'paused';
+
+		var getStatus = function getStatus() {
+
+			return status;
+
+		};
+
+		var pause = function pause(target) {
+
+			video = Wolfpilot.getClosestParent(target, '.js-video');
+			player = video.getElementsByClassName('js-video-player')[0];
+
+			video.classList.remove('is-playing');
+			player.pause();
+
+			status = 'paused';
+
+		};
+
+		var play = function play(target) {
+
+			video = Wolfpilot.getClosestParent(target, '.js-video');
+			player = video.getElementsByClassName('js-video-player')[0];
+
+			video.classList.add('is-playing');
+			player.play();
+
+			status = 'playing';
+
+		};
+
+		var _handler = function _handler(target) {
+
+			status === 'paused' ? play(target) : pause(target);
+
+		};
+
+		(function delegateEvents() {
+
+			for (var i = 0; i < videos.length; i++) {
+
+				videos[i].addEventListener('click', function(e) {
+
+					_handler(e.target);
+
+				});
+
+			}
+
+		}());
+
+		return {
+			getStatus: getStatus,
+			play: play,
+			pause: pause
+		};
+
+	}());
+
+	var caseStudies = (function caseStudies() {
+
+		var itemsWrapper = document.getElementById('case-studies-items'),
+			navItems = document.getElementsByClassName('case-studies__nav-item'),
+			articles = document.getElementsByClassName('case-studies__item'),
+			tags,
+			tag,
+			json,
+			countVisible = 0;
+
+		var showCategory = function showCategory(newTag) {
+
+			for (var i = 0; i < articles.length; i++) {
+
+				json = articles[i].getAttribute('data-tags');
+				tags = JSON.parse(json);
+
+				for (var j = 0; j < tags.length; j++) {
+
+					if (tags[j] === newTag) {
+
+						lazyload(articles[i].getElementsByClassName('case-studies__image')[0]);
+						articles[i].classList.remove('is-hidden');
+
+						countVisible += 1;
+
+					}
+
+				}
+
+				if (countVisible === 1) {
+
+					itemsWrapper.classList.add('case-studies__items--single');
+
+				}
+
+			}
+
+		};
+
+		var showAll = function showAll() {
+
+			for (var i = 0; i < articles.length; i++) {
+
+				lazyload(articles[i].getElementsByClassName('case-studies__image')[0]);
+				articles[i].classList.remove('is-hidden');
+
+				if (articles.length === 1) {
+
+					itemsWrapper.classList.add('case-studies__items--single');
+
+				}
+
+			}
+
+		};
+
+		var toggleNav = function toggleNav(newTag) {
+
+			for (var i = 0; i < navItems.length; i++) {
+
+				if (navItems[i].getAttribute('data-target') === newTag) {
+
+					navItems[i].classList.add('is-active');
+
+				}
+
+			}
+
+		};
+
+		(function init() {
+
+			if (getQueryString('tag')) {
+
+				tag = getQueryString('tag');
+
+				toggleNav(tag);
+				showCategory(tag);
+
+			} else {
+
+				toggleNav('all');
+				showAll();
+
+			}
+
+		}());
+
+	}());
+
 	return {
 		/** Helpers */
 		pubSub: pubSub,
 		windowSize: windowSize,
+		getQueryString: getQueryString,
 		getClosestParent: getClosestParent,
 		lazyload: lazyload,
 		/** MAIN */
@@ -915,7 +1085,9 @@ Wolfpilot = (function() {
 		scrollToY: scrollToY,
 		overlay: overlay,
 		modal: modal,
-		showcase: showcase
+		showcase: showcase,
+		videoPlayer: videoPlayer,
+		caseStudies: caseStudies
 	};
 
 }());

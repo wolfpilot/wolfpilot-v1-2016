@@ -1,0 +1,11 @@
+{% case page.layout %}
+
+{% when 'case-study' %}
+
+	{% capture assets_path %}{{ site.baseurl }}/assets/projects/{{ page.id | replace: 'case-studies/', '' }}/case-study/{% endcapture %}
+
+{% else %}
+
+	{% capture assets_path %}{{ site.baseurl }}/assets/{% endcapture %}
+
+{% endcase %}

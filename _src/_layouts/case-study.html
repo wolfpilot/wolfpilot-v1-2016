@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{% include helpers/setup-page.html %}
+{% include helpers/setup-project.html %}
+{% include helpers/setup-assets.html %}
+
+<div class="splash splash-from--{{ page.splash-from }}">
+
+	<div class="splash__spacer"></div>
+
+	<div class="splash__image" style="background: url('{{ assets_path }}header.jpg');">
+		
+		<div class="splash__overlay" style="background-color: {{ page.splash-from }}"></div>
+
+		<div class="splash__details">
+
+			<div class="table">
+			
+				<div class="table__cell table__cell--middle">
+
+					<div class="container container--padded">
+						
+						<h1 class="splash__heading heading">
+							<span>
+								{{ page.title }}
+							</span>
+						</h1>
+
+						<h4 class="splash__subheading subheading">
+							Case study
+						</h4>
+					
+					</div>
+
+				</div>
+				
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="project">
+
+	<div class="container container--padded clearfix">
+		{{ content }}
+	</div>
+
+</div>

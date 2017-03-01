@@ -13,6 +13,7 @@
 @import "helpers/helpers";
 
 @import "layout/grid";
+@import "layout/container";
 @import "layout/section";
 @import "layout/layout";
 
@@ -22,5 +23,10 @@
 @import "modules/overlay";
 @import "modules/modal";
 @import "modules/keyframes";
+@import "modules/video";
+@import "modules/splash";
 @import "modules/showcase";
+@import "modules/article";
+@import "modules/aside";
+@import "modules/case-studies";
 @import "modules/project";

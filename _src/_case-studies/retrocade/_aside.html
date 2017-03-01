@@ -1,0 +1,43 @@
+<aside class="aside" role="complementary">
+	
+	{% if page.date %}	
+		<h6 class="aside__subheading subheading">
+			Date
+		</h6>
+
+		<p class="aside__text text">
+			{{ page.date | date: "%B %Y" }}
+		</p>
+	{% endif %}
+
+	{% if page.technologies %}
+		<h6 class="aside__subheading subheading">
+			Technologies
+		</h6>
+
+		<p class="aside__text text">
+			{{ page.technologies }}
+		</p>
+	{% endif %}
+
+	{% if page.tags %}
+		<h6 class="aside__subheading subheading">
+			Tags
+		</h6>
+
+		<p class="aside__text text">
+			{% assign tags = page.tags %}
+
+			{% for tag in tags %}
+				<a class="hyperlink" href="/case-studies/?tag={{ tag | downcase | replace: ' ', '-' }}">
+					{{ tag }}
+				</a>{% if tag != tags.last %},{% endif %}
+			{% endfor %}
+		</p>
+	{% endif %}
+
+	<p class="aside__text text">
+		<a class="hyperlink" href="http://codepen.io/wolfpilot/pen/5a00949b8ade2d0010989e454dfe654f/" target="_blank" rel="noreferrer nofollow">View demo</a>
+	</p>
+
+</aside>

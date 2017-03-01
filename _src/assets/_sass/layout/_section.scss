@@ -7,4 +7,24 @@
 
 	}
 
+	&--article {
+
+		padding-bottom: 30px;
+
+		&:not(:last-child) {
+
+			margin-bottom: 40px;
+
+			border-bottom: 1px solid $l-grey;
+
+			@include mq($mq-mob--lrg, min) {
+
+				border: none;
+
+			}
+			
+		}
+
+	}
+
 }
