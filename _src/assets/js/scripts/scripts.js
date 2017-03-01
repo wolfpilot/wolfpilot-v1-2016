@@ -207,6 +207,19 @@ Wolfpilot = (function() {
 
 	}());
 
+	/* Get the value of a querystring
+	 * @field: The field we're getting the value of, such as 'cat' in '?cat='
+	 */
+	var getQueryString = function getQueryString(field) {
+
+		var href = window.location.href,
+			reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i'),
+			string = reg.exec(href);
+
+		return string ? string[1] : null;
+
+	};
+
 	// Get nearest parent element matching selector
 	var getClosestParent = function getClosestParent(el, selector) {
 
@@ -969,10 +982,102 @@ Wolfpilot = (function() {
 
 	}());
 
+	var caseStudies = (function caseStudies() {
+
+		var itemsWrapper = document.getElementById('case-studies-items'),
+			navItems = document.getElementsByClassName('case-studies__nav-item'),
+			articles = document.getElementsByClassName('case-studies__item'),
+			tags,
+			tag,
+			json,
+			countVisible = 0;
+
+		var showCategory = function showCategory(newTag) {
+
+			for (var i = 0; i < articles.length; i++) {
+
+				json = articles[i].getAttribute('data-tags');
+				tags = JSON.parse(json);
+
+				for (var j = 0; j < tags.length; j++) {
+
+					if (tags[j] === newTag) {
+
+						lazyload(articles[i].getElementsByClassName('case-studies__image')[0]);
+						articles[i].classList.remove('is-hidden');
+
+						countVisible += 1;
+
+					}
+
+				}
+
+				if (countVisible === 1) {
+
+					itemsWrapper.classList.add('case-studies__items--single');
+
+				}
+
+			}
+
+		};
+
+		var showAll = function showAll() {
+
+			for (var i = 0; i < articles.length; i++) {
+
+				lazyload(articles[i].getElementsByClassName('case-studies__image')[0]);
+				articles[i].classList.remove('is-hidden');
+
+				if (articles.length === 1) {
+
+					itemsWrapper.classList.add('case-studies__items--single');
+
+				}
+
+			}
+
+		};
+
+		var toggleNav = function toggleNav(newTag) {
+
+			for (var i = 0; i < navItems.length; i++) {
+
+				if (navItems[i].getAttribute('data-target') === newTag) {
+
+					navItems[i].classList.add('is-active');
+
+				}
+
+			}
+
+		};
+
+		(function init() {
+
+			if (getQueryString('tag')) {
+
+				tag = getQueryString('tag');
+
+				toggleNav(tag);
+				showCategory(tag);
+
+			} else {
+
+				toggleNav('all');
+				showAll();
+
+			}
+
+		}());
+
+	}());
+
 	return {
 		/** Helpers */
 		pubSub: pubSub,
 		windowSize: windowSize,
+		getQueryString: getQueryString,
 		getClosestParent: getClosestParent,
 		lazyload: lazyload,
 		/** MAIN */
@@ -981,7 +1086,8 @@ Wolfpilot = (function() {
 		overlay: overlay,
 		modal: modal,
 		showcase: showcase,
-		videoPlayer: videoPlayer
+		videoPlayer: videoPlayer,
+		caseStudies: caseStudies
 	};
 
 }());

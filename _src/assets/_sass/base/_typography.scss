@@ -213,6 +213,26 @@ h6, .h--epsilon {
 
     }
 
+    &--alt {
+
+        font-family: $secondaryFont;
+        @include font-size(48);
+        font-weight: bold;
+
+        @include mq($mq-mob, min) {
+
+            @include font-size(80);
+
+        }
+
+        @include mq($mq-mob--lrg, min) {
+
+            @include font-size(120);
+
+        }
+
+    }
+
 }
 
 .subheading {
@@ -224,6 +244,12 @@ h6, .h--epsilon {
 .text {
 
     line-height: 28px;
+
+    &--sml {
+
+        @include font-size(13);
+
+    }
 
     &--lrg {
 

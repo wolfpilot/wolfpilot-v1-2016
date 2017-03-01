@@ -1,0 +1,353 @@
+.case-studies {
+
+    margin-top: 60px;
+
+	&__nav {
+
+		margin-bottom: 30px;
+
+		font-size: 0;
+		text-align: center;
+
+		@include mq($mq-tab--lrg, min) {
+
+			border-bottom: 1px solid $l-grey;
+
+		}
+
+		@include mq($mq-desk--lrg, min) {
+
+			position: absolute;
+			right: 0;
+			width: 210px;
+			margin-bottom: 0;
+			padding-right: 10px;
+			padding-left: 10px;
+
+			border-bottom: none;
+
+		}
+
+	}
+
+	&__nav-item {
+
+		display: block;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding: 10px;
+
+		border-top: 1px dotted $l-grey;
+		border-bottom: 1px dotted $l-grey;
+		color: $d-grey;
+
+		font-family: $tertiaryFont;
+		@include font-size(12);
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+
+		@include transition(
+			border-color 0.15s ease-in-out,
+			color 0.15s ease-in-out
+		);
+
+		@include mq($mq-tab--lrg, min) {
+
+			display: inline-block;
+			margin: auto;
+
+			border: none;
+
+		}
+
+		@include mq($mq-desk--lrg, min) {
+
+			display: block;
+			width: 100%;
+
+			border: none;
+
+			@include font-size($base-font-size);
+			text-align: right;
+
+			@include transition(
+				color 0.2s ease-in-out,
+				transform 0.2s ease-in-out
+			);
+
+		}
+
+		&:hover {
+
+			border-top: 1px solid $accent-1;
+			border-bottom: 1px solid $accent-1;
+			color: $accent-1;
+
+			@include mq($mq-tab--lrg, min) {
+
+				border: none;
+				color: $black;
+				
+			}
+
+			@include mq($mq-desk--lrg, min) {
+
+				@include transform(translateX(-10px));
+				
+			}
+
+		}
+
+		&.is-active {
+
+			border-top: 1px solid $accent-1;
+			border-bottom: 1px solid $accent-1;
+			color: $accent-1;
+
+			@include mq($mq-tab--lrg, min) {
+
+				border: none;
+				
+			}
+
+			@include mq($mq-desk--lrg, min) {
+
+				@include transform(translateX(-10px));
+				
+			}
+
+		}
+
+	}
+
+	&__wrapper {
+
+		position: relative;
+
+	}
+
+    &__items {
+
+		&--single {
+
+			text-align: center;
+
+		}
+
+		@include mq($mq-tab--lrg, min) {
+
+			font-size: 0;
+
+		}
+
+		@include mq($mq-desk--lrg, min) {
+
+			padding-right: 210px;
+			padding-left: 210px;
+
+		}
+
+    }
+
+	&__item {
+
+		position: relative;
+		display: block;
+		max-width: 640px;
+		margin: 0 auto 20px;
+
+		@include mq($mq-mob, min) {
+
+			margin-bottom: 40px;
+
+		}
+
+		@include mq($mq-tab--lrg, min) {
+
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+			margin-bottom: 0;
+			padding-bottom: 0;
+
+			overflow: hidden;
+
+		}
+
+		&.is-hidden {
+
+			display: none;
+
+		}
+
+	}
+
+	&__overlay {
+
+		@include mq($mq-tab--lrg, min) {
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			background-color: transparentize($white, 0.8);
+
+			@include transition(opacity cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s);
+
+			@include opacity(0);
+
+			background-color: transparentize($white, 0.05);
+
+			.case-studies__item:hover & {
+
+				@include opacity(1);
+
+			}
+
+		}
+
+	}
+
+	&__image {
+
+		display: block;
+		margin-bottom: 20px;
+
+		@include mq($mq-mob, min) {
+
+			margin-bottom: 40px;
+
+		}
+
+		@include mq($mq-tab--lrg, min) {
+
+			margin-bottom: 0;
+
+			@include transition(transform cubic-bezier(0.39, 0.58, 0.57, 1) 0.5s);
+
+			.case-studies__item:hover & {
+
+				@include transform(scale(1.1));
+
+			}
+
+		}
+
+	}
+
+	&__details {
+
+		text-align: center;
+
+		@include mq($mq-tab--lrg, min) {
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin-top: 0;
+			margin-bottom: 0;
+
+			width: 100%;
+			height: 100%;
+			padding: 15px;
+			
+			@include transform(translateY(15px));
+			@include filter(hue-rotate, -270deg);
+
+			@include transition(
+				transform 0.35s linear,
+				filter 0.35s linear
+			);
+
+			.case-studies__item:hover & {
+
+				@include transform(translateY(0));
+				@include filter(hue-rotate, 0deg);
+
+			}
+
+		}
+
+	}
+
+	&__title {
+
+		margin-bottom: 10px;
+
+		color: $accent-1;
+
+		font-family: $secondaryFont;
+		line-height: 64px;
+
+		@include mq($mq-tab--lrg, min) {
+
+			@include font-size($gamma-size);
+
+		}
+
+		@include mq(1400px, min) {
+
+			@include font-size($beta-size);
+
+		}
+
+	}
+
+	&__type {
+
+		color: $d-grey;
+
+		font-family: $tertiaryFont;
+		@include font-size(13);
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+
+		@include mq($mq-tab--lrg, min) {
+
+			color: $accent-1;
+
+		}
+
+	}
+
+	&__separator {
+
+		display: block;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 50px;
+		height: 2px;
+
+		background-color: $l-grey;
+		border: none;
+
+		@include mq($mq-tab--lrg, min) {
+
+			background-color: $accent-1;
+
+		}
+
+	}
+
+	&__excerpt {
+
+		max-width: 80%;
+		margin: 0 auto 20px;
+
+		@include mq($mq-tab--lrg, min) {
+
+			color: $accent-1;
+
+		}
+
+	}
+
+}
