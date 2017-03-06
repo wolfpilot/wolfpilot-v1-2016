@@ -16,6 +16,7 @@ gulp.task('browser', function() {
 	browserSync.init({
 		server: "./" + paths.dest,
 		injectChanges: true,
+		tunnel: true,
 		notify: {
 			styles: {
 				top: 'auto',
