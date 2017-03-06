@@ -18,7 +18,13 @@ gulp.task('sass', function () {
 	return gulp.src(paths.sass.src + 'main.scss')
 	           .pipe(sass({ includePaths: [paths.sass.src]	})
 	           .on('error', sass.logError))
-	           .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
+	           .pipe(autoprefixer({ 'browserlist' : [
+	                    '> 1%',
+	                    'last 2 versions',
+	                    'Firefox ESR',
+	                    'ie >= 10'
+	                ]
+	           }))
 	           .pipe(rename({ extname: '.css' }))
 	           .pipe(gulp.dest(paths.css.dest));
 

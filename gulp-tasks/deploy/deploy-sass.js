@@ -23,7 +23,13 @@ gulp.task('deploy:sass', function () {
 	            	includePaths: [paths.sass.src],
 	            	outputStyle: 'compressed'
 	            }))
-	            .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
+	            .pipe(autoprefixer({ 'browserlist' : [
+	                    '> 1%',
+	                    'last 2 versions',
+	                    'Firefox ESR',
+	                    'ie >= 10'
+	                ]
+	            }))
 	            .pipe(filesize())
 	            .pipe(rename({ extname: '.min.css' }))
 	            .pipe(sourcemaps.write('maps'))
