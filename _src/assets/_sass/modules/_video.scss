@@ -8,7 +8,7 @@
 
 		.video__play {
 
-			@include opacity(1);
+			opacity: 1;
 
 		}
 
@@ -19,7 +19,7 @@
 		.video__play {
 
 			z-index: -1;
-			@include opacity(0);
+			opacity: 0;
 
 		}
 
@@ -30,6 +30,8 @@
 		// Setting this as a block gets rid of a 4px bottom margin
 		// that offsets the image and the video
 		display: block;
+		margin-right: auto;
+		margin-left: auto;
 
 	}
 
@@ -40,8 +42,9 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		width: 100%;
 		height: auto;
+		margin-right: auto;
+		margin-left: auto;
 
 		max-width: 100%;
 
@@ -71,14 +74,12 @@
 		margin-right: auto;
 		margin-left: auto;
 
-		@include opacity(0.75);
+		opacity: 0.75;
 
-		@include transform(translateY(-50%));
+		transform: translateY(-50%);
 
-		@include transition(
-			z-index 0.25s ease-in-out,
-			opacity 0.25s ease-in-out
-		);
+		transition: z-index 0.25s ease-in-out,
+		            opacity 0.25s ease-in-out;
 
 		cursor: pointer;
 

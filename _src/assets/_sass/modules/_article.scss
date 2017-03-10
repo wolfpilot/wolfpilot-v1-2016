@@ -1,30 +1,142 @@
 .article {
 
-	@include mq($mq-mob--lrg, min) {
+	&__section {
 
-		float: left;
-		width: 70%;
-		padding-right: 10%;
-		
+		&--padded {
+
+			padding-bottom: 40px;
+
+			@include mq($mq-tab--lrg, min) {
+
+				padding-bottom: 80px;
+
+			}
+
+		}
+
 	}
 
-	&__heading {
+	&__header {
+
+		@include clearfix;
+
+		@include mq($mq-tab--lrg, min) {
+
+			margin-top: 40px;
+			margin-bottom: 40px;
+
+		}
+
+	}
+
+	&__info {
 
 		margin-bottom: 40px;
 
-		text-transform: initial;
+		text-align: center;
+
+		@include mq($mq-tab--lrg, min) {
+
+			float: right;
+			width: 30%;
+			margin-bottom: 0;
+
+			text-align: left;
+
+		}
 
 	}
 
-	&__subheading {
+	&__intro {
 
-		margin-bottom: 20px;
+		@include mq($mq-tab--lrg, min) {
+
+			float: left;
+			width: 70%;
+			padding-right: 10%;
+			
+		}
+
+	}
+
+	&__tagline {
+
+		margin-bottom: 40px;
 
 	}
 
 	&__image {
 
-		margin-bottom: 20px;
+		display: block;
+
+		&--fixed {
+
+			height: 400px;
+
+			/*
+			 * Sorry, I know importants hurt, they hurt me as well :(
+			 * However, they're needed since the source is declared inline
+			 */
+			background-attachment: fixed !important;
+			background-repeat: repeat !important;
+			background-size: auto !important;
+			background-position: center center !important;
+
+		}
+
+		&--spaced {
+
+			margin-top: 40px;
+
+			@include mq($mq-tab--lrg, min) {
+
+				margin-top: 80px;
+
+			}
+
+		}
+
+	}
+
+	&__blocks {
+
+		@include mq($mq-tab--lrg, min) {
+
+			display: table;
+			width: 100%;
+			height: 100%;
+
+		}
+
+	}
+
+	&__block {
+
+		height: 100%;
+
+		text-align: center;
+
+		@include mq($mq-tab--lrg, min) {
+
+			display: table-cell;
+			vertical-align: middle;
+			height: 100%;
+			width: 50%;
+
+		}
+
+		&--padded {
+
+			padding: 40px;
+
+		}
+
+		&--bordered {
+
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid transparent;
+
+		}
 
 	}
 

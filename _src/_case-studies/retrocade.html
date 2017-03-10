@@ -1,0 +1,218 @@
+---
+title: RetroCade
+tagline: An adventure through the magical world of CSS design &amp; keyframe animations
+
+category: personal work
+tags:
+  - web development
+  - web design
+
+date: June 2016
+technologies: SASS, jQuery
+---
+
+{% include helpers/setup-assets.html %}
+
+<div class="article">
+
+    <section class="article__section section section--padded">
+
+        <div class="container container--padded">
+
+            <div class="article__header">
+
+                <div class="article__info">
+
+                    <div class="meta">
+                        
+                        {% if page.date %}  
+                            <h6 class="meta__heading heading">
+                                Date
+                            </h6>
+
+                            <p class="meta__text text">
+                                {{ page.date | date: "%B %Y" }}
+                            </p>
+                        {% endif %}
+
+                        {% if page.technologies %}
+                            <h6 class="meta__heading heading">
+                                Technologies
+                            </h6>
+
+                            <p class="meta__text text">
+                                {{ page.technologies }}
+                            </p>
+                        {% endif %}
+
+                        {% if page.tags %}
+                            <h6 class="meta__heading heading">
+                                Tags
+                            </h6>
+
+                            <p class="meta__text meta__text--tags text">
+                                {% assign tags = page.tags %}
+
+                                {% for tag in tags %}
+                                    <a class="hyperlink" href="/case-studies/?tag={{ tag | downcase | replace: ' ', '-' }}">
+                                        {{ tag }}
+                                    </a>{% if tag != tags.last %},{% endif %}
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+
+                        <a class="meta__link" href="http://codepen.io/wolfpilot/pen/5a00949b8ade2d0010989e454dfe654f/" target="_blank" rel="noreferrer nofollow">View project {% include svg/link-external.svg %}</a>
+
+                        <hr class="meta__separator" />
+
+                    </div>
+
+                </div>
+
+                <div class="article__intro">
+                        
+                    <h4 class="article__tagline heading">
+                        {{ page.tagline }}
+                    </h4>
+
+                    <p class="text">
+                        {{ page.title }} is an ambitious ever-growing experiment set out to create a functional, semi-realistic audio system in HTML, CSS and JavaScript only. Made with {% include svg/heart.svg %} and in reminiscence of the golden age of electronica and disco.<br /><br />
+
+                        <em>"Never gonna give you up..."</em>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="article__section article__section--padded section">
+
+        <div class="container container--padded">
+
+            <h3 class="subheading">
+                Sweet dreams (are made of this)
+            </h3>
+
+            <p class="text text--lrg">
+                And indeed they are.
+            </p>
+
+            <p class="text">
+                I based my concept on the <a class="hyperlink" href="http://www.thevintageknob.org/akai-GX-747.html" target="_blank">Akai GX-747</a> and on the memories of my father's <a href="http://www.thevintageknob.org/grundig-TS1000.html" target="_blank">Grundig TS1000</a>. I felt that this mixture of old and new made a perfectly pleasant and balanced layout. Influenced by Google's currently trending material design, the concept went through quite a few iterations and many moments of self-doubt. Am I adding too many buttons? Is it supposed to be three-head or four-head? Should it even have a stop button or just pause? You get the gist of it.
+            </p>
+
+            <img class="article__image article__image--spaced" src="{{ assets_path }}01.jpg" alt="" />
+
+        </div>
+
+    </section>
+
+    <section class="article__section article__section--padded section">
+
+        <div class="container container--padded">
+
+            <h3 class="subheading">
+                Get down on it
+            </h3>
+
+            <p class="text text--lrg">
+                Get down on it!
+            </p>
+
+            <p class="text">
+                So, what do I plan on adding in the future, you ask?
+            </p>
+
+            <ul class="list">
+                <li class="list__item"><strike>Functional power button</strike></li>
+                <li class="list__item"><strike>Functional play/pause buttons</strike></li>
+                <li class="list__item">Draggable volume sliders</li>
+                <li class="list__item">Rotating knobs</li>
+                <li class="list__item">Animated VU meters</li>
+                <li class="list__item">Easing rewind/fast-forward functions</li>
+                <li class="list__item">Display counter that actually keeps track of time</li>
+            </ul>
+
+            <p>
+                Perhaps even the possibility of playing a real track.
+            </p>
+
+            <div class="t--center">
+
+                <img class="article__image article__image--spaced" src="{{ assets_path }}02.jpg" alt="" />
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="article__section article__section--padded section">
+
+        <div class="container container--padded">
+
+            <h3 class="subheading">
+                Preview
+            </h3>
+
+            <p class="text text--lrg">
+                See it in action
+            </p>
+
+            <div class="article__blocks">
+
+                <div class="article__block article__block--bordered">
+
+                    <div class="video js-video">
+
+                        <img class="video__preview" src="{{ assets_path }}video-placeholder.jpg" alt="" />
+
+                        <video class="video__player js-video-player" loop muted preload="none">
+                            <source src="{{ assets_path }}video.mp4" type="video/mp4">
+                            <source src="{{ assets_path }}video.webm" type="video/webm">
+                            Sorry, it looks like your browser doesn't support HTML5 video in MP4 or WebM formats.
+                        </video>
+
+                        <div class="video__overlay">
+                            
+                            <div class="video__play">
+                                {% include svg/play.svg %}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="article__block article__block--padded bg bg--d-grey">
+
+                    <div class="table">
+                        
+                        <div class="table__cell table__cell--middle">
+
+                            <h4 class="subheading t t--cursive c c--white">
+                                buttons, dials, sliders
+                            </h4>
+
+                            <p class="text c c--white">
+                                Reel-to-reel tape recorders can often times appear confusing due to their highly complicated layouts. I tried to approach this issue by heavily simplifying the original concept, whilst still providing a somewhat functional, minimalist UI.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>

@@ -1,0 +1,123 @@
+@keyframes hero-heading {
+
+    0%   {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+}
+
+.hero {
+
+    position: relative;
+    min-height: 220px;
+    max-height: 600px;
+
+    overflow: hidden;
+
+    &__spacer {
+
+        @include mq($mq-desk, min) {
+
+            padding-top: 62.5%;
+
+        }
+
+    }
+
+    &__image {
+
+        position: relative;
+        width: 100%;
+        min-height: 220px;
+        max-height: 600px;
+        padding-bottom: 62.5%; // allows fluid resizing
+
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+
+        @include mq($mq-desk, min) {
+
+            position: fixed;
+            z-index: -10;
+            top: 60px;
+            right: 0;
+            left: 0;
+            height: 100%;
+            height: calc(100vh - 60px);
+            padding-bottom: 0;
+            
+        }
+        
+    }
+
+    &__wrapper {
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.25) 25%,
+            rgba(0, 0, 0, 0.5) 100%
+        );
+
+        text-align: left;
+
+    }
+
+    &__heading {
+
+        position: absolute;
+        display: block;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin-bottom: 0;
+
+        border-color: inherit;
+        color: $white;
+
+        font-family: $secondaryFont;
+        @include font-size(48);
+        text-align: center;
+        text-transform: uppercase;
+
+        animation: hero-heading 0.5s cubic-bezier(0.39, 0.58, 0.57, 1) 0.25s both;
+
+        @include mq($mq-mob, min) {
+
+            @include font-size(64);
+
+        }
+
+        @include mq($mq-mob--lrg, min) {
+
+            @include font-size(100);
+
+        }
+
+        @include mq($mq-tab--lrg, min) {
+
+            display: inline-block;
+            right: auto;
+            left: auto;
+
+            text-align: left;
+
+        }
+
+    }
+
+}
