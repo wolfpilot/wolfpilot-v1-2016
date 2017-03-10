@@ -2,7 +2,7 @@
 
 {% when 'case-study' %}
 
-	{% capture assets_path %}{{ site.baseurl }}/assets/projects/{{ page.id | replace: 'case-studies/', '' }}/case-study/{% endcapture %}
+	{% capture assets_path %}{{ site.baseurl }}/assets/projects{{ page.id | replace: 'case-studies/', '' }}/case-study/{% endcapture %}
 
 {% else %}
 
