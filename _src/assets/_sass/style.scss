@@ -10,23 +10,24 @@
 @import "base/icon-font";
 @import "base/text-highlight";
 
-@import "helpers/helpers";
-
 @import "layout/grid";
 @import "layout/container";
 @import "layout/section";
-@import "layout/layout";
 
-@import "modules/components";
-@import "modules/buttons";
-@import "modules/nav";
-@import "modules/overlay";
-@import "modules/modal";
 @import "modules/keyframes";
+@import "modules/header";
+@import "modules/main";
+@import "modules/footer";
+@import "modules/logo";
+@import "modules/buttons";
+@import "modules/overlay";
+@import "modules/nav";
+@import "modules/modal";
 @import "modules/video";
 @import "modules/splash";
 @import "modules/showcase";
 @import "modules/article";
 @import "modules/aside";
 @import "modules/case-studies";
-@import "modules/project";
+
+@import "helpers/helpers";

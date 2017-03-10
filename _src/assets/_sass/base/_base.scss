@@ -30,7 +30,7 @@ or wrap each row of columns in a <div class="row"> */
 	&:before,
 	&:after {
 
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 
 	}
 

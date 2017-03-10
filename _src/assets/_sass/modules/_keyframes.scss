@@ -1,24 +1,9 @@
 /** Helpers */
 
 // Fade out
-@include keyframes(fade-out) {
+@keyframes fade-out {
 
-    0%   { @include opacity(1); }
-    100% { @include opacity(0); }
-
-}
-
-// Border - YEY, no more paints!
-@include keyframes(border-horiz) {
-
-    0%   { @include transform(translateX(-100%)); }
-    100% { @include transform(translateX(100%)); }
-
-}
-
-@include keyframes(border-vert) {
-
-    0%   { @include transform(translateY(100%)); }
-    100% { @include transform(translateY(-100%)); }
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
 
 }

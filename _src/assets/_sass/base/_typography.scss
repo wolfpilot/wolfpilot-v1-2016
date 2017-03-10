@@ -29,7 +29,7 @@ p {
     color: $d-grey;
 
     font-family: $primaryFont;
-    @include font-size($p-size);
+    @include font-size($p-size, 28);
 
     a {
 
@@ -64,7 +64,7 @@ a {
 
     text-decoration: none;
 
-    @include transition(color 0.15s ease-in-out);
+    transition: color 0.15s ease-in-out;
 
     &:hover,
     &:active {
@@ -96,10 +96,8 @@ address a {
 
     margin: 0 0 10px 0;
 
-    font-family: $tertiaryFont;
+    font-family: $secondaryFont;
     font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 
 }
 
@@ -181,65 +179,60 @@ h6, .h--epsilon {
 
 }
 
-.heading {
+.title {
 
-    &--main {
+    color: $accent-1;
 
-        margin-bottom: 60px;
+    @include font-size(64);
+    font-weight: bold;
+    text-transform: initial;
 
-        font-family: $secondaryFont;
-        @include font-size(100, 80);
-        font-weight: $bold;
+    @include mq($mq-mob--lrg, min) {
 
-        @include mq($mq-mob, min) {
-
-            @include font-size(120, 100);
-
-        }
-
-        @include mq($mq-mob--lrg, min) {
-
-            @include font-size(160, 120);
-
-        }
+        @include font-size(90);
 
     }
 
-    &--alt {
+    @include mq($mq-tab--lrg, min) {
 
-        font-family: $secondaryFont;
-        @include font-size(48);
-        font-weight: bold;
-
-        @include mq($mq-mob, min) {
-
-            @include font-size(80);
-
-        }
-
-        @include mq($mq-mob--lrg, min) {
-
-            @include font-size(120);
-
-        }
+        @include font-size(144, 144);
 
     }
 
 }
 
-.subheading {
+.subtitle {
 
-    margin-bottom: 0;
+    position: relative;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+
+    &:after {
+
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        height: 7px;
+        width: 100px;
+
+        background: $l-grey;
+
+    }
 
 }
 
 .text {
 
-    line-height: 28px;
-
     &--sml {
 
-        @include font-size(13);
+        @include font-size(14);
+
+        @include mq($mq-mob--lrg, min) {
+
+            @include font-size(15);
+            
+        }
 
     }
 
@@ -247,7 +240,21 @@ h6, .h--epsilon {
 
         margin-bottom: 20px;
 
+        color: $grey;
+
         @include font-size(20);
+
+        @include mq($mq-mob--lrg, min) {
+
+            @include font-size(24);
+            
+        }
+
+    }
+
+    &--accent-1 {
+
+        color: $accent-1;
 
     }
 
@@ -255,27 +262,30 @@ h6, .h--epsilon {
 
 .hyperlink {
 
-    &--alt {
+    &--lrg {
 
-        color: $grey;
+        display: inline-block;
+        margin-bottom: 20px;
 
-        &:hover {
+        border-bottom: none;
 
-            color: $black;
+        @include font-size(28);
+
+        @include mq($mq-mob, min) {
+
+            @include font-size(36);
 
         }
 
-    }
+        @include mq($mq-mob--lrg, min) {
 
-    &--lrg {
+            @include font-size(48);
 
-        font-family: $tertiaryFont;
-        @include font-size(20);
-        letter-spacing: 2px;
+        }
 
-        &:hover {
+        @include mq($mq-tab--lrg, min) {
 
-            color: $accent-1;
+            @include font-size(64);
 
         }
 
@@ -289,19 +299,8 @@ h6, .h--epsilon {
 
     &__item {
 
-        @include font-size($base-font-size, $delta-size);
+        @include font-size($base-font-size, 32);
 
-    }
-
-}
-
-// ASCII symbols
-.symbol {
-
-    &--heart { // &#10084;
-
-        color: $red;
-        
     }
 
 }

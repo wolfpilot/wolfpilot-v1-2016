@@ -5,22 +5,20 @@
 	top: 50%;
 	left: 0;
 
-	@include transform(translateY(-50%));
+	transform: translateY(-50%);
 
 	@include font-size(0);
 
 	visibility: hidden;
-	@include opacity(0);
+	opacity: 0;
 
-	@include transition(
-		visibility 0.25s ease-in-out,
-		opacity 0.25s ease-in-out
-	);
+	transition: visibility 0.25s ease-in-out,
+	            opacity 0.25s ease-in-out;
 
 	.header.is-active & {
 
 		visibility: visible;
-		@include opacity(1);
+		opacity: 1;
 
 	}
 
@@ -31,11 +29,11 @@
 		top: auto;
 		width: auto;;
 		height: 100%;
-		min-width: 400px;
+		min-width: 450px;
 
-		@include transform(none);
+		transform: none;
 
-		@include opacity(1);
+		opacity: 1;
 		visibility: visible;
 
 	}
@@ -51,19 +49,17 @@
 
 		color: $d-grey;
 
-		font-family: $tertiaryFont;
+		font-family: $primaryFont;
 		@include font-size(30, 72);
 		text-align: center;
 		letter-spacing: 4px;
 
-		@include opacity(0);
-		@include transform(translateY(-20px));
+		opacity: 0;
+		transform: translateY(-20px);
 
-		@include transition(
-			color 0.35s ease-in-out,
-			opacity 0.35s ease-in-out,
-			transform 0.35s ease-in-out
-		);
+		transition: color 0.35s ease-in-out,
+		            opacity 0.35s ease-in-out,
+		            transform 0.35s ease-in-out;
 
 		@for $i from 1 through 4 {
 
@@ -90,8 +86,8 @@
 
 		.header.is-active & {
 
-			@include opacity(1);
-			@include transform(translateY(0));
+			opacity: 1;
+			transform: translateY(0);
 
 		}
 
@@ -108,15 +104,15 @@
 			padding-right: 8px;
 			padding-left: 8px;
 
-			@include font-size(10, 60);
+			@include font-size(10);
 			text-transform: uppercase;
 			letter-spacing: 2px;
 			text-align: center;
 
-			@include opacity(1);
-			@include transform(none);
+			opacity: 1;
+			transform: none;
 
-			@include transition(color 0.25s ease-in-out);
+			transition: color 0.25s ease-in-out;
 
 			// For the sake of specificity, we'll have to double up these loops
 			@for $i from 1 through 4 {
@@ -127,7 +123,7 @@
 
 						& ~ .nav__highlight {
 
-							@include transform(translateX( ($i - 5) * 100%));
+							transform: translateX(($i - 5) * 100%);
 
 						}
 
@@ -145,7 +141,7 @@
 
 						& ~ .nav__highlight {
 
-							@include transform(translateX( ($i - 5) * 100%));
+							transform: translateX(($i - 5) * 100%);
 
 						}
 
@@ -153,6 +149,16 @@
 
 				}
 
+			}
+
+			// Trick to vertically align the items to themselves
+			&:before {
+
+				content: "";
+				display: inline-block;
+				vertical-align: middle;
+				height: 100%;
+				
 			}
 
 		}
@@ -172,7 +178,7 @@
 
 		background: $accent-1;
 
-		@include transform(translateX(15px)); // slide offscreen when not active
+		transform: translateX(15px); // slide offscreen when not active
 
 		transition: transform 0.25s ease-in-out;
 

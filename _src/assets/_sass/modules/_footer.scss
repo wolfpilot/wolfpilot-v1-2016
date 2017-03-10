@@ -1,0 +1,36 @@
+.footer {
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    background-color: $white;
+    border-bottom: 4px solid $accent-1;
+
+    @include mq($mq-mob--lrg, min) {
+
+        padding-top: 80px;
+        padding-bottom: 80px;
+
+    }
+
+    &__social {
+
+        a {
+
+            display: inline-block;
+            width: 30px;
+            margin: 15px 5px;
+
+            svg {
+
+                max-width: 100%;
+
+                fill: $white;
+
+            }
+
+        }
+
+    }
+
+}
