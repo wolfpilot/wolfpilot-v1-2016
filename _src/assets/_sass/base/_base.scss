@@ -56,6 +56,21 @@ or wrap each row of columns in a <div class="row"> */
 }
 
 
+/* #Remove default margins
+================================================== */
+
+html,
+body {
+
+	/* 
+	 * Setting a minimum height of 100vh forces a vertical scrollbar
+	 * so that the content doesn't get pushed before the page height is fully determined
+	 */
+	min-height: 100vh;
+	margin: 0;
+
+}
+
 /* #Miscellaneous
 ================================================== */
 
