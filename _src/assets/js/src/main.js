@@ -181,8 +181,8 @@ Wolfpilot = (function() {
 		var getDimensions = function getDimensions() {
 
 			return {
-				wWidth,
-				wHeight
+				wWidth: wWidth,
+				wHeight: wHeight
 			};
 
 		};
@@ -202,7 +202,7 @@ Wolfpilot = (function() {
 		});
 
 		return {
-			getDimensions
+			getDimensions: getDimensions
 		};
 
 	}());
@@ -354,7 +354,7 @@ Wolfpilot = (function() {
 		var getStatus = function getStatus() {
 
 			return {
-				status
+				status: status
 			};
 
 		};
@@ -419,7 +419,9 @@ Wolfpilot = (function() {
 
 		var getStatus = function getStatus() {
 
-			return status;
+			return {
+				status: status
+			};
 
 		};
 
@@ -922,7 +924,9 @@ Wolfpilot = (function() {
 
 		var getStatus = function getStatus() {
 
-			return status;
+			return {
+				status: status
+			};
 
 		};
 
