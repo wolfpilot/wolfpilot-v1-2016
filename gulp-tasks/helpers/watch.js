@@ -15,7 +15,7 @@ gulp.task('watch', function() {
 
 	// CSS/SCSS
 	gulp.watch([
-		paths.sass.src + 'main.scss',
+		paths.sass.src + 'style.scss',
 		paths.sass.src + '*.scss',
 		paths.sass.src + '**/*.scss',
 	], function() {

@@ -15,7 +15,7 @@ var gulp            = require('gulp'),
 
 gulp.task('sass', function () {
 
-	return gulp.src(paths.sass.src + 'main.scss')
+	return gulp.src(paths.sass.src + 'style.scss')
 	           .pipe(sass({ includePaths: [paths.sass.src]	})
 	           .on('error', sass.logError))
 	           .pipe(autoprefixer({ 'browserlist' : [
