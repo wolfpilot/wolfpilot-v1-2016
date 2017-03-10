@@ -984,13 +984,11 @@ Wolfpilot = (function() {
 
 	var caseStudies = (function caseStudies() {
 
-		var itemsWrapper = document.getElementById('case-studies-items'),
-		    navItems = document.getElementsByClassName('case-studies__nav-item'),
+		var navItems = document.getElementsByClassName('case-studies__nav-item'),
 		    articles = document.getElementsByClassName('case-studies__item'),
 		    tags,
 		    tag,
-		    json,
-		    countVisible = 0;
+		    json;
 
 		var showCategory = function showCategory(newTag) {
 
@@ -1006,15 +1004,7 @@ Wolfpilot = (function() {
 						lazyload(articles[i].getElementsByClassName('case-studies__image')[0]);
 						articles[i].classList.remove('is-hidden');
 
-						countVisible += 1;
-
 					}
-
-				}
-
-				if (countVisible === 1) {
-
-					itemsWrapper.classList.add('case-studies__items--single');
 
 				}
 
@@ -1028,12 +1018,6 @@ Wolfpilot = (function() {
 
 				lazyload(articles[i].getElementsByClassName('case-studies__image')[0]);
 				articles[i].classList.remove('is-hidden');
-
-				if (articles.length === 1) {
-
-					itemsWrapper.classList.add('case-studies__items--single');
-
-				}
 
 			}
 

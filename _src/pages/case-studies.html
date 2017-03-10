@@ -4,101 +4,98 @@ title: Case studies
 permalink: /case-studies/
 ---
 
-<div id="case-studies" class="case-studies">
+<div class="section section--padded section--case-studies">
 
-	<div class="row">
-		
-		<div class="container container--padded">
+	<div class="container container--lrg container--padded">
 
-			<h1 class="heading heading--alt t--center">
-				{{ page.title }}
-			</h1>
+		<h1 class="title">
+			{{ page.title }}
+		</h1>
 
-		</div>
+		<h2 class="subtitle">
+			A selection of personal and commercial work
+		</h2>
 
-	</div>
+		<div id="case-studies" class="case-studies">
 
-	<div class="row row--spaced">
+			{% comment %}Display from newest to oldest{% endcomment %}
+			{% assign case_studies = site.case-studies | reverse %}
 
-		<div class="container container--lrg container--padded">
+			{% assign all_tags = "" | split: "" %}
 
-			<div id="case-studies-wrapper" class="case-studies__wrapper">
+			{% for case_study in case_studies %}
 
-				{% comment %}Display from newest to oldest{% endcomment %}
-				{% assign case_studies = site.case-studies | reverse %}
+				{% assign tags = case_study.tags %}
 
-				{% assign all_tags = "" | split: "" %}
+				{% for tag in tags %}
 
-				{% for case_study in case_studies %}
-
-					{% assign tags = case_study.tags %}
-
-					{% for tag in tags %}
-
-						{% assign all_tags = all_tags | push: tag %}
-
-					{% endfor %}
+					{% assign all_tags = all_tags | push: tag %}
 
 				{% endfor %}
 
-				{% assign unique_tags = all_tags | uniq %}
+			{% endfor %}
 
-				<div class="case-studies__nav">
+			{% assign unique_tags = all_tags | uniq %}
 
-					<a class="case-studies__nav-item" href="/case-studies" data-target="all">
-						All
+			<div class="case-studies__nav">
+
+				<a class="case-studies__nav-item" href="/case-studies" data-target="all">
+					all
+				</a>
+
+				{% for tag in unique_tags %}
+					<a class="case-studies__nav-item" href="/case-studies?tag={{ tag | downcase | replace: ' ', '-' }}" data-target="{{ tag | downcase | replace: ' ', '-' }}">
+						{{ tag }}
 					</a>
+				{% endfor %}
 
-					{% for tag in unique_tags %}
-						<a class="case-studies__nav-item" href="/case-studies?tag={{ tag | downcase | replace: ' ', '-' }}" data-target="{{ tag | downcase | replace: ' ', '-' }}">
-							{{ tag }}
-						</a>
-					{% endfor %}
+			</div>
 
-				</div>
+			<div class="case-studies__items">
 
-				<div id="case-studies-items" class="case-studies__items">
+				{% for case_study in case_studies %}
 
-					{% for case_study in case_studies %}
+					<div class="case-studies__item is-hidden" data-tags='{{ case_study.tags | jsonify | downcase | replace: ' ', '-' }}'>
 
-						<a class="case-studies__item is-hidden" href="{{ case_study.id }}" data-tags='{{ case_study.tags | jsonify | downcase | replace: ' ', '-' }}'>
+						<img class="case-studies__image" data-lazyload-src="/assets/projects/{{ case_study.id | replace: 'case-studies/', '' }}/case-study/preview.jpg" alt="" />
+							
+						<div class="case-studies__overlay">
 
-							<img class="case-studies__image" data-lazyload-src="/assets/projects/{{ case_study.id | replace: 'case-studies/', '' }}/case-study/preview.jpg" alt="" />
-								
-							<div class="case-studies__overlay">
+							<a class="case-studies__details" href="{{ case_study.id }}">
 
-								<div class="case-studies__details">
+								<div class="table">
 
-									<div class="table">
+									<div class="table__cell table__cell--middle">
+									
+										<h2 class="case-studies__title subheading">
+											{{ case_study.title }}
+										</h2>
 
-										<div class="table__cell table__cell--middle">
-										
-											<h2 class="case-studies__title subheading">
-												{{ case_study.title }}
-											</h2>
+										<p class="case-studies__category text text--sml">
+											&bull; {{ case_study.category }} &bull;
+										</p>
 
-											<p class="case-studies__type text">
-												&bull; {{ case_study.category }} &bull;
-											</p>
+										<hr class="case-studies__separator" />
 
-											<hr class="case-studies__separator" />
+										<p class="case-studies__tagline text">
+											{{ case_study.tagline }}
+										</p>
 
-											<p class="case-studies__excerpt text">
-												{{ case_study.excerpt }}
-											</p>
-
-										</div>
+										<p class="case-studies__read-more text text--sml">
+											Read more
+										</p>
 
 									</div>
 
 								</div>
 
-							</div>
+							</a>
 
-						</a>
-					{% endfor %}
+						</div>
 
-				</div>
+					</div>
+
+				{% endfor %}
 
 			</div>
 

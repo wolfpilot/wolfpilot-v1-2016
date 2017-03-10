@@ -1,15 +1,14 @@
 .case-studies {
 
-    margin-top: 60px;
+	position: relative;
 
 	&__nav {
 
 		margin-bottom: 30px;
 
 		font-size: 0;
-		text-align: center;
 
-		@include mq($mq-tab--lrg, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			border-bottom: 1px solid $l-grey;
 
@@ -19,12 +18,14 @@
 
 			position: absolute;
 			right: 0;
-			width: 210px;
+			width: 300px;
 			margin-bottom: 0;
 			padding-right: 10px;
 			padding-left: 10px;
 
 			border-bottom: none;
+
+			text-align: center;
 
 		}
 
@@ -41,23 +42,21 @@
 		border-bottom: 1px dotted $l-grey;
 		color: $d-grey;
 
-		font-family: $tertiaryFont;
+		font-family: $primaryFont;
 		@include font-size(12);
 		text-align: center;
-		text-transform: uppercase;
-		letter-spacing: 2px;
 
-		@include transition(
-			border-color 0.15s ease-in-out,
-			color 0.15s ease-in-out
-		);
+		transition: border-color 0.15s ease-in-out,
+		            color 0.15s ease-in-out;
 
-		@include mq($mq-tab--lrg, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			display: inline-block;
 			margin: auto;
 
 			border: none;
+
+			@include font-size(14);
 
 		}
 
@@ -71,10 +70,8 @@
 			@include font-size($base-font-size);
 			text-align: right;
 
-			@include transition(
-				color 0.2s ease-in-out,
-				transform 0.2s ease-in-out
-			);
+			transition: color 0.2s ease-in-out,
+			            transform 0.2s ease-in-out;
 
 		}
 
@@ -84,16 +81,15 @@
 			border-bottom: 1px solid $accent-1;
 			color: $accent-1;
 
-			@include mq($mq-tab--lrg, min) {
+			@include mq($mq-mob--lrg, min) {
 
 				border: none;
-				color: $black;
 				
 			}
 
 			@include mq($mq-desk--lrg, min) {
 
-				@include transform(translateX(-10px));
+				transform: translateX(-10px);
 				
 			}
 
@@ -105,7 +101,7 @@
 			border-bottom: 1px solid $accent-1;
 			color: $accent-1;
 
-			@include mq($mq-tab--lrg, min) {
+			@include mq($mq-mob--lrg, min) {
 
 				border: none;
 				
@@ -113,7 +109,7 @@
 
 			@include mq($mq-desk--lrg, min) {
 
-				@include transform(translateX(-10px));
+				transform: translateX(-10px);
 				
 			}
 
@@ -121,19 +117,7 @@
 
 	}
 
-	&__wrapper {
-
-		position: relative;
-
-	}
-
     &__items {
-
-		&--single {
-
-			text-align: center;
-
-		}
 
 		@include mq($mq-tab--lrg, min) {
 
@@ -143,8 +127,7 @@
 
 		@include mq($mq-desk--lrg, min) {
 
-			padding-right: 210px;
-			padding-left: 210px;
+			padding-right: 300px;
 
 		}
 
@@ -185,29 +168,27 @@
 
 	&__overlay {
 
-		@include mq($mq-tab--lrg, min) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
+		background-color: transparentize($white, 0.05);
 
-			background-color: transparentize($white, 0.8);
+		opacity: 0;
+		visibility: hidden; // prevents initial action on touch devices
 
-			@include transition(opacity cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s);
+		transition: opacity cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s,
+		            visibility cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s;
 
-			@include opacity(0);
+		.case-studies__item:hover &,
+		.case-studies__item:focus & {
 
-			background-color: transparentize($white, 0.05);
-
-			.case-studies__item:hover & {
-
-				@include opacity(1);
-
-			}
+			opacity: 1;
+			visibility: visible;
 
 		}
 
@@ -228,11 +209,12 @@
 
 			margin-bottom: 0;
 
-			@include transition(transform cubic-bezier(0.39, 0.58, 0.57, 1) 0.5s);
+			transition: transform cubic-bezier(0.39, 0.58, 0.57, 1) 0.5s;
 
-			.case-studies__item:hover & {
+			.case-studies__item:hover &,
+			.case-studies__item:focus & {
 
-				@include transform(scale(1.1));
+				transform: scale(1.1);
 
 			}
 
@@ -242,36 +224,30 @@
 
 	&__details {
 
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 15px;
+
 		text-align: center;
+		
+		transform: translateY(15px);
+		filter: hue-rotate(-270deg);
 
-		@include mq($mq-tab--lrg, min) {
+		transition: transform 0.35s linear,
+		            filter 0.35s linear;
 
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			margin-top: 0;
-			margin-bottom: 0;
+		.case-studies__item:hover &,
+		.case-studies__item:focus & {
 
-			width: 100%;
-			height: 100%;
-			padding: 15px;
-			
-			@include transform(translateY(15px));
-			@include filter(hue-rotate, -270deg);
-
-			@include transition(
-				transform 0.35s linear,
-				filter 0.35s linear
-			);
-
-			.case-studies__item:hover & {
-
-				@include transform(translateY(0));
-				@include filter(hue-rotate, 0deg);
-
-			}
+			transform: translateY(0);
+			filter: hue-rotate(0deg);
 
 		}
 
@@ -284,37 +260,23 @@
 		color: $accent-1;
 
 		font-family: $secondaryFont;
-		line-height: 64px;
+		text-transform: initial;
 
 		@include mq($mq-tab--lrg, min) {
 
-			@include font-size($gamma-size);
-
-		}
-
-		@include mq(1400px, min) {
-
-			@include font-size($beta-size);
+			@include font-size(48, 48);
 
 		}
 
 	}
 
-	&__type {
+	&__category {
 
-		color: $d-grey;
+		color: $accent-1;
 
 		font-family: $tertiaryFont;
-		@include font-size(13);
 		text-align: center;
-		text-transform: uppercase;
 		letter-spacing: 1px;
-
-		@include mq($mq-tab--lrg, min) {
-
-			color: $accent-1;
-
-		}
 
 	}
 
@@ -326,25 +288,38 @@
 		width: 50px;
 		height: 2px;
 
-		background-color: $l-grey;
+		background-color: $accent-1;
 		border: none;
 
-		@include mq($mq-tab--lrg, min) {
+	}
 
-			background-color: $accent-1;
+	&__tagline {
+
+		display: none;
+
+		@include mq($mq-desk, min) {
+
+			display: block;
+
+			max-width: 80%;
+			margin: 0 auto 20px;
+
+			color: $accent-1;
 
 		}
 
 	}
 
-	&__excerpt {
+	&__read-more {
 
-		max-width: 80%;
-		margin: 0 auto 20px;
+		color: $accent-1;
 
-		@include mq($mq-tab--lrg, min) {
+		text-transform: uppercase;
+		letter-spacing: 2px;
 
-			color: $accent-1;
+		@include mq($mq-desk, min) {
+
+			display: none;
 
 		}
 
