@@ -2,14 +2,6 @@
  * Typography
  *******************************************/
 
-@font-face {
-    font-family: 'Bebas Neue';
-    src: url('/assets/fonts/bebas-neue-bold.woff') format('woff')
-        url('/assets/fonts/bebas-neue-bold.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 700;
-}
-
 // important to define 62.5% for [rem] font conversion
 html {
 

@@ -9,7 +9,7 @@ $base-font-family: sans-serif!default;
 
 // Using 1.618 Golden Ratio - find it here http://type-scale.com/
 // Base stuff - in px --> to be converted to rems
-$base-font-size:	15 !default;
+$base-font-size:	17 !default;
 
 $base-line-height: $base-font-size * 1.25 !default;
 
@@ -29,9 +29,9 @@ $p-size:            $base-font-size !default;
  * FONTS
  *******************************************/
 
-$primaryFont: "Roboto Slab", "Trebuchet MS", Helvetica, Arial, sans-serif;
-$secondaryFont: "Bebas Neue", Georgia, 'Times New Roman', serif;
-$tertiaryFont: 'Roboto Condensed', "Trebuchet MS", Helvetica, Arial, sans-serif;
+$primaryFont: "Open Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$secondaryFont: "Hind", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$tertiaryFont: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
 
 $fonticon: 'customicon';
 
