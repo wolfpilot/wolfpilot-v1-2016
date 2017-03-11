@@ -296,13 +296,20 @@
 				.chain {
 
 					&__top {
-
-						transform: translate(19%, -19%);
+						/*
+						 * Chrome and FF render the translated distances slightly differently,
+						 * this keeps the values roughly similar across browsers.
+						 * Unfortunately, SVG transforms don't work at all in IE,
+						 * but what's new, right? ¯\_(ツ)_/¯
+						 */
+						transform: translate(3.8px, -3.8px);
 
 					}
 
 					&__bottom {
-						transform: translate(-19%, 19%);
+
+						transform: translate(-3.8px, 3.8px);
+
 					}
 
 				}
