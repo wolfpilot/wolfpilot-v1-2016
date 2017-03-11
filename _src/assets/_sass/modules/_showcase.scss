@@ -164,6 +164,7 @@
 
 			opacity: 0;
 			visibility: hidden; // prevents initial action on touch devices
+			overflow: hidden;
 
 			transition: opacity cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s,
 			            visibility cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s;
@@ -173,6 +174,12 @@
 
 				opacity: 1;
 				visibility: visible;
+
+			}
+
+			.showcase__project.is-visible & {
+
+				overflow: visible;
 
 			}
 
