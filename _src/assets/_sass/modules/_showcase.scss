@@ -98,6 +98,12 @@
 		            transform 0.5s ease-in-out,
 		            max-height 0s linear 0.5s;
 
+		/*
+		 * Fix infinite paint flashing in Webkit-based browsers
+		 * due to elements being taller than the screen
+		 */
+		-webkit-backface-visibility: hidden;
+
 		@include mq($mq-mob--lrg, min) {
 
 			transform: translateY(50px);
