@@ -85,8 +85,6 @@
 		 * to block or inline-block, it will differ across browser. Sorry :(
 		 */
 		position: relative;
-		display: inline-block;
-		margin-bottom: 15px;
 
 		opacity: 0;
 		transform: translateY(20px);
@@ -138,6 +136,7 @@
 
 			max-height: 0;
 			overflow: hidden;
+			margin-bottom: 15px;
 
 			transition: max-height 0s linear 0.5s;
 
