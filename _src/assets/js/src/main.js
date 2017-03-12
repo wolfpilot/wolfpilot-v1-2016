@@ -802,6 +802,7 @@ Wolfpilot = (function() {
 					showcasedProjects.push(projects[i].getAttribute('data-target'));
 
 				}
+
 			}, 500);
 
 			// Publish the list of currently visible projects

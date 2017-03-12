@@ -96,7 +96,11 @@
 		 */
 		transition: opacity 0.5s ease-in-out,
 		            transform 0.5s ease-in-out,
-		            max-height 0s linear 0.5s;
+		            /* Adding a small delay here allows the next category's height
+		             * to load before the current one is hidden, therefore preventing
+		             * flickering when the images' sizes haven't yet been calculated
+		             * and thus pushed the boundaries of the parent wrapper. */
+		            max-height 0s linear 0.75s;
 
 		/*
 		 * Fix infinite paint flashing in Webkit-based browsers
@@ -132,8 +136,8 @@
 			 * no delay allows allows the layout to expand while invisible
 			 * thus avoiding column reflows
 			 */
-			transition: opacity 0.5s ease-in-out,
-			            transform 0.5s ease-in-out,
+			transition: opacity 0.5s ease-in-out 0.25s,
+			            transform 0.5s ease-in-out 0.25s,
 			            max-height 0s linear;
 
 		}
@@ -144,7 +148,7 @@
 			overflow: hidden;
 			margin-bottom: 15px;
 
-			transition: max-height 0s linear 0.5s;
+			transition: max-height 0s linear 0.75s;
 
 			.showcase__project.is-visible & {
 
