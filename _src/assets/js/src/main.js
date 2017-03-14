@@ -404,7 +404,7 @@ Wolfpilot = (function() {
 		}
 
 		var wrapper = document.getElementById('js-modal'),
-		    images = wrapper.getElementsByClassName('modal__img'),
+		    projects = wrapper.getElementsByClassName('modal__project'),
 
 		    btnPrev = document.getElementById('js-modal--prev'),
 		    btnNext = document.getElementById('js-modal--next'),
@@ -454,7 +454,7 @@ Wolfpilot = (function() {
 
 			}
 
-			lazyload(prevProject);
+			lazyload(prevProject.getElementsByClassName('modal__img')[0]);
 			activeProject.el.classList.remove('is-visible');
 			prevProject.classList.add('is-visible');
 
@@ -480,7 +480,7 @@ Wolfpilot = (function() {
 
 			}
 
-			lazyload(nextProject);
+			lazyload(nextProject.getElementsByClassName('modal__img')[0]);
 			activeProject.el.classList.remove('is-visible');
 			nextProject.classList.add('is-visible');
 
@@ -496,7 +496,7 @@ Wolfpilot = (function() {
 			overlay.handler();
 			wrapper.classList.add('is-active');
 
-			lazyload(activeProject.el);
+			lazyload(activeProject.el.getElementsByClassName('modal__img')[0]);
 			activeProject.el.classList.add('is-visible');
 
 		};
@@ -508,9 +508,9 @@ Wolfpilot = (function() {
 			overlay.handler();
 			wrapper.classList.remove('is-active');
 
-			for (var i = 0; i < images.length; i++) {
+			for (var i = 0; i < projects.length; i++) {
 
-				images[i].classList.remove('is-visible');
+				projects[i].classList.remove('is-visible');
 
 			}
 

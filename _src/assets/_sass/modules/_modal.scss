@@ -42,7 +42,7 @@
                     opacity 0.5s ease-in-out,
                     transform 0.5s ease-in-out;
 
-        &.is-visible {
+        .modal__project.is-visible & {
 
             visibility: visible;
             opacity: 1;
