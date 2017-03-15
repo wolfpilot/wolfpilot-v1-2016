@@ -97,7 +97,13 @@
         "id": "cawr",
         "name": "CAWR",
         "tagline": "New website design commissioned by Dr. Michel Pimbert for the Centre for Agroecology, Water & Resilience.",
-        "tags": ["web design"]
+        "tags": ["web design"],
+        "links": [
+            {
+                "type": "int",
+                "url": "/case-studies/cawr"
+            }
+        ]
     },
     {
         "id": "orc-shield",

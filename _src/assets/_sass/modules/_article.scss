@@ -96,6 +96,18 @@
 
 		}
 
+		&--bordered {
+
+			border: 10px solid $ivory;
+
+			@include mq($mq-mob--lrg, min) {
+
+				border-width: 15px;
+
+			}
+
+		}
+
 	}
 
 	&__blocks {
