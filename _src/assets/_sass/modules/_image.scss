@@ -1,0 +1,74 @@
+.image {
+
+	position: relative;
+	display: block;
+
+	&--fixed {
+
+		height: 400px;
+
+		/*
+		 * Sorry, I know importants hurt, they hurt me as well :(
+		 * However, they're needed since the source is declared inline
+		 */
+		background-attachment: fixed !important;
+		background-repeat: repeat !important;
+		background-size: auto !important;
+		background-position: center center !important;
+
+		&-lrg {
+
+			height: 600px;
+
+		}
+
+	}
+
+	&--spaced {
+
+		margin-top: 40px;
+
+		@include mq($mq-tab--lrg, min) {
+
+			margin-top: 80px;
+
+		}
+
+	}
+
+	&--bordered {
+
+		border: 10px solid $ivory;
+
+		@include mq($mq-mob--lrg, min) {
+
+			border-width: 15px;
+
+		}
+
+	}
+
+	&--shadowed {
+
+		&:before {
+
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+
+			background-image: linear-gradient(
+				rgba(0, 0, 0, 0.2) 0%,
+				rgba(0, 0, 0, 0.25) 25%,
+				rgba(0, 0, 0, 0.5) 100%
+			);
+
+		}
+
+	}
+
+}
