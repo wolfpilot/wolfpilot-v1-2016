@@ -63,6 +63,45 @@
 
     	display: table-cell;
 
+        &--half {
+
+            display: block;
+
+            @include mq($mq-tab--lrg, min) {
+
+                display: table-cell;
+                width: 50%;
+
+            }
+
+            &:nth-child(1) {
+
+                @include mq($mq-tab--lrg, min) {
+
+                    padding-right: 20px;
+
+                }
+
+            }
+
+            &:nth-child(2) {
+
+                @include mq($mq-tab--lrg, min) {
+
+                    padding-left: 20px;
+
+                }
+
+            }
+
+        }
+
+        &--top {
+
+            vertical-align: top;
+
+        }
+
 		&--middle {
 
 			vertical-align: middle;
