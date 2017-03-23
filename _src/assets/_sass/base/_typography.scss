@@ -181,13 +181,19 @@ h6, .h--epsilon {
 
 .title {
 
-    color: $accent-1;
+    display: inline-block;
+    margin-bottom: 20px;
+
+    border-bottom: 3px dashed $accent-1;
+    color: $carbon;
 
     @include font-size(64);
     font-weight: bold;
     text-transform: initial;
 
     @include mq($mq-mob--lrg, min) {
+
+        border-width: 4px;
 
         @include font-size(90);
 
@@ -196,27 +202,6 @@ h6, .h--epsilon {
     @include mq($mq-tab--lrg, min) {
 
         @include font-size(144, 144);
-
-    }
-
-}
-
-.subtitle {
-
-    position: relative;
-    margin-bottom: 60px;
-    padding-bottom: 20px;
-
-    &:after {
-
-        content: '';
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        height: 7px;
-        width: 100px;
-
-        background: $l-grey;
 
     }
 
