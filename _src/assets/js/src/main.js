@@ -342,6 +342,48 @@ Wolfpilot = (function() {
 
 	};
 
+	var eventTracking = (function eventTracking() {
+
+		var elems = document.getElementsByClassName('js-event-tracker'),
+		    category,
+		    action,
+		    label;
+
+		var send = function send(newCategory, newAction, newLabel) {
+
+			window.ga('send', 'event', newCategory, newAction, newLabel);
+
+		};
+
+		var handler = function handler(target) {
+
+			category = target.getAttribute('data-event-category');
+			action = target.getAttribute('data-event-action');
+			label = target.getAttribute('data-event-label');
+
+			send(category, action, label);
+
+		};
+
+		(function _bindEvents() {
+
+			for (var i = 0; i < elems.length; i++) {
+
+				elems[i].addEventListener('click', handler.bind(null, elems[i]), false);
+
+			}
+
+		}());
+
+		return {
+
+			handler: handler,
+			send: send
+
+		};
+
+	}());
+
 
 	/** MAIN */
 
@@ -1065,6 +1107,7 @@ Wolfpilot = (function() {
 		getQueryString: getQueryString,
 		getClosestParent: getClosestParent,
 		lazyload: lazyload,
+		eventTracking: eventTracking,
 		/** MAIN */
 		navigation: navigation,
 		scrollToY: scrollToY,
