@@ -29,7 +29,7 @@
 		top: auto;
 		width: auto;;
 		height: 100%;
-		min-width: 450px;
+		min-width: 360px;
 
 		transform: none;
 
@@ -100,7 +100,7 @@
 		@include mq($mq-mob--lrg, min) {
 
 			display: inline-block;
-			width: 25%;
+			width: 33.33%;
 			padding-right: 8px;
 			padding-left: 8px;
 
@@ -115,7 +115,7 @@
 			transition: color 0.25s ease-in-out;
 
 			// For the sake of specificity, we'll have to double up these loops
-			@for $i from 1 through 4 {
+			@for $i from 1 through 3 {
 
 				&:nth-child(#{$i}) {
 
@@ -123,7 +123,7 @@
 
 						& ~ .nav__highlight {
 
-							transform: translateX(($i - 5) * 100%);
+							transform: translateX(($i - 4) * 100%);
 
 						}
 
@@ -133,7 +133,7 @@
 
 			}
 
-			@for $i from 1 through 4 {
+			@for $i from 1 through 3 {
 
 				&:nth-child(#{$i}) {
 
@@ -141,7 +141,7 @@
 
 						& ~ .nav__highlight {
 
-							transform: translateX(($i - 5) * 100%);
+							transform: translateX(($i - 4) * 100%);
 
 						}
 
@@ -171,9 +171,9 @@
 
 		position: absolute;
 		bottom: -1px;
-		right: -25%;
+		right: -33.33%;
 
-		width: 25%;
+		width: 33.33%;
 		height: 0.2rem;
 
 		background: $accent-1;
