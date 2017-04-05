@@ -1,7 +1,7 @@
 <header id="header" class="header">
 
 	<a class="header__logo" href="{{ site.baseurl }}/">
-		<img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=logo&w=64&h=64" alt="Logo illustration of a wolf" />
+		{% include svg/logo.svg %}
 	</a>
 
 	<nav id="nav" class="nav" role="navigation">
@@ -12,10 +12,6 @@
 
 		<a class="nav__item {% if page.url == '/case-studies/' %}is-active{% endif %}" href="/case-studies">
 			Case studies
-		</a>
-
-		<a class="nav__item {% if page.url == '/blog/' %}is-active{% endif %}" href="/blog">
-			Blog
 		</a>
 
 		<a class="nav__item js-scroll" href="#contact" data-target="contact">

@@ -4,24 +4,57 @@ title: Home
 permalink: /
 ---
 
-<div class="container container--padded">
-	
-	<div class="logo t--center">
+<div class="splash">
 
-		<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=logo&w=250&h=250" alt="Logo illustration of a wolf" />
+	<div class="splash__image"></div>
 
-	</div>
-
-	<div class="t--center">
-
-		<h1 class="heading heading--main">
-			Razvan Negrea
-		</h1>
+	<div class="splash__wrapper">
 		
-	</div>
+		<div class="splash__overlay"></div>
 
-	{% include partials/about.html %}
-	{% include partials/work.html %}
-	{% include partials/contact.html %}
+		<div class="table">
+		
+			<div class="table__cell table__cell--middle">
+
+				<div class="container container--padded">
+
+					<div class="splash__text">
+						
+						<h1 class="splash__heading">
+							<span>
+								{{ site.author | upcase }}
+							</span>
+						</h1>
+
+						<h4 class="splash__subheading">
+							Web development &amp; design &#149; Concept art &#149; Illustration
+						</h4>
+
+						<a class="scroll js-scroll" href="#intro" data-target="intro">
+
+							<span class="scroll__mouse">
+
+								<span class="scroll__wheel"></span>
+								
+							</span>
+
+							<span class="scroll__cta">
+								scroll
+							</span>
+
+						</a>
+
+					</div>
+				
+				</div>
+
+			</div>
+			
+		</div>
+
+	</div>
 
 </div>
+
+{% include partials/intro.html %}
+{% include partials/work.html %}

@@ -2,7 +2,7 @@
     {
         "id": "retrocade",
         "name": "RetroCade",
-        "tagline": "Fun little experiment with CSS keyframe animations",
+        "tagline": "Fun little experiment with CSS keyframe animations.",
         "tags": ["featured", "web development"],
         "links": [
             {
@@ -14,5 +14,269 @@
                 "url": "http://codepen.io/wolfpilot/pen/5a00949b8ade2d0010989e454dfe654f/"
             }
         ]
-    }
+    },
+    {
+        "id": "forever-darkness",
+        "name": "Forever Darkness",
+        "tagline": "Commissioned by Darcy Campbell as cover for his book 'Forever Darkness'.",
+        "tags": ["featured", "illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Forever-Darkness-Book-Cover-332757595"
+            }
+        ]
+    },
+    {
+        "id": "machina-inferni",
+        "name": "MACHINA INFERNI",
+        "tagline": "Who doesn't love mechs?",
+        "tags": ["featured", "illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/M-A-C-H-I-N-A-I-N-F-E-R-N-I-303870376"
+            }
+        ]
+    },
+    {
+        "id": "phone-concept",
+        "name": "Phone concept",
+        "tagline": "Prototyped using HTML, CSS and JavaScript only.",
+        "tags": ["featured", "web development"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://codepen.io/wolfpilot/full/NrqemV/"
+            }
+        ]
+    },
+    {
+        "id": "up-n-running",
+        "name": "Up n' running",
+        "tagline": "Simple boilerplate initially created as an alternative for its slightly older cousin, Grunt.",
+        "tags": ["featured", "web development"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "https://github.com/wolfpilot/up-n-running-gulp-boilerplate"
+            }
+        ]
+    },
+    {
+        "id": "welcome-to-my-world",
+        "name": "Welcome to my world",
+        "tagline": "Started as an exploration of vertical momentum, ended up planning my first house on the side of a mountain.",
+        "tags": ["featured", "illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Welcome-To-My-World-254089985"
+            }
+        ]
+    },
+    {
+        "id": "vandal",
+        "name": "Vandal",
+        "tagline": "The dream rat rod.",
+        "tags": ["featured", "illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Vandal-396333301"
+            }
+        ]
+    },
+    {
+        "id": "granada-capital-group",
+        "name": "Granada Capital Group",
+        "tagline": "Personal project for a fictive bank with the purpose of inspiring strength and security to latin-based customers.",
+        "tags": ["web design"]
+    },
+    {
+        "id": "cawr",
+        "name": "CAWR",
+        "tagline": "New website design commissioned by Dr. Michel Pimbert for the Centre for Agroecology, Water & Resilience.",
+        "tags": ["web design"],
+        "links": [
+            {
+                "type": "int",
+                "url": "/case-studies/cawr"
+            }
+        ]
+    },
+    {
+        "id": "orc-shield",
+        "name": "Orc shield",
+        "tagline": "Orcs are not necessarily known for their crafting skills... or for any amount of logic.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Orc-Shield-323026962"
+            }
+        ]
+    },
+    {
+        "id": "silhouettes",
+        "name": "Silhouettes",
+        "tagline": "A study of body language, shape and contrast.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Silhouettes-479116661"
+            }
+        ]
+    },
+    {
+        "id": "othor-warrior",
+        "name": "Othor warrior",
+        "tagline": "Commissioned by Isaac Bell for the Artifex Publishing House, Othor warriors are massive, well built humanoid amphibians that you'd best avoid calling 'Shrek'.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Commission-Othor-Warrior-300991233"
+            }
+        ]
+    },
+    {
+        "id": "the-tulh",
+        "name": "The Tulh",
+        "tagline": "Commissioned by Isaac Bell for the Artifex Publishing House, the Tulh warrior is, at its core, a frog, spear-wielding humanoid.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Commission-The-Tulh-300322013"
+            }
+        ]
+    },
+    {
+        "id": "corporate-ghost-recon",
+        "name": "Corporate Ghost Recon",
+        "tagline": "Many hours of painting later... * gasp * I want one!",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Corporate-Ghost-Recon-289478028"
+            }
+        ]
+    },
+    {
+        "id": "grim-reaper",
+        "name": "Grim Reaper",
+        "tagline": "What do we say to the God of death?",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Grim-Reaper-Commission-334034630"
+            }
+        ]
+    },
+    {
+        "id": "the-floating-city",
+        "name": "The Floating City",
+        "tagline": "The elders have seen many wonderous things during their lifetimes, but an entire city that floats?",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/The-Floating-City-290472146"
+            }
+        ]
+    },
+    {
+        "id": "nomad-warrior",
+        "name": "Nomad warrior",
+        "tagline": "Born out of an almost unhealthy obsession with deserts and warriors, the Nomad is a skilled assassin or a hero, depending on the side you stand on.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Nomad-Warrior-288896159"
+            }
+        ]
+    },
+    {
+        "id": "th-50-spectre-sniper-rifle",
+        "name": "TH-50 Spectre Sniper Rifle",
+        "tagline": "Can't go wrong with this one.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/TH-50-SPECTRE-Sniper-Rifle-332046473"
+            }
+        ]
+    },
+    {
+        "id": "samurai-i",
+        "name": "Samurai I",
+        "tagline": "Influenced by Kekai Kotaki, the first speed painting in a series of grimy, slightly abstract character concepts.",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Samurai-I-264578714"
+            }
+        ]
+    },
+    {
+        "id": "red-fury",
+        "name": "Red Fury",
+        "tagline": "Breaking hearts has never been so much fun!",
+        "tags": ["concept art"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Red-Fury-265161473"
+            }
+        ]
+    },
+    {
+        "id": "scimitar",
+        "name": "Scimitar",
+        "tagline": "Elegance with a sharp edge.",
+        "tags": ["concept art"]
+    },
+    {
+        "id": "steampunk-pirate",
+        "name": "Steampunk pirate",
+        "tagline": "One of my few attempts at proper lineart.",
+        "tags": ["illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Steampunk-Pirate-480076759"
+            }
+        ]
+    },
+    {
+        "id": "hello-there-old-friend",
+        "name": "Hello there, old friend",
+        "tagline": "In a mystical garden, two old souls meet again.",
+        "tags": ["illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Hello-There-Old-Friend-292403819"
+            }
+        ]
+    },
+    {
+        "id": "toucan-study",
+        "name": "Toucan study",
+        "tagline": "Referenced from the cover of 'The Life of Birds' by David Attenborough.",
+        "tags": ["illustration"],
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://n-deed.deviantart.com/art/Toucan-Study-419654587"
+            }
+        ]
+    },
 ]

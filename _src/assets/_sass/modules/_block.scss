@@ -1,0 +1,21 @@
+.block {
+
+	&--padded {
+
+		padding: 40px;
+
+	}
+
+	&--offset {
+
+		// transform: translateY(-100px);
+
+	}
+
+	&__content {
+
+		min-height: 400px;
+
+	}
+
+}

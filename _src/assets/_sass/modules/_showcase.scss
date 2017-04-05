@@ -4,7 +4,7 @@
 
 		margin-bottom: 30px;
 
-		@include mq($mq-tab--lrg, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			border-bottom: 1px solid $l-grey;
 
@@ -22,14 +22,13 @@
 		border-bottom: 1px dotted $l-grey;
 		color: $d-grey;
 
+		font-family: $primaryFont;
 		text-align: center;
 
-		@include transition(
-			border-color 0.15s ease-in-out,
-			color 0.15s ease-in-out
-		);
+		transition:	border-color 0.15s ease-in-out,
+		            color 0.15s ease-in-out;
 
-		@include mq($mq-tab--lrg, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			display: inline-block;
 			width: auto;
@@ -47,7 +46,7 @@
 			border-bottom: 1px solid $accent-1;
 			color: $accent-1;
 
-			@include mq($mq-tab--lrg, min) {
+			@include mq($mq-mob--lrg, min) {
 
 				border: none;
 				
@@ -60,15 +59,16 @@
 	&__content {
 
 		@include font-size(0);
+		text-align: center;
 
-		@include mq($mq-mob, min) {
+		@include mq($mq-mob--lrg, min) {
 
 			column-count: 2;
 			column-gap: 15px;
 			
 		}
 
-		@include mq($mq-tab--lrg, min) {
+		@include mq($mq-desk, min) {
 
 			column-count: 3;
 
@@ -84,53 +84,61 @@
 		 * how the columns would in fact be laid out, therefore regardless of setting the element
 		 * to block or inline-block, it will differ across browser. Sorry :(
 		 */
-		display: inline-block;
-		margin-bottom: 15px;
+		position: relative;
 
-		@include opacity(0);
-		@include transform(translateY(20px));
+		opacity: 0;
+		transform: translateY(20px);
 		max-height: 0;
-
-		overflow: hidden;
-		cursor: url('/assets/img/magnifying-glass.cur') 10 10, zoom-in;
 
 		/* max-height
 		 * delay so it doesn't trigger a reflow
 		 * when the 'is-visible' class is removed
 		 */
-		@include transition(
-			opacity 0.5s ease-in-out,
-			transform 0.5s ease-in-out,
-			max-height 0s linear 0.5s
-		);
+		transition: opacity 0.5s ease-in-out,
+		            transform 0.5s ease-in-out,
+		            /* Adding a small delay here allows the next category's height
+		             * to load before the current one is hidden, therefore preventing
+		             * flickering when the images' sizes haven't yet been calculated
+		             * and thus pushed the boundaries of the parent wrapper. */
+		            max-height 0s linear 0.75s;
+
+		/*
+		 * Fix infinite paint flashing in Webkit-based browsers
+		 * due to elements being taller than the screen
+		 */
+		-webkit-backface-visibility: hidden;
 
 		@include mq($mq-mob--lrg, min) {
 
-			@include transform(translateY(50px));
+			transform: translateY(50px);
 
 		}
 
 		@include mq($mq-tab--lrg, min) {
 
-			@include transform(translateY(100px));
+			transform: translateY(100px);
+
+		}
+
+		@include mq($mq-desk, min) {
+
+			cursor: url('/assets/img/magnifying-glass.cur') 10 10, zoom-in;
 
 		}
 			
 		&.is-visible {
 
-			@include opacity(1);
-			@include transform(translateY(0));
+			opacity: 1;
+			transform: translateY(0);
 			max-height: 1250px;
 
 			/* max-height
 			 * no delay allows allows the layout to expand while invisible
 			 * thus avoiding column reflows
 			 */
-			@include transition(
-				opacity 0.5s ease-in-out,
-				transform 0.5s ease-in-out,
-				max-height 0s linear
-			);
+			transition: opacity 0.5s ease-in-out 0.25s,
+			            transform 0.5s ease-in-out 0.25s,
+			            max-height 0s linear;
 
 		}
 
@@ -138,12 +146,15 @@
 
 			max-height: 0;
 			overflow: hidden;
+			margin-bottom: 15px;
 
-			@include transition(max-height 0s linear 0.5s); 
+			transition: max-height 0s linear 0.75s;
 
 			.showcase__project.is-visible & {
+
 				max-height: 1250px;
-				@include transition(max-height 0s linear);
+				transition: max-height 0s linear;
+
 			}
 
 		}
@@ -156,17 +167,28 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			height: 100%;
+			height: 100.1%; // fix overlay not stretching the entire height due to subpixel rendering issues
 
 			background: transparentize($white, 0.05);
 
-			@include opacity(0);
+			opacity: 0;
+			visibility: hidden; // prevents initial action on touch devices
+			overflow: hidden;
 
-			@include transition(opacity 0.35s linear);
+			transition: opacity cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s,
+			            visibility cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s;
 
-			.showcase__project:hover & {
+			.showcase__project:hover &,
+			.showcase__project:focus & {
 
-				@include opacity(1);
+				opacity: 1;
+				visibility: visible;
+
+			}
+
+			.showcase__project.is-visible & {
+
+				overflow: visible;
 
 			}
 
@@ -183,7 +205,7 @@
 			width: 100%;
 			height: 100%;
 
-			@include opacity(0.1);
+			opacity: 0.1;
 
 			svg {
 
@@ -197,20 +219,21 @@
 
 			width: 100%;
 			height: 100%;
-			padding: 15px;
+			padding: 15px 105px 15px 15px;
 
-			@include transform(translateY(15px));
-			@include filter(hue-rotate, -270deg);
+			text-align: left;
 
-			@include transition(
-				transform 0.35s linear,
-				filter 0.35s linear
-			);
+			transform: translateY(15px);
+			filter: hue-rotate(-270deg);
 
-			.showcase__project:hover & {
+			transition: transform cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s,
+			            filter cubic-bezier(0.4, 0.6, 0.6, 1) 0.35s;
 
-				@include transform(translateY(0));
-				@include filter(hue-rotate, 0deg);
+			.showcase__project:hover &,
+			.showcase__project:focus & {
+
+				transform: translateY(0);
+				filter: hue-rotate(0deg);
 
 			}
 
@@ -221,14 +244,25 @@
 			display: inline-block;
 			// prevent accidental clicks between the name and the description
 			margin-bottom: 0;
-			padding-bottom: 10px;
 
 			color: $accent-1;
 
 			font-family: $secondaryFont;
-			line-height: 64px;
+			text-transform: initial;
 
 			cursor: initial;
+
+			@include mq($mq-mob--lrg, min) {
+				
+				@include font-size(32, 32);
+
+			}
+
+			@include mq($mq-tab--lrg, min) {
+
+				@include font-size(48, 48);
+
+			}
 
 		}
 
@@ -242,39 +276,86 @@
 
 		}
 
-		&-footer {
+		&-links {
 
 			position: absolute;
-			bottom: 20px;
-			left: 15px;
+			top: 15px;
+			right: 15px;
 
 		}
 
 		&-link {
 
-			display: inline-block;
-			margin-right: 10px;
+			display: block;
+			width: 50px;
+			height: 50px;
+			padding: 10px;
+
+			background-color: $accent-1;
+
+			line-height: 0;
+
+			&:not(:last-child) {
+
+				margin-bottom: 10px;
+
+			}
 
 			&:hover {
 
 				.arrow {
 
-					@include transform(translate(5px, -5px));
+					transform: translate(5px, -5px);
 					
 				}
 
 				.chain {
 
 					&__top {
-
-						@include transform(translate(20px, -10px));
-						    transform: translate(19%, -19%);
+						/*
+						 * Chrome and FF render the translated distances slightly differently,
+						 * this keeps the values roughly similar across browsers.
+						 * Unfortunately, SVG transforms don't work at all in IE,
+						 * but what's new, right? ¯\_(ツ)_/¯
+						 */
+						transform: translate(3.8px, -3.8px);
 
 					}
 
 					&__bottom {
-						    transform: translate(-19%, 19%);
+
+						transform: translate(-3.8px, 3.8px);
+
 					}
+
+				}
+
+			}
+
+			&--zoom {
+
+				/* 
+				 * Stop the modal from opening on window width/height smaller than 640px
+				 * as there's no point in opening the modal for devices that are so small
+				 */
+				display: none;
+
+				color: $white;
+
+				font-family: $primaryFont;
+				@include font-size(36, 30);
+
+				transition: background-color 0.2s ease-in-out;
+
+				@include mq($mq-mob--lrg, min) {
+
+					display: block;
+
+				}
+
+				&:hover {
+
+					background-color: $black;
 
 				}
 
@@ -284,11 +365,11 @@
 
 				overflow: visible;
 
-				fill: $accent-1;
+				fill: $white;
 
 				path {
 
-					@include transition(transform 0.25s ease-in-out);
+					transition: transform 0.25s ease-in-out;
 
 				}
 

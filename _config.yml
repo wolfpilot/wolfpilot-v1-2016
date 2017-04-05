@@ -1,7 +1,6 @@
 # --------------------------------
 # Site settings
 title: Portfolio Site
-subtitle: bla
 author: Razvan Negrea 
 email: howl@wolfpilot.co.uk
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque eius earum vero quae reiciendis qui dolores molestias velit, suscipit! Dolor nostrum ad dolorem delectus praesentium, reiciendis quas officiis, eius veniam.
@@ -16,8 +15,8 @@ url: "http://wolfpilot.local:4000"
 
 # --------------------------------
 # Paths
-css: "/assets/css/main.css"
-js: "/assets/js/main.js"
+css: "/assets/css/style.css"
+js: "/assets/js/scripts.js"
 
 # --------------------------------
 # Collections

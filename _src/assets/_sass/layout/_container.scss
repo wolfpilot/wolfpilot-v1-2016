@@ -3,11 +3,17 @@
 	max-width: 1180px;
 	margin: 0 auto;
 
-	&--lrg {
+    &--sml {
 
-		max-width: 1600px;
+        max-width: 640px;
 
-	}
+    }
+
+    &--lrg {
+
+        max-width: 1600px;
+
+    }
 
 	&--padded {
 

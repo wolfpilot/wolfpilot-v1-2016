@@ -3,7 +3,7 @@
 
 # Source files
 ## Ignore the concatenated scripts as we're already commiting them in the dist submodule
-_src/assets/js/main.js
+_src/assets/js/scripts.js
 
 # Other
 node_modules/

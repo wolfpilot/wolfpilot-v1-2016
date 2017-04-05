@@ -9,11 +9,15 @@ button,
 
 	font-family: $tertiaryFont;
 	@include font-size(12);
-	text-transform: uppercase;
-	letter-spacing: 2px;
 	text-align: center;
 
 	cursor: pointer;
+
+    @include mq($mq-mob--lrg, min) {
+
+        @include font-size(14);
+
+    }
 
     &__ctrl {
 
@@ -42,7 +46,7 @@ button,
 
             overflow: visible;
 
-            @include transition(fill 0.15s ease-in-out);
+            transition: fill 0.15s ease-in-out;
 
         }
 
@@ -54,7 +58,7 @@ button,
 
             .path__triangle {
 
-                @include transform(translateX(-3px));
+                transform: translateX(-3px);
 
             }
 
@@ -64,9 +68,9 @@ button,
 
             &__triangle {
 
-                @include transform(translateX(0));
+                transform: translateX(0);
 
-                @include transition(transform 0.15s ease-in-out);
+                transition: transform 0.15s ease-in-out;
 
             }
 
@@ -80,7 +84,7 @@ button,
 
             .path__triangle {
 
-                @include transform(translateX(3px));
+                transform: translateX(3px);
 
             }
 
@@ -90,9 +94,9 @@ button,
 
             &__triangle {
 
-                @include transform(translateX(0));
+                transform: translateX(0);
 
-                @include transition(transform 0.15s ease-in-out);
+                transition: transform 0.15s ease-in-out;
 
             }
 

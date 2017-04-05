@@ -1,43 +1,27 @@
-<footer id="footer" class="footer">
+<div id="footer" class="footer">
 
-	<div class="container container--padded">
+	<div class="container container--lrg container--padded">
 
-		<h4 class="heading">
-			{{ site.author }}<br />
-		</h4>
+		<div id="contact">
+		
+			<h2 class="subheading">
+				Contact
+			</h2>
 
-		<h6 class="subheading">
-			Web development &amp; design &#149; Concept art &#149; Illustration
-		</h6>
+			<p class="text text--lrg">
+				Interested in working together or just want to grab a beer sometime? Give me a shout.
+			</p>
 
-		<div class="footer__contact">
-			
-			<div class="t--center">
-
-				<a href="{{ site.baseurl }}/">
-					<img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=logo&w=64&h=64" alt="Logo illustration of a wolf" />
-				</a>
-				
-			</div>
-
-		</div>
-
-		<div class="footer__social">
-
-			{% if site.github_username %}
-			<a href="https://github.com/{{ site.github_username }}" target="_blank">
-				{% include svg/icon-github.svg %}
+			<a class="hyperlink hyperlink--lrg text text--accent-1" href="mailto:{{ site.email }}" target="_top">
+				{{ site.email }}
 			</a>
-			{% endif %}
 
-			{% if site.twitter_username %}
-			<a href="https://twitter.com/{{ site.twitter_username }}" target="_blank">
-				{% include svg/icon-twitter.svg %}
-			</a>
-			{% endif %}
+			<p class="text">
+				or find me on <a class="hyperlink" href="https://github.com/{{ site.github }}" target="_blank" rel="noopener noreferrer">github</a> / <a class="hyperlink" href="http://{{ site.deviantart }}.deviantart.com" target="_blank" rel="noopener noreferrer">deviantart</a> / <a class="hyperlink" href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">linkedin</a>
+			</p>
 
 		</div>
 
 	</div>
 
-</footer>
+</div>

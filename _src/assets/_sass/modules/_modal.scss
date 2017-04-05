@@ -11,17 +11,15 @@
 
     overflow: hidden;
 
-    @include opacity(0);
+    opacity: 0;
 
-    @include transition(
-        z-index 0.35s linear,
-        opacity 0.35s linear
-    );
+    transition: z-index 0.35s linear,
+                opacity 0.35s linear;
 
     &.is-active {
 
         z-index: 200;
-        @include opacity(1);
+        opacity: 1;
 
     }
 
@@ -37,20 +35,18 @@
         margin: 0 auto;
 
         visibility: hidden;
-        @include opacity(0);
+        opacity: 0;
         transform: translateY(-62.5%);
 
-        @include transition(
-            visibility 0.5s ease-in-out,
-            opacity 0.5s ease-in-out,
-            transform 0.5s ease-in-out
-        );
+        transition: visibility 0.5s ease-in-out,
+                    opacity 0.5s ease-in-out,
+                    transform 0.5s ease-in-out;
 
-        &.is-visible {
+        .modal__project.is-visible & {
 
             visibility: visible;
-            @include opacity(1);
-            @include transform(translateY(-50%));
+            opacity: 1;
+            transform: translateY(-50%);
 
         }
 
@@ -79,6 +75,7 @@
     &__close {
 
         position: absolute;
+        z-index: 1;
         top: 0;
         right: 0;
         width: 40px;
@@ -89,16 +86,16 @@
         border: 1px solid $black; // fix blur due to transform
         color: $white;
 
+		font-family: $primaryFont;
         @include font-size(16, 40);
-        font-weight: bold;
+        text-transform: uppercase;
+        font-weight: $bold;
 
-        @include transform(scale(1));
+        transform: scale(1);
 
-        @include transition(
-            background-color 0.15s ease-in-out,
-            border-color 0.15s ease-in-out,
-            transform 0.15s ease-in-out
-        );
+        transition: background-color 0.15s ease-in-out,
+                    border-color 0.15s ease-in-out,
+                    transform 0.15s ease-in-out;
 
         @include mq($mq-desk--lrg, min) {
 
@@ -107,7 +104,7 @@
             width: 50px;
             height: 50px;
 
-            @include font-size(18, 50);
+            @include font-size(20, 50);
 
         }
 
@@ -115,7 +112,7 @@
 
             background: $accent-1;
             border-color: $accent-1;
-            @include transform(scale(0.9));
+            transform: scale(0.9);
 
         }
 

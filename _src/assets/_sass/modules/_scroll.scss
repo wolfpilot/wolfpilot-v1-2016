@@ -1,0 +1,83 @@
+@keyframes mouse {
+
+	0%   {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+
+}
+
+@keyframes mouse-scroll {
+
+	0%, 100%   {
+		opacity: 0;
+		transform: scaleY(0.75) translateY(0);
+	}
+
+	25% {
+		opacity: 1;
+		transform: scaleY(1) translateY(10px);
+	}
+
+	50% {
+		opacity: 0;
+		transform: scaleY(0.75) translateY(20px);
+	}
+
+}
+
+.scroll {
+
+	position: relative;
+	top: 40px;
+	display: inline-block;
+
+	animation: mouse 0.75s cubic-bezier(0.39, 0.58, 0.57, 1) 1.25s both;
+
+	@media screen and (max-height: $mq-mob--lrg) {
+
+		top: 20px;
+
+	}
+
+	&__mouse {
+
+		display: inline-block;
+		position: relative;
+		width: 40px;
+		height: 60px;
+		margin: 0 auto;
+
+		border: solid 2px $white;
+		border-radius: 20px;
+
+	}
+
+	&__wheel {
+
+		display: inline-block;
+		position: relative;
+		margin: 0 auto;
+		margin-top: 5px;
+		width: 6px;
+		height: 15px;
+
+		background-color: $white;
+		border-radius: 3px;
+
+		animation: mouse-scroll 2.5s cubic-bezier(0.39, 0.58, 0.57, 1) both infinite;
+
+	}
+
+	&__cta {
+
+		display: block;
+
+		color: $white;
+
+	}
+
+}

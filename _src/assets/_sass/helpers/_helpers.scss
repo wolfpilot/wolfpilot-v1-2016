@@ -1,3 +1,5 @@
+/** TEXT */
+
 .t {
 
 	&--center {
@@ -5,5 +7,78 @@
 		text-align: center;
 
 	}
+
+    &--cursive {
+
+        font-family: $tertiaryFont;
+        letter-spacing: 1px;
+
+    }
+
+}
+
+
+/** MARGINS & PADDINGS */
+
+.mt40 {
+
+    margin-top: 40px;
+
+}
+
+.mt80 {
+
+    margin-top: 80px;
+
+}
+
+.mb40 {
+
+    margin-bottom: 40px;
+
+}
+
+.mb80 {
+
+    margin-bottom: 80px;
+
+}
+
+
+/** COLOURS */
+
+.bg {
+
+    @each $colour, $value in $colours {
+
+        &--#{$colour} {
+            background-color: $value; 
+        }
+
+    }
+
+}
+
+.b {
+
+    @each $colour, $value in $colours {
+
+        &--#{$colour} {
+            border-color: $value; 
+        }
+
+    }
+
+}
+
+.c {
+
+    @each $colour, $value in $colours {
+
+        &--#{$colour} {
+            color: $value; 
+        }
+
+    }
 
 }

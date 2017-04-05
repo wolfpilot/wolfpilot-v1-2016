@@ -2,14 +2,6 @@
  * Typography
  *******************************************/
 
-@font-face {
-    font-family: 'Bebas Neue';
-    src: url('/assets/fonts/bebas-neue-bold.woff') format('woff')
-        url('/assets/fonts/bebas-neue-bold.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 700;
-}
-
 // important to define 62.5% for [rem] font conversion
 html {
 
@@ -37,7 +29,7 @@ p {
     color: $d-grey;
 
     font-family: $primaryFont;
-    @include font-size($p-size);
+    @include font-size($p-size, 28);
 
     a {
 
@@ -72,7 +64,7 @@ a {
 
     text-decoration: none;
 
-    @include transition(color 0.15s ease-in-out);
+    transition: color 0.15s ease-in-out;
 
     &:hover,
     &:active {
@@ -104,10 +96,8 @@ address a {
 
     margin: 0 0 10px 0;
 
-    font-family: $tertiaryFont;
+    font-family: $secondaryFont;
     font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 
 }
 
@@ -189,65 +179,45 @@ h6, .h--epsilon {
 
 }
 
-.heading {
+.title {
 
-    &--main {
+    display: inline-block;
+    margin-bottom: 20px;
 
-        margin-bottom: 60px;
+    border-bottom: 3px dashed $accent-1;
+    color: $carbon;
 
-        font-family: $secondaryFont;
-        @include font-size(100, 80);
-        font-weight: $bold;
+    @include font-size(64);
+    font-weight: bold;
+    text-transform: initial;
 
-        @include mq($mq-mob, min) {
+    @include mq($mq-mob--lrg, min) {
 
-            @include font-size(120, 100);
+        border-width: 4px;
 
-        }
-
-        @include mq($mq-mob--lrg, min) {
-
-            @include font-size(160, 120);
-
-        }
+        @include font-size(90);
 
     }
 
-    &--alt {
+    @include mq($mq-tab--lrg, min) {
 
-        font-family: $secondaryFont;
-        @include font-size(48);
-        font-weight: bold;
-
-        @include mq($mq-mob, min) {
-
-            @include font-size(80);
-
-        }
-
-        @include mq($mq-mob--lrg, min) {
-
-            @include font-size(120);
-
-        }
+        @include font-size(144, 144);
 
     }
-
-}
-
-.subheading {
-
-    margin-bottom: 0;
 
 }
 
 .text {
 
-    line-height: 28px;
-
     &--sml {
 
-        @include font-size(13);
+        @include font-size(14);
+
+        @include mq($mq-mob--lrg, min) {
+
+            @include font-size(15);
+            
+        }
 
     }
 
@@ -255,7 +225,27 @@ h6, .h--epsilon {
 
         margin-bottom: 20px;
 
+        color: $grey;
+
         @include font-size(20);
+
+        @include mq($mq-mob--lrg, min) {
+
+            @include font-size(24);
+            
+        }
+
+    }
+
+    &--accent-1 {
+
+        color: $accent-1;
+
+    }
+
+    &--flush {
+        
+        margin-bottom: 5px;
 
     }
 
@@ -263,27 +253,30 @@ h6, .h--epsilon {
 
 .hyperlink {
 
-    &--alt {
+    &--lrg {
 
-        color: $grey;
+        display: inline-block;
+        margin-bottom: 20px;
 
-        &:hover {
+        border-bottom: none;
 
-            color: $black;
+        @include font-size(28);
+
+        @include mq($mq-mob, min) {
+
+            @include font-size(36);
 
         }
 
-    }
+        @include mq($mq-mob--lrg, min) {
 
-    &--lrg {
+            @include font-size(48);
 
-        font-family: $tertiaryFont;
-        @include font-size(20);
-        letter-spacing: 2px;
+        }
 
-        &:hover {
+        @include mq($mq-tab--lrg, min) {
 
-            color: $accent-1;
+            @include font-size(64);
 
         }
 
@@ -297,19 +290,8 @@ h6, .h--epsilon {
 
     &__item {
 
-        @include font-size($base-font-size, $delta-size);
+        @include font-size($base-font-size, 32);
 
-    }
-
-}
-
-// ASCII symbols
-.symbol {
-
-    &--heart { // &#10084;
-
-        color: $red;
-        
     }
 
 }

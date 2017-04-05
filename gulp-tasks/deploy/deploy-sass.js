@@ -17,7 +17,7 @@ var gulp            = require('gulp'),
 
 gulp.task('deploy:sass', function () {
 
-	return gulp.src(paths.sass.src + 'main.scss')
+	return gulp.src(paths.sass.src + 'style.scss')
 	            .pipe(sourcemaps.init())
 	            .pipe(sass({
 	            	includePaths: [paths.sass.src],

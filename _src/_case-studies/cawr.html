@@ -1,0 +1,168 @@
+---
+title: CAWR
+tagline: Clear, user-friendly and informative&#58; the three most important goals for CAWR's Communications and Publications new website
+
+category: commercial work
+tags:
+  - web design
+
+date: April 2015
+technologies: Photoshop, good ol' pen &amp; paper
+---
+
+{% include helpers/setup-assets.html %}
+
+<div class="article">
+
+	<section class="article__section section section--padded">
+
+		<div class="container container--padded">
+
+			<div class="article__header">
+
+				<div class="article__info">
+
+					<div class="meta">
+						
+						{% if page.date %}  
+							<h6 class="meta__heading heading">
+								Date
+							</h6>
+
+							<p class="meta__text text">
+								{{ page.date | date: "%B %Y" }}
+							</p>
+						{% endif %}
+
+						{% if page.technologies %}
+							<h6 class="meta__heading heading">
+								Technologies
+							</h6>
+
+							<p class="meta__text text">
+								{{ page.technologies }}
+							</p>
+						{% endif %}
+
+						{% if page.tags %}
+							<h6 class="meta__heading heading">
+								Tags
+							</h6>
+
+							<p class="meta__text meta__text--tags text">
+								{% assign tags = page.tags %}
+
+								{% for tag in tags %}
+									<a class="hyperlink" href="/case-studies/?tag={{ tag | downcase | replace: ' ', '-' }}">
+										{{ tag }}
+									</a>{% if tag != tags.last %},{% endif %}
+								{% endfor %}
+							</p>
+						{% endif %}
+
+					</div>
+
+				</div>
+
+				<div class="article__intro">
+						
+					<h4 class="article__tagline heading">
+						{{ page.tagline }}
+					</h4>
+
+					<p class="text">
+						Part of Coventry University, the Centre for Agroecology, Water and Resilience conducts research aimed at developing more resilient food and water systems throughout the world. In order to counteract climate and environmental change, loss of biodiversity, natural and man-made disasters and other destabilising factors, CAWR is continually seeking to expand its international team of researchers, becoming the largest centre in the world to do trans-disciplinary research on the links between agroecology and sustainable food systems, water management, and community and socio-ecological resilience.<br /><br />
+
+						I was approached by the Executive Director, <a class="hyperlink" href="http://www.coventry.ac.uk/research/research-directories/researchers/michel-pimbert/" target="_blank">Dr. Michel Pimbert</a>, to design CAWR's Communication and Publications web platform, emphasising in particular their internal working paper series, videos and animations, book series and other multimedia publications.
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--lrg">
+			
+			<img class="image image--bordered" src="{{ assets_path }}full.jpg" alt="" />
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Planning and research
+			</h3>
+
+			<p class="text text--lrg">
+				Taking one step at a time
+			</p>
+
+			<p class="text">
+				It would be a lie to say that I wasn't the least bit nervous - CAWR was set to become the largest, most important project I had ever worked on. Most of my fears, however, dissipated upon meeting Michel for the second time so that we could discuss the project a bit more in depth.<br /><br />
+
+				From the little amount of information I was given, I managed to gather a number of stylistic references, as well as prepare a list of tens and tens of points that we needed to touch on: what is the purpose of the site, is there an existing website I could take a look at, are there any brand guidelines or specific features that I would need to integrate, etc.<br /><br />
+
+				By the end of the project, we found the whole concept to have grown considerably: where before stood only a few rough ideas revolving around multimedia publications, now the website featured a book carousel showcasing CAWR's latest publications, a working papers browser with its own advanced search functionality, a fully customised video player and last, but not least, a geolocated interactive gallery used by researchers around the world to upload photographs taken at various hotspots and share them on the front-page.
+			</p>
+
+			<figure>
+				<img class="image image--spaced" src="{{ assets_path }}01.jpg" alt="" />
+				<hr class="divider bg--ivory" />
+				<figcaption>How it all started...</figcaption>
+			</figure>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Mockups
+			</h3>
+
+			<p class="text text--lrg">
+				Early concepts
+			</p>
+
+			<img class="image image--bordered" src="{{ assets_path }}02.jpg" alt="" />
+			<img class="image image--bordered mt40" src="{{ assets_path }}03.jpg" alt="" />
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Going Hi-fi
+			</h3>
+
+			<p class="text text--lrg">
+				Switching it up
+			</p>
+
+		</div>
+
+		<div class="container container--lrg">
+
+			<img class="image image--bordered" src="{{ assets_path }}04.jpg" alt="" />
+
+		</div>
+
+	</section>
+
+</div>

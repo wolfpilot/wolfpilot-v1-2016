@@ -1,79 +1,74 @@
 <div id="work" class="section section--padded section--work">
 
-	<div class="t--center">
+	<div class="container container--lrg container--padded">
 
-		<div class="bordered">
+		<h2 class="subheading">
+			Work
+		</h2>
 
-			<div class="border border--top"></div>
-			<div class="border border--right"></div>
-			<div class="border border--bottom"></div>
-			<div class="border border--left"></div>
+		<p class="text text--lrg">
+			Take a look at some of my projects
+		</p>
 
-			<h4 class="heading">
-				Work<br />
-			</h4>
+		<div id="js-showcase" class="showcase">
 
-			<h6 class="subheading">
-				Go go power rangers!
-			</h6>
-			
-		</div>
+			<div id="js-showcase-nav" class="showcase__nav">
+				
+				{% for category in site.data.work.categories %}
 
-	</div>
+					<button class="showcase__nav-item {% if forloop.first == true %}is-active{% endif %}" data-category="{{ category }}">
+						{{ category }}
+					</button>
 
-	<div id="js-showcase" class="showcase">
+				{% endfor %}
 
-		<div id="js-showcase-nav" class="showcase__nav">
-			
-			{% for category in site.data.work.categories %}
+			</div>
 
-				<button class="showcase__nav-item {% if forloop.first == true %}is-active{% endif %}" data-category="{{ category }}">
-					{{ category }}
-				</button>
+			<div id="js-showcase-content" class="showcase__content js-showcase">
 
-			{% endfor %}
+				{% for project in site.data.work.projects %}
 
-		</div>
+					<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-target="modal-{{ project.id }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
 
-		<div id="js-showcase-content" class="showcase__content js-showcase">
+						<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/projects/{{ project.id }}/{{ project.id }}--thumb.jpg" alt="" />
 
-			{% for project in site.data.work.projects %}
+						<div class="showcase__project-overlay">
 
-				<div class="showcase__project js-showcase-project {% if project.tags contains 'featured' %}is-visible{% endif %}" data-target="modal-{{ project.id }}" data-tag="{{ project | map: 'tags' | join: ', ' }}">
+							<div class="showcase__project-details">
 
-					<img class="showcase__project-img" {% if project.tags contains 'featured' %}src{% else %}data-lazyload-src{% endif %}="{{ site.baseurl }}/assets/projects/{{ project.id }}/thumb.jpg" alt="" />
+								<h2 class="showcase__project-name">
+									{{ project.name }}
+								</h2>
 
-					<div class="showcase__project-overlay">
+								<div class="clear"></div>
 
-						<div class="showcase__project-details">
+								<p class="showcase__project-description text">
+									{{ project.tagline }}
+								</p>
 
-							<h2 class="showcase__project-name">
-								{{ project.name }}
-							</h2>
+								<div class="showcase__project-links">
 
-							<div class="clear"></div>
+									<button class="showcase__project-link showcase__project-link--zoom btn js-showcase-zoom">
+										+
+									</button>
 
-							<p class="showcase__project-description">
-								{{ project.tagline }}
-							</p>
+									{% if project.links %}
 
-							<div class="showcase__project-footer">
+										{% for link in project.links %}
 
-								{% if project.links %}
+											<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank"{% endif %}>
+												{% if link.type == "int" %}
+													{% include svg/link-internal.svg %}
+												{% else %}
+													{% include svg/link-external.svg %}
+												{% endif %}
+											</a>
 
-									{% for link in project.links %}
+										{% endfor %}
 
-										<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank"{% endif %}>
-											{% if link.type == "int" %}
-												{% include svg/link-internal.svg %}
-											{% else %}
-												{% include svg/link-external.svg %}
-											{% endif %}
-										</a>
+									{% endif %}
 
-									{% endfor %}
-
-								{% endif %}
+								</div>
 
 							</div>
 
@@ -81,39 +76,41 @@
 
 					</div>
 
-				</div>
+				{% endfor %}
 
-			{% endfor %}
-
-		</div>
-		
-	</div>
-
-	<div id="js-modal" class="modal">
-
-		<button id="js-modal--close" class="btn modal__close" data-target="#modal-showcase">
-			x
-		</button>
-
-		<div class="modal__slider">
-
-			{% for project in site.data.work.projects %}
-
-				<img class="modal__img" id="modal-{{ project.id }}" data-lazyload-src="{{ site.baseurl }}/assets/projects/{{ project.id }}/full.jpg" alt="" />
-
-			{% endfor %}
-
-		</div>
-
-		<div class="modal__nav">
+			</div>
 			
-			<button id="js-modal--prev" class="btn btn__ctrl btn__ctrl-prev">
-				{% include svg/prev.svg %}
+		</div>
+
+		<div id="js-modal" class="modal">
+
+			<button id="js-modal--close" class="btn modal__close" data-target="#modal-showcase">
+				x
 			</button>
 
-			<button id="js-modal--next" class="btn btn__ctrl btn__ctrl-next">
-				{% include svg/next.svg %}
-			</button>
+			<div class="modal__slider">
+
+				{% for project in site.data.work.projects %}
+
+					<a id="modal-{{ project.id }}" class="modal__project" href="{{ site.baseurl }}/assets/projects/{{ project.id }}/{{ project.id }}.jpg" target="_blank" rel="nofollow noreferrer">
+						<img class="modal__img" data-lazyload-src="{{ site.baseurl }}/assets/projects/{{ project.id }}/{{ project.id }}.jpg" alt="" />
+					</a>
+
+				{% endfor %}
+
+			</div>
+
+			<div class="modal__nav">
+				
+				<button id="js-modal--prev" class="btn btn__ctrl btn__ctrl-prev">
+					{% include svg/prev.svg %}
+				</button>
+
+				<button id="js-modal--next" class="btn btn__ctrl btn__ctrl-next">
+					{% include svg/next.svg %}
+				</button>
+
+			</div>
 
 		</div>
 

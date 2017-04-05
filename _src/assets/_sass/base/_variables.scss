@@ -9,7 +9,7 @@ $base-font-family: sans-serif!default;
 
 // Using 1.618 Golden Ratio - find it here http://type-scale.com/
 // Base stuff - in px --> to be converted to rems
-$base-font-size:	15 !default;
+$base-font-size:	17 !default;
 
 $base-line-height: $base-font-size * 1.25 !default;
 
@@ -29,9 +29,9 @@ $p-size:            $base-font-size !default;
  * FONTS
  *******************************************/
 
-$primaryFont: "Roboto Slab", "Trebuchet MS", Helvetica, Arial, sans-serif;
-$secondaryFont: "Bebas Neue", Georgia, 'Times New Roman', serif;
-$tertiaryFont: 'Roboto Condensed', "Trebuchet MS", Helvetica, Arial, sans-serif;
+$primaryFont: "Open Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$secondaryFont: "Hind", "Trebuchet MS", Helvetica, Arial, sans-serif;
+$tertiaryFont: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
 
 $fonticon: 'customicon';
 
@@ -50,15 +50,36 @@ $bold: 700;
  * COLOUR VARIABLES
  *******************************************/
 
-$black:				#000;
-$white:				#fff;
-$grey: 				#909090;
-$l-grey:			#e0e0e0;
-$d-grey:			#454545;
-$red: 				#ec4444;
+$black:             #000;
+$white:             #fff;
+$grey:              #909090;
+$l-grey:            #e0e0e0;
+$d-grey:            #454545;
+$ivory:             #F2F2F2;
+$carbon:            #252525;
+$sand:              #CCB899;
 
-$accent-1:			#f95a48; // orange
-$accent-2: 			#14FF64; // turquoise
+$accent-1:          #f95a48; // orange
+$accent-2:          #14FF64; // turquoise
+
+
+/*
+ * @TO DO: See if you can use this array to reference the required colours
+ * in various modules, as opposed to just looping through it in _helpers
+ */
+
+$colours: (
+    black:          #000,
+    white:          #fff,
+    grey:           #909090,
+    l-grey:         #e0e0e0,
+    d-grey:         #454545,
+    ivory:          #F2F2F2,
+    carbon:         #252525,
+    sand:           #CCB899,
+    accent-1:       #f95a48, // orange
+    accent-2:       #14FF64 // turquoise
+);
 
 /**
  * BASE MEDIA QUERY BREAKPOINTS
