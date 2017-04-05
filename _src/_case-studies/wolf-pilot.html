@@ -1,0 +1,266 @@
+---
+title: Wolf Pilot
+tagline: Behind the scenes
+
+category: personal work
+tags:
+  - web development
+  - web design
+
+date: Apr 2017
+technologies: Jekyll, SASS, JS, Illustrator, PhotoShop
+---
+
+{% include helpers/setup-assets.html %}
+
+<div class="article">
+
+	<section class="article__section section section--padded">
+
+		<div class="container container--padded">
+
+			<div class="article__header">
+
+				<div class="article__info">
+
+					<div class="meta">
+						
+						{% if page.date %}  
+							<h6 class="meta__heading heading">
+								Date
+							</h6>
+
+							<p class="meta__text text">
+								{{ page.date | date: "%B %Y" }}
+							</p>
+						{% endif %}
+
+						{% if page.technologies %}
+							<h6 class="meta__heading heading">
+								Technologies
+							</h6>
+
+							<p class="meta__text text">
+								{{ page.technologies }}
+							</p>
+						{% endif %}
+
+						{% if page.tags %}
+							<h6 class="meta__heading heading">
+								Tags
+							</h6>
+
+							<p class="meta__text meta__text--tags text">
+								{% assign tags = page.tags %}
+
+								{% for tag in tags %}
+									<a class="hyperlink" href="/case-studies/?tag={{ tag | downcase | replace: ' ', '-' }}">
+										{{ tag }}
+									</a>{% if tag != tags.last %},{% endif %}
+								{% endfor %}
+							</p>
+						{% endif %}
+
+						<hr class="meta__separator" />
+
+					</div>
+
+				</div>
+
+				<div class="article__intro">
+						
+					<h4 class="article__tagline heading">
+						{{ page.tagline }}
+					</h4>
+
+					<p class="text">
+						<em>Gentle on the outside, a beast on the inside</em> - my most accomplished work so far.<br /><br />
+
+						Wolf Pilot is my portfolio site. It's also an identity. It's the culmination of many struggles, and an expression of my artistic self. It's modular, but light. It's minimal, but doesn't compromise any essential features. And most of all, it has been an adventure in itself.
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Humble beginnings
+			</h3>
+
+			<p class="text text--lrg">
+				A rather naive start
+			</p>
+
+			<p class="text">
+				My plan was simple: what do I need? I need a site that I can display my work on. The bare necessities are made up of a short section about myself, a gallery of sorts and a contact area. Easy enough, right? Right.<br /><br />
+
+				I decided a one page design would best suit my needs.
+			</p>
+
+			<figure>
+				<img class="image image--spaced image--bordered" src="{{ assets_path }}01.jpg" alt="" />
+				<hr class="divider bg--ivory" />
+				<figcaption>Mid-Fi prototype of what could have been</figcaption>
+			</figure>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Planning
+			</h3>
+
+			<p class="text text--lrg">
+				Back to the basics
+			</p>
+
+			<p class="text">
+				I built my previous site in WordPress. It was a no-frills, hack-your-way-at-WordPress' 20xx theme using shortcodes, styling pages by their IDs and generally a pain to maintain, especially when I would only update it every once in a blue moon. In the meantime, I learnt my way around the wonderful <a href="https://www.advancedcustomfields.com/" target="_blank">ACF</a> and realised that there's a whole world of possibilities out there. Needless to say, I struggled to find a reason for which I would opt for such a heavy CMS, or a CMS at all, when my requirements weren't so high to begin with. I decided to look into lighter alternatives.<br /><br />
+
+				Eventually, I bumped into flat file site generators and the idea really struck a note with me. This would become a static, bare-bones site, built from scratch just like in the good ol' days. The only exception would be Jekyll, which would provide some basic DB-like functionality through the use of plain text files.<br /><br />
+
+				I was scared, but most of all I was scared of dropping jQuery, the cozy, oh-so-familiar liar that keeps telling us, 'Ah, don't worry, <b>it's still JavaScript!</b>'.
+			</p>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="image image--fixed image--shadowed" style="background: url('{{ assets_path }}02.jpg');"></div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Danger!
+			</h3>
+
+			<p class="text text--lrg">
+				Here be dragons
+			</p>
+
+			<p class="text">
+				Jekyll, as it turns out, is a very opinionated static site generator. During the building phase, it removes the previously generated files unless specified not to. This will, of course, become an issue if you want to run other automated tasks, such as through Gulp, since these tasks are now required to run <b>after</b> Jekyll's clean-up phase. As such, integrating my own <a href="https://github.com/wolfpilot/up-n-running-gulp-boilerplate" target="_blank">front-end boilerplate</a> required a decent amount of hacking and slashing in order to get things working again.<br /><br />
+
+				Another point of contention is the folder structure. It's impossible to group blog posts and assets into the same subdirectories - Jekyll tries to convert everything into a post format; when it finds images, it can't parse the data properly, and so it just crashes. It's the classic case of "it's not a bug, it's a feature" that a few people tried to sort out (Nicolas Hoizey's <a href="https://github.com/nhoizey/jekyll-postfiles" target="_blank">Jekyll Post Files</a> is a good example, which unfortunately was crippled by the same <a href="https://github.com/nhoizey/jekyll-postfiles/issues/1" target="_blank">bug</a> I encountered and that no one can find a solution to). As a result, I gave up after a few tries of my own and just stuck with somewhat of a more default project structure.<br /><br />
+
+				After I set up my source and distribution directories, the Github repo and so on, I was faced with Jekyll's Liquid syntax which, although intuitive, proved to be more cumbersome to read and write, as well as less flexible than PHP. It is, nonetheless, a life saver, as it allows for a very basic data management system via plain text files located in Jekyll's data include folder.
+			</p>
+
+			<p class="text">
+{% highlight ruby %}
+|++ _src
+	|++ _data
+		|++ work
+			|-- categories.json
+			|-- projects.json
+	|++ _includes
+		|++ helpers
+			|-- setup-assets.html
+			|-- setup-page.html
+			|-- setup-project.html
+		|++ partials
+			|-- intro.html
+			|-- work.html
+		|++ svg
+	|++ _layouts
+	|++ _posts
+	|++ assets
+		|++ _sass
+		|++ css
+		|++ docs
+		|++ fonts
+		|++ img
+		|++ js
+		|++ projects
+			|++ cawr
+				|++ case-study
+					|-- 01.jpg
+					|-- 02.jpg
+					|-- …
+				|-- cawr.jpg
+				|-- cawr--thumb.jpg
+			|++ corporate-ghost-recon
+				|-- corporate-ghost-recon.jpg
+				|-- corporate-ghost-recon--thumb.jpg
+			|++ …
+	|++ pages
+{% endhighlight %}
+			</p>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				Challenges
+			</h3>
+
+			<p class="text text--lrg">
+				(Continued)
+			</p>
+
+			<p class="text">
+				Like previously mentioned, setting up Jekyll for a truly bespoke project proved to be more difficult than I initially imagined. Despite my many attempts to visualize the data on paper before starting the actual work, I still ended up refactoring it countless times: going from local page variables to external data files and ultimately integrating everything into collections, all in the name of modularising and DRYing out the code as much as possible.<br /><br />
+
+				Perhaps the most difficult feature to both design and build was the showcase. It is, essentially, made up of three distinct modules: a gallery, a modal and a slider. As I soon discovered, the difficulty of building such a feature was not in coding each component by itself, but rather making them work together. I had to ensure that the data flows from one component to the next so that they all keep track of the current category and slide, as well as lazy load the relevant images when toggling a new category or triggering the modal. Long story short, that's how I ended up learning about and implementing the Pub/Sub JavaScript pattern. As a bonus, it was probably the first time that React's unidirectional data flow actually made sense to me.<br /><br />
+
+				As I worked on the project however, I started to notice a number of faults and limitations of the original design. There was no space to add a blog, I had no way to display case studies and the site overall felt barren, lifeless, even a bit outdated. I decided to take it up a notch and ended up with what you see at the moment.
+			</p>
+
+		</div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="image image--fixed image--shadowed" style="background: url('{{ assets_path }}03.jpg');"></div>
+
+	</section>
+
+	<section class="article__section article__section--padded section">
+
+		<div class="container container--padded">
+
+			<h3 class="subheading">
+				In the works
+			</h3>
+
+			<p class="text text--lrg">
+				A list of future considerations
+			</p>
+
+            <ul class="list">
+                <li class="list__item">Create a blog and import old posts [WIP]</li>
+                <li class="list__item">Add keyboard support for the showcase slider</li>
+                <li class="list__item">Switch to Webpack and ES6</li>
+                <li class="list__item">Add a night reading theme</li>
+            </ul>
+
+		</div>
+
+	</section>
+
+</div>
