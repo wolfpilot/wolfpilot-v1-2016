@@ -1,0 +1,185 @@
+/*
+ * Source: https://github.com/jwarby/jekyll-pygments-themes
+ * @ Zenburn theme
+ */
+
+.highlight {
+
+	text-align: left;
+
+	code,
+	pre {
+
+		background-color: #3f3f3f;
+		color: #fdce93;
+
+	}
+
+	pre {
+
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+		tab-size: 4;
+
+	}
+
+	code {
+
+		display: block;
+		padding: 10px 15px;
+
+		white-space: pre;
+		overflow-x: auto;
+		word-wrap: normal;
+
+	}
+
+	.lineno {
+
+		display: inline-block;
+		padding: 0 5px;
+
+		color: #ccc;
+		border-right: 1px solid #ccc;
+
+	}
+
+	.code {
+
+		padding-left: 5px;
+		padding-right: 5px;
+
+	}
+	.hll {
+		background-color: #222;
+	}
+
+	.err {
+		background-color: #3d3535;
+		color: #e37170;
+	}
+
+	.k {
+		color: #f0dfaf;
+	}
+
+	.p {
+		color: #41706f;
+	}
+
+	.cs {
+		color: #cd0000;
+		font-weight:700;
+	}
+
+	.gd {
+		color: #cd0000;
+	}
+
+	.ge {
+		color: #ccc;
+		font-style: italic;
+	}
+
+	.gr {
+		color: red;
+	}
+
+	.go {
+		color: gray;
+	}
+
+	.gs {
+		color: #ccc;
+		font-weight: 700;
+	}
+
+	.gu {
+		color: purple;
+		font-weight: 700;
+	}
+
+	.gt {
+		color: #0040D0;
+	}
+
+	.kc {
+		color: #dca3a3;
+	}
+
+	.kd {
+		color: #ffff86;
+	}
+
+	.kn {
+		color: #dfaf8f;
+		font-weight: 700;
+	}
+
+	.kp {
+		color: #cdcf99;
+	}
+
+	.kr {
+		color: #cdcd00;
+	}
+
+	.ni {
+		color: #c28182;
+	}
+
+	.ne {
+		color: #c3bf9f;
+		font-weight: 700;
+	}
+
+	.nn {
+		color: #8fbede;
+	}
+
+	.vi {
+		color: #ffffc7;
+	}
+
+	.c {
+		color: #7f9f7f;
+	}
+
+	.l {
+		color: #ccc;
+	}
+
+	.n {
+		color: #dcdccc;
+	}
+
+	.o {
+		color: #f0efd0;
+	}
+
+	.gh {
+		color: #dcdccc;
+		font-weight: 700;
+	}
+
+	.gi {
+		color: #00cd00;
+	}
+
+	.ld {
+		color: #cc9393;
+	}
+
+	.m {
+		color: #8cd0d3;
+	}
+
+	.na {
+		color: #9ac39f;
+	}
+
+	.nb {
+		color: #efef8f;
+	}
+
+}
