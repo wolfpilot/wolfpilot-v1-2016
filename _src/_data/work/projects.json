@@ -4,6 +4,7 @@
         "name": "RetroCade",
         "tagline": "Fun little experiment with CSS keyframe animations.",
         "tags": ["featured", "web development"],
+        "alt": "Reel-to-reel tape recorder created in code only",
         "links": [
             {
                 "type": "int",
@@ -20,6 +21,7 @@
         "name": "Forever Darkness",
         "tagline": "Commissioned by Darcy Campbell as cover for his book 'Forever Darkness'.",
         "tags": ["featured", "illustration"],
+        "alt": "Two warriors armed with futuristic shields and swords face a 4-legged giant insectoid on an alien world. A swarm can be seen in the background, gathered around a human ship.",
         "links": [
             {
                 "type": "ext",
@@ -32,6 +34,7 @@
         "name": "MACHINA INFERNI",
         "tagline": "Who doesn't love mechs?",
         "tags": ["featured", "illustration"],
+        "alt": "Half destroyed mecha on an alien moon. It's weilding a smoking gatling gun.",
         "links": [
             {
                 "type": "ext",
@@ -44,6 +47,7 @@
         "name": "Phone concept",
         "tagline": "Prototyped using HTML, CSS and JavaScript only.",
         "tags": ["featured", "web development"],
+        "alt": "Simple smartphone design with a power button on the right side and volume on the left.",
         "links": [
             {
                 "type": "ext",
@@ -56,6 +60,7 @@
         "name": "Up n' running",
         "tagline": "Simple boilerplate initially created as an alternative for its slightly older cousin, Grunt.",
         "tags": ["featured", "web development"],
+        "alt": "Illustration of a plastic cup with a straw in it next to some text.",
         "links": [
             {
                 "type": "ext",
@@ -68,6 +73,7 @@
         "name": "Welcome to my world",
         "tagline": "Started as an exploration of vertical momentum, ended up planning my first house on the side of a mountain.",
         "tags": ["featured", "illustration"],
+        "alt": "A young man resting on a tree admires a distant waterfall. 30 meters above, there is a small, rustic house on the cliffside.",
         "links": [
             {
                 "type": "ext",
@@ -80,6 +86,7 @@
         "name": "Vandal",
         "tagline": "The dream rat rod.",
         "tags": ["featured", "illustration"],
+        "alt": "Rusted hot rod sitting in front of a sunset and a palm tree.",
         "links": [
             {
                 "type": "ext",
@@ -90,14 +97,16 @@
     {
         "id": "granada-capital-group",
         "name": "Granada Capital Group",
-        "tagline": "Personal project for a fictive bank with the purpose of inspiring strength and security to latin-based customers.",
-        "tags": ["web design"]
+        "tagline": "Personal project for a fictive bank with the purpose of inspiring strength and security to Latin-based customers.",
+        "tags": ["web design"],
+        "alt": "A vectorized bull's head its within a Latin-decorated circle. The words 'Granada Capital Group' are written underneath."
     },
     {
         "id": "cawr",
         "name": "CAWR",
         "tagline": "New website design commissioned by Dr. Michel Pimbert for the Centre for Agroecology, Water & Resilience.",
         "tags": ["web design"],
+        "alt": "Logo spells Centre for Agroecology, Water and Resilience.",
         "links": [
             {
                 "type": "int",
@@ -110,6 +119,7 @@
         "name": "Orc shield",
         "tagline": "Orcs are not necessarily known for their crafting skills... or for any amount of logic.",
         "tags": ["concept art"],
+        "alt": "Painting of a broken Orc shield. On its front, an eerie skull protrudes through the metal, grinning.",
         "links": [
             {
                 "type": "ext",
@@ -122,6 +132,7 @@
         "name": "Silhouettes",
         "tagline": "A study of body language, shape and contrast.",
         "tags": ["concept art"],
+        "alt": "Character shapes and a fully-fledged rendering of an Amazonian warrior.",
         "links": [
             {
                 "type": "ext",
@@ -134,6 +145,7 @@
         "name": "Othor warrior",
         "tagline": "Commissioned by Isaac Bell for the Artifex Publishing House, Othor warriors are massive, well built humanoid amphibians that you'd best avoid calling 'Shrek'.",
         "tags": ["concept art"],
+        "alt": "Green humanoid strapped in a shiny, scaled armour. Wields futuristic beam weapon.",
         "links": [
             {
                 "type": "ext",
@@ -146,6 +158,7 @@
         "name": "The Tulh",
         "tagline": "Commissioned by Isaac Bell for the Artifex Publishing House, the Tulh warrior is, at its core, a frog, spear-wielding humanoid.",
         "tags": ["concept art"],
+        "alt": "Frog humanoid holding spear in hand. The spear emits light from its top, almost as if it's fire.",
         "links": [
             {
                 "type": "ext",
@@ -158,6 +171,7 @@
         "name": "Corporate Ghost Recon",
         "tagline": "Many hours of painting later... * gasp * I want one!",
         "tags": ["concept art"],
+        "alt": "Humanoid cybord wielding a futuristic energy weapon. Has a red light sensor in place of eyes and multiple antennas can be seen on its back.",
         "links": [
             {
                 "type": "ext",
@@ -170,6 +184,7 @@
         "name": "Grim Reaper",
         "tagline": "What do we say to the God of death?",
         "tags": ["concept art"],
+        "alt": "Grim Reaper and his trusty scythe, a true classic.",
         "links": [
             {
                 "type": "ext",
@@ -180,8 +195,9 @@
     {
         "id": "the-floating-city",
         "name": "The Floating City",
-        "tagline": "The elders have seen many wonderous things during their lifetimes, but an entire city that floats?",
+        "tagline": "The elders have seen many wondrous things during their lifetimes, but an entire city that floats?",
         "tags": ["concept art"],
+        "alt": "Futuristic city floating above a canyon. Waterfalls can be seen flowing from huge pipes underneath the city. An old man watches silently from afar.",
         "links": [
             {
                 "type": "ext",
@@ -194,6 +210,7 @@
         "name": "Nomad warrior",
         "tagline": "Born out of an almost unhealthy obsession with deserts and warriors, the Nomad is a skilled assassin or a hero, depending on the side you stand on.",
         "tags": ["concept art"],
+        "alt": "The desert warrior has fiery eyes and pulls a knife towards his chest. He's ready to defend himself from whatever he may face.",
         "links": [
             {
                 "type": "ext",
@@ -206,6 +223,7 @@
         "name": "TH-50 Spectre Sniper Rifle",
         "tagline": "Can't go wrong with this one.",
         "tags": ["concept art"],
+        "alt": "Plasma rifle. There are lights indicating the bullets left in the magazine, as well as heat sinks to allow for better cooling of the weapon",
         "links": [
             {
                 "type": "ext",
@@ -218,6 +236,7 @@
         "name": "Samurai I",
         "tagline": "Influenced by Kekai Kotaki, the first speed painting in a series of grimy, slightly abstract character concepts.",
         "tags": ["concept art"],
+        "alt": "The samurai is channeling energy into his left palm.",
         "links": [
             {
                 "type": "ext",
@@ -230,6 +249,7 @@
         "name": "Red Fury",
         "tagline": "Breaking hearts has never been so much fun!",
         "tags": ["concept art"],
+        "alt": "Surrounded by his minions, an Orc chieftain sacrifices a heart in a bloody explosion.",
         "links": [
             {
                 "type": "ext",
@@ -241,13 +261,15 @@
         "id": "scimitar",
         "name": "Scimitar",
         "tagline": "Elegance with a sharp edge.",
-        "tags": ["concept art"]
+        "tags": ["concept art"],
+        "alt": "Curved bladed weapon with a round Ruby encrusted into its handle."
     },
     {
         "id": "steampunk-pirate",
         "name": "Steampunk pirate",
         "tagline": "One of my few attempts at proper lineart.",
         "tags": ["illustration"],
+        "alt": "Female pirate dressed in a corset and puffed shirt. Has gun strapped to her chest.",
         "links": [
             {
                 "type": "ext",
@@ -260,6 +282,7 @@
         "name": "Hello there, old friend",
         "tagline": "In a mystical garden, two old souls meet again.",
         "tags": ["illustration"],
+        "alt": "A rocky golem meets his old human friend in a garden of many luminous and colourful plants.",
         "links": [
             {
                 "type": "ext",
@@ -272,6 +295,7 @@
         "name": "Toucan study",
         "tagline": "Referenced from the cover of 'The Life of Birds' by David Attenborough.",
         "tags": ["illustration"],
+        "alt": "The toucan sits on a branch looking above.",
         "links": [
             {
                 "type": "ext",
