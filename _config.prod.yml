@@ -15,17 +15,30 @@ url: "http://www.wolfpilot.co.uk/"
 
 # --------------------------------
 # Paths
-css: "/assets/css/main.min.css"
-js: "/assets/js/main.min.js"
+css: "/assets/css/style.min.css"
+js: "/assets/js/scripts.min.js"
+
+# --------------------------------
+# Collections
+collections:
+  case-studies:
+    output: true
+    permalink: /:collection/:title/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "case-studies"
+    values:
+      layout: "case-study"
 
 # --------------------------------
 # Build settings
 markdown: kramdown
 safe: false
-future: false
+future: true
 # paginate: 5
-show_drafts: false
-# highlighter: true
 
 # Category Handling
 category_dir: /
@@ -38,7 +51,7 @@ deviantart: n-deed
 linkedin: razvannegrea
 
 # --------------------------------
-# Includes
+# Includes & Excludes
 exclude: [
   feed.xml,
   assets/js
