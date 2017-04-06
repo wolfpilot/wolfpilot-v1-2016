@@ -35,8 +35,6 @@ $tertiaryFont: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
 
 $fonticon: 'customicon';
 
-$baseFont: normal #{$base-font-size}px / #{$base-line-height}px $primaryFont;
-
 $base-spacing-unit: $base-line-height!default;
 $half-spacing-unit: $base-spacing-unit / 2!default;
 $line-height-ratio: $base-line-height / $base-font-size;
