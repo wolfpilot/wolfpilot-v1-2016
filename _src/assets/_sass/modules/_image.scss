@@ -11,14 +11,25 @@
 		 * Sorry, I know importants hurt, they hurt me as well :(
 		 * However, they're needed since the source is declared inline
 		 */
-		background-attachment: fixed !important;
-		background-repeat: repeat !important;
-		background-size: auto !important;
+		background-repeat: no-repeat !important;
+		background-size: cover !important;
 		background-position: center center !important;
+
+		@include mq($mq-mob--lrg, min) {
+
+			background-attachment: fixed !important;
+			background-repeat: repeat !important;
+			background-size: auto !important;
+
+		}
 
 		&-lrg {
 
-			height: 600px;
+			@include mq($mq-mob--lrg, min) {
+
+				height: 600px;
+
+			}
 
 		}
 
