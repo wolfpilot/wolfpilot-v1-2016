@@ -1,6 +1,10 @@
 .logo {
 
-    margin-top: 40px;
-    margin-bottom: 40px;
+	@include mq($mq-mob--lrg, min) {
+
+		margin-top: 40px;
+		margin-bottom: 40px;
+		
+	}
 
 }
