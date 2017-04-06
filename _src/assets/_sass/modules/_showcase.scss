@@ -85,6 +85,7 @@
 		 * to block or inline-block, it will differ across browser. Sorry :(
 		 */
 		position: relative;
+		// display: inline-block;
 
 		opacity: 0;
 		transform: translateY(20px);
@@ -107,6 +108,13 @@
 		 * due to elements being taller than the screen
 		 */
 		-webkit-backface-visibility: hidden;
+
+		/*
+		 * Fix elements overflowing in various browsers
+		 */
+		-webkit-column-break-inside: avoid;
+		          page-break-inside: avoid;
+		               break-inside: avoid;
 
 		@include mq($mq-mob--lrg, min) {
 
