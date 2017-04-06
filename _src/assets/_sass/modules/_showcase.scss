@@ -262,13 +262,13 @@
 
 			@include mq($mq-mob--lrg, min) {
 				
-				@include font-size(32, 32);
+				@include font-size(32);
 
 			}
 
 			@include mq($mq-tab--lrg, min) {
 
-				@include font-size(48, 48);
+				@include font-size(48);
 
 			}
 
@@ -351,7 +351,7 @@
 				color: $white;
 
 				font-family: $primaryFont;
-				@include font-size(36, 30);
+				@include font-size(36, 0.8);
 
 				transition: background-color 0.2s ease-in-out;
 

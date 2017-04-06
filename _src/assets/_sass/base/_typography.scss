@@ -29,7 +29,7 @@ p {
     color: $d-grey;
 
     font-family: $primaryFont;
-    @include font-size($p-size, 28);
+    @include font-size($p-size, 1.7);
 
     a {
 
@@ -187,7 +187,7 @@ h6, .h--epsilon {
     border-bottom: 3px dashed $accent-1;
     color: $carbon;
 
-    @include font-size(64);
+    @include font-size(64, 1);
     font-weight: bold;
     text-transform: initial;
 
@@ -195,13 +195,13 @@ h6, .h--epsilon {
 
         border-width: 4px;
 
-        @include font-size(90);
+        @include font-size(90, 1);
 
     }
 
     @include mq($mq-tab--lrg, min) {
 
-        @include font-size(144, 144);
+        @include font-size(144, 1);
 
     }
 
@@ -290,7 +290,7 @@ h6, .h--epsilon {
 
     &__item {
 
-        @include font-size($base-font-size, 32);
+        @include font-size($base-font-size, 1.9);
 
     }
 

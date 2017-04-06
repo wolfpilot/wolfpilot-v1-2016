@@ -7,7 +7,7 @@
 
 		margin-bottom: 30px;
 
-		font-size: 0;
+		@include font-size(0);
 
 		@include mq($mq-mob--lrg, min) {
 
@@ -265,7 +265,7 @@
 
 		@include mq($mq-tab--lrg, min) {
 
-			@include font-size(48, 48);
+			@include font-size(48);
 
 		}
 

@@ -169,19 +169,19 @@
 		border-color: inherit;
 
 		font-family: $primaryFont;
-		@include font-size(64, 64);
+		@include font-size(64, 1);
 		text-transform: uppercase;
 		letter-spacing: 4px;
 
 		@include mq($mq-mob, min) {
 
-			@include font-size(80, 80);
+			@include font-size(80, 1);
 
 		}
 
 		@include mq($mq-mob--lrg, min) {
 
-			@include font-size(100, 100);
+			@include font-size(100, 1);
 
 		}
 

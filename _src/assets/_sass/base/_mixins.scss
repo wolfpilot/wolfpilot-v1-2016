@@ -68,11 +68,10 @@
 // --------------------------------------------------------------------------- //
 
 // px to rem for font-sizes and line-height
-@mixin font-size($sizeValue: 1.6, $line: $sizeValue * 1.25){
+@mixin font-size($sizeValue: 1.6, $line: 1.25){
 	font-size: ($sizeValue * 1) + px;
-	line-height: ($line * 1) + px;
 	font-size: ($sizeValue / 10) + rem;
-	line-height: ($line / 10) + rem;
+	line-height: $line;
 }
 // usage: @include font-size(13);
 
