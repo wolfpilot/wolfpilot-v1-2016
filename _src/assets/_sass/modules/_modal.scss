@@ -82,7 +82,7 @@
         height: 40px;
         padding: 0;
 
-        background: $black;
+        background-color: $black;
         border: 1px solid $black; // fix blur due to transform
         color: $white;
 
@@ -110,7 +110,7 @@
 
         &:hover {
 
-            background: $accent-1;
+            background-color: $accent-1;
             border-color: $accent-1;
             transform: scale(0.9);
 

@@ -34,7 +34,7 @@
 			width: auto;
 			margin: auto;
 
-			background: transparent;
+			background-color: transparent;
 			border: none;
 
 		}
@@ -49,7 +49,7 @@
 			@include mq($mq-mob--lrg, min) {
 
 				border: none;
-				
+
 			}
 
 		}
@@ -65,7 +65,7 @@
 
 			column-count: 2;
 			column-gap: 15px;
-			
+
 		}
 
 		@include mq($mq-desk, min) {
@@ -133,7 +133,7 @@
 			cursor: url('/assets/img/magnifying-glass.cur') 10 10, zoom-in;
 
 		}
-			
+
 		&.is-visible {
 
 			opacity: 1;
@@ -177,7 +177,7 @@
 			width: 100%;
 			height: 100.1%; // fix overlay not stretching the entire height due to subpixel rendering issues
 
-			background: transparentize($white, 0.05);
+			background-color: transparentize($white, 0.05);
 
 			opacity: 0;
 			visibility: hidden; // prevents initial action on touch devices
@@ -261,7 +261,7 @@
 			cursor: initial;
 
 			@include mq($mq-mob--lrg, min) {
-				
+
 				@include font-size(32);
 
 			}
@@ -314,7 +314,7 @@
 				.arrow {
 
 					transform: translate(5px, -5px);
-					
+
 				}
 
 				.chain {
@@ -342,7 +342,7 @@
 
 			&--zoom {
 
-				/* 
+				/*
 				 * Stop the modal from opening on window width/height smaller than 640px
 				 * as there's no point in opening the modal for devices that are so small
 				 */

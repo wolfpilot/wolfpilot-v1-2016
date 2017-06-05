@@ -111,11 +111,11 @@ video::-webkit-media-controls,
 			width: 60px;
 			height: 60px;
 
-			background: transparentize($black, 0.4);
+			background-color: transparentize($black, 0.4);
 			border-radius: 50%;
 
 			@include mq($mq-mob, min) {
-			
+
 				top: -20px;
 				right: -20px;
 				bottom: -20px;
