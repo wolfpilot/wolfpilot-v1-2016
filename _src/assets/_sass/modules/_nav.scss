@@ -13,7 +13,7 @@
 	opacity: 0;
 
 	transition: visibility 0.25s ease-in-out,
-	            opacity 0.25s ease-in-out;
+	               opacity 0.25s ease-in-out;
 
 	.header.is-active & {
 
@@ -58,8 +58,8 @@
 		transform: translateY(-20px);
 
 		transition: color 0.35s ease-in-out,
-		            opacity 0.35s ease-in-out,
-		            transform 0.35s ease-in-out;
+		          opacity 0.35s ease-in-out,
+		        transform 0.35s ease-in-out;
 
 		@for $i from 1 through 4 {
 

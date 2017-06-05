@@ -13,95 +13,95 @@ button,
 
 	cursor: pointer;
 
-    @include mq($mq-mob--lrg, min) {
+	@include mq($mq-mob--lrg, min) {
 
-        @include font-size(14);
+		@include font-size(14);
 
-    }
+	}
 
-    &__ctrl {
+	&__ctrl {
 
 		margin-right: 10px;
 		margin-left: 10px;
-        padding: 0 3px;
+		padding: 0 3px;
 
-        &:hover {
+		&:hover {
 
-            svg {
+			svg {
 
-                fill: $accent-1;
+				fill: $accent-1;
 
-            }
+			}
 
-        }
+		}
 
-        svg {
-            /* allows clicking the parent element
-             * without setting pointer-events: none
-             */
-            position: relative;
-            z-index: -1;
+		svg {
+			/* allows clicking the parent element
+			 * without setting pointer-events: none
+			 */
+			position: relative;
+			z-index: -1;
 
-            fill: $d-grey;
+			fill: $d-grey;
 
-            overflow: visible;
+			overflow: visible;
 
-            transition: fill 0.15s ease-in-out;
+			transition: fill 0.15s ease-in-out;
 
-        }
+		}
 
-    }
+	}
 
-    &__ctrl-prev {
+	&__ctrl-prev {
 
-        &:hover {
+		&:hover {
 
-            .path__triangle {
+			.path__triangle {
 
-                transform: translateX(-3px);
+				transform: translateX(-3px);
 
-            }
+			}
 
-        }
+		}
 
-        .path {
+		.path {
 
-            &__triangle {
+			&__triangle {
 
-                transform: translateX(0);
+				transform: translateX(0);
 
-                transition: transform 0.15s ease-in-out;
+				transition: transform 0.15s ease-in-out;
 
-            }
+			}
 
-        }
+		}
 
-    }
+	}
 
-    &__ctrl-next {
+	&__ctrl-next {
 
-        &:hover {
+		&:hover {
 
-            .path__triangle {
+			.path__triangle {
 
-                transform: translateX(3px);
+				transform: translateX(3px);
 
-            }
+			}
 
-        }
+		}
 
-        .path {
+		.path {
 
-            &__triangle {
+			&__triangle {
 
-                transform: translateX(0);
+				transform: translateX(0);
 
-                transition: transform 0.15s ease-in-out;
+				transition: transform 0.15s ease-in-out;
 
-            }
+			}
 
-        }
+		}
 
-    }
+	}
 
 }

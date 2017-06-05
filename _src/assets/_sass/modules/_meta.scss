@@ -1,92 +1,92 @@
 .meta {
 
-    &__heading {
+	&__heading {
 
-        margin-bottom: 5px;
+		margin-bottom: 5px;
 
-        color: $grey;
+		color: $grey;
 
-        font-family: $primaryFont;
-        text-transform: lowercase;
+		font-family: $primaryFont;
+		text-transform: lowercase;
 
-    }
+	}
 
-    &__text {
+	&__text {
 
-        margin-bottom: 20px;
+		margin-bottom: 20px;
 
-        &--tags {
+		&--tags {
 
-            text-transform: capitalize;
+			text-transform: capitalize;
 
-        }
+		}
 
-    }
+	}
 
-    &__link {
+	&__link {
 
-        position: relative;
-        display: inline-block;
-        margin-top: 20px;
+		position: relative;
+		display: inline-block;
+		margin-top: 20px;
 
-        color: $black;
+		color: $black;
 
-        font-family: $secondaryFont;
-        @include font-size(15);
-        text-transform: uppercase;
-        letter-spacing: 2px;
+		font-family: $secondaryFont;
+		@include font-size(15);
+		text-transform: uppercase;
+		letter-spacing: 2px;
 
-        &:hover {
+		&:hover {
 
-            color: $black;
+			color: $black;
 
-            .arrow {
+			.arrow {
 
-                transform: translate(4px, -4px);
-                
-            }
+				transform: translate(4px, -4px);
 
-        }
+			}
 
-        svg {
+		}
 
-            position: absolute;
-            top: -7px;
-            right: -23px;
-            width: 17px;
-            vertical-align: text-bottom;
+		svg {
 
-            fill: $black;
+			position: absolute;
+			top: -7px;
+			right: -23px;
+			width: 17px;
+			vertical-align: text-bottom;
 
-            overflow: visible;
+			fill: $black;
 
-            path {
+			overflow: visible;
 
-                transition: transform 0.15s ease-in-out;
+			path {
 
-            }
+				transition: transform 0.15s ease-in-out;
 
-        }
+			}
 
-    }
+		}
 
-    &__separator {
+	}
 
-        display: block;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: 50px;
-        height: 2px;
+	&__separator {
 
-        background-color: $accent-1;
-        border: none;
+		display: block;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 50px;
+		height: 2px;
 
-        @include mq($mq-tab--lrg, min) {
+		background-color: $accent-1;
+		border: none;
 
-            display: none;
+		@include mq($mq-tab--lrg, min) {
 
-        }
+			display: none;
 
-    }
+		}
+
+	}
 
 }

@@ -1,119 +1,119 @@
 .header {
 
-    -webkit-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 
-    position: fixed;
-    z-index: 200;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 60px;
+	position: fixed;
+	z-index: 200;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 60px;
 
-    background-color: $white;
-    border-top: 3px solid $accent-1;
-    border-bottom: 1px solid $l-grey;
+	background-color: $white;
+	border-top: 3px solid $accent-1;
+	border-bottom: 1px solid $l-grey;
 
-    @include mq($mq-mob--lrg, min) {
+	@include mq($mq-mob--lrg, min) {
 
-        z-index: 20;
-        padding-right: 15px;
-        padding-left: 15px;
+		z-index: 20;
+		padding-right: 15px;
+		padding-left: 15px;
 
-    }
+	}
 
-    &__burger {
+	&__burger {
 
-        display: inline-block;
-        float: right;
-        width: 60px;
-        height: 100%;
-        padding: 10px 15px;
+		display: inline-block;
+		float: right;
+		width: 60px;
+		height: 100%;
+		padding: 10px 15px;
 
-        line-height: inherit;
+		line-height: inherit;
 
-        @include mq($mq-mob--lrg, min) {
+		@include mq($mq-mob--lrg, min) {
 
-            display: none;
+			display: none;
 
-        }
+		}
 
-        span {
+		span {
 
-            display: block;
-            width: 100%;
-            height: 3px;
-            margin-top: 6px;
-            margin-bottom: 6px;
+			display: block;
+			width: 100%;
+			height: 3px;
+			margin-top: 6px;
+			margin-bottom: 6px;
 
-            background-color: $accent-1;
+			background-color: $accent-1;
 
-            transition: transform 0.25s ease-in-out;
+			transition: transform 0.25s ease-in-out;
 
-            &:nth-child(1) {
+			&:nth-child(1) {
 
-                transform: scaleX(1);
+				transform: scaleX(1);
 
-                .header.is-active & {
-                    transform: scaleX(0);
-                }
+				.header.is-active & {
+					transform: scaleX(0);
+				}
 
-            }
+			}
 
-            &:nth-child(2) {
+			&:nth-child(2) {
 
-                transform: scaleX(0.85);
+				transform: scaleX(0.85);
 
-                .header.is-active & {
-                    transform: scaleX(0.85);
-                }
+				.header.is-active & {
+					transform: scaleX(0.85);
+				}
 
-                .header.is-active:hover & {
-                    transform: scaleX(0.5);
-                }
+				.header.is-active:hover & {
+					transform: scaleX(0.5);
+				}
 
-            }
+			}
 
-            &:nth-child(3) {
+			&:nth-child(3) {
 
-                transform: scaleX(0.7);
+				transform: scaleX(0.7);
 
-                .header.is-active & {
-                    transform: scaleX(0);
-                }
+				.header.is-active & {
+					transform: scaleX(0);
+				}
 
-            }
+			}
 
-        }
+		}
 
-        &:hover {
+		&:hover {
 
-            span {
+			span {
 
-                transform: scaleX(1);
+				transform: scaleX(1);
 
-            }
+			}
 
-        }
+		}
 
-    }
+	}
 
-    &__logo {
+	&__logo {
 
-        float: left;
-        height: 100%;
-        padding: 0 15px;
+		float: left;
+		height: 100%;
+		padding: 0 15px;
 
-        svg {
+		svg {
 
-            position: relative;
-            width: 75px;
-            height: 35px;
-            top: 50%;
+			position: relative;
+			width: 75px;
+			height: 35px;
+			top: 50%;
 
-            transform: translateY(-50%);
+			transform: translateY(-50%);
 
-        }
+		}
 
-    }
+	}
 
 }

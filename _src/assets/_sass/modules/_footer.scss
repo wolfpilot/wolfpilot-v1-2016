@@ -1,36 +1,36 @@
 .footer {
 
-    padding-top: 40px;
-    padding-bottom: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 
-    background-color: $white;
-    border-bottom: 4px solid $accent-1;
+	background-color: $white;
+	border-bottom: 4px solid $accent-1;
 
-    @include mq($mq-mob--lrg, min) {
+	@include mq($mq-mob--lrg, min) {
 
-        padding-top: 80px;
-        padding-bottom: 80px;
+		padding-top: 80px;
+		padding-bottom: 80px;
 
-    }
+	}
 
-    &__social {
+	&__social {
 
-        a {
+		a {
 
-            display: inline-block;
-            width: 30px;
-            margin: 15px 5px;
+			display: inline-block;
+			width: 30px;
+			margin: 15px 5px;
 
-            svg {
+			svg {
 
-                max-width: 100%;
+				max-width: 100%;
 
-                fill: $white;
+				fill: $white;
 
-            }
+			}
 
-        }
+		}
 
-    }
+	}
 
 }
