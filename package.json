@@ -9,7 +9,9 @@
 	"homepage": "http://wolfpilot.co.uk",
 	"main": "Gulpfile.js",
 	"scripts": {
-		"test": "gulp"
+		"build": "node node_modules/gulp/bin/gulp.js build",
+		"deploy": "node node_modules/gulp/bin/gulp.js deploy",
+		"serve": "node node_modules/gulp/bin/gulp.js serve"
 	},
 	"author": "Razvan Negrea <howl@wolfpilot.co.uk> (http://wolfpilot.co.uk)",
 	"license": "MIT",
