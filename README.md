@@ -1,4 +1,4 @@
-# [wolfpilot.co.uk](http://www.wolfpilot.co.uk)
+# [wolfpilot.co](http://www.wolfpilot.co)
 
 Source code of my Jekyll-based portfolio website.
 
