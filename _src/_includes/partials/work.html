@@ -56,7 +56,7 @@
 
 										{% for link in project.links %}
 
-											<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank"{% endif %}>
+											<a class="showcase__project-link icon" href="{{ link.url }}" {% if link.type == "ext" %}target="_blank" rel="noopener noreferrer"{% endif %}>
 												{% if link.type == "int" %}
 													{% include svg/link-internal.svg %}
 												{% else %}
