@@ -1,18 +1,14 @@
 [
     {
-        "id": "retrocade",
-        "name": "RetroCade",
-        "tagline": "Fun little experiment with CSS keyframe animations.",
+        "id": "up-n-running",
+        "name": "Up n' running",
+        "tagline": "Simple boilerplate initially created as an alternative for its slightly older cousin, Grunt.",
         "tags": ["featured", "web development"],
-        "alt": "Reel-to-reel tape recorder created in code only",
+        "alt": "Illustration of a plastic cup with a straw in it next to some text.",
         "links": [
             {
-                "type": "int",
-                "url": "/case-studies/retrocade"
-            },
-            {
                 "type": "ext",
-                "url": "http://codepen.io/wolfpilot/pen/5a00949b8ade2d0010989e454dfe654f/"
+                "url": "https://github.com/wolfpilot/up-n-running-gulp-boilerplate"
             }
         ]
     },
@@ -30,6 +26,49 @@
         ]
     },
     {
+        "id": "colour-me",
+        "name": "Colour Me",
+        "tagline": "A simple speech-to-text app that changes background colour by voice.",
+        "tags": ["featured", "web development"],
+        "alt": "UI showing a centred image split in half with various debugging text being displayed.",
+        "links": [
+            {
+                "type": "ext",
+                "url": "https://github.com/wolfpilot/ColourMe"
+            }
+        ]
+    },
+    {
+        "id": "music-box",
+        "name": "Music B[]X",
+        "tagline": "A React + Redux music player app based on Facebook's ever so popular create-react-app tool.",
+        "tags": ["featured", "web development"],
+        "alt": "An album preview showing the track list and the artwork at the top.",
+        "links": [
+            {
+                "type": "ext",
+                "url": "https://github.com/wolfpilot/music-box"
+            }
+        ]
+    },
+    {
+        "id": "retrocade",
+        "name": "RetroCade",
+        "tagline": "Fun little experiment with CSS keyframe animations.",
+        "tags": ["featured", "web development"],
+        "alt": "Reel-to-reel tape recorder created in code only",
+        "links": [
+            {
+                "type": "int",
+                "url": "/case-studies/retrocade"
+            },
+            {
+                "type": "ext",
+                "url": "http://codepen.io/wolfpilot/pen/5a00949b8ade2d0010989e454dfe654f/"
+            }
+        ]
+    },
+    {
         "id": "machina-inferni",
         "name": "MACHINA INFERNI",
         "tagline": "Who doesn't love mechs?",
@@ -39,32 +78,6 @@
             {
                 "type": "ext",
                 "url": "http://n-deed.deviantart.com/art/M-A-C-H-I-N-A-I-N-F-E-R-N-I-303870376"
-            }
-        ]
-    },
-    {
-        "id": "phone-concept",
-        "name": "Phone concept",
-        "tagline": "Prototyped using HTML, CSS and JavaScript only.",
-        "tags": ["featured", "web development"],
-        "alt": "Simple smartphone design with a power button on the right side and volume on the left.",
-        "links": [
-            {
-                "type": "ext",
-                "url": "http://codepen.io/wolfpilot/full/NrqemV/"
-            }
-        ]
-    },
-    {
-        "id": "up-n-running",
-        "name": "Up n' running",
-        "tagline": "Simple boilerplate initially created as an alternative for its slightly older cousin, Grunt.",
-        "tags": ["featured", "web development"],
-        "alt": "Illustration of a plastic cup with a straw in it next to some text.",
-        "links": [
-            {
-                "type": "ext",
-                "url": "https://github.com/wolfpilot/up-n-running-gulp-boilerplate"
             }
         ]
     },
@@ -91,6 +104,20 @@
             {
                 "type": "ext",
                 "url": "http://n-deed.deviantart.com/art/Vandal-396333301"
+            }
+        ]
+    },
+    
+    {
+        "id": "phone-concept",
+        "name": "Phone concept",
+        "tagline": "Prototyped using HTML, CSS and JavaScript only.",
+        "tags": ["web development"],
+        "alt": "Simple smartphone design with a power button on the right side and volume on the left.",
+        "links": [
+            {
+                "type": "ext",
+                "url": "http://codepen.io/wolfpilot/full/NrqemV/"
             }
         ]
     },
