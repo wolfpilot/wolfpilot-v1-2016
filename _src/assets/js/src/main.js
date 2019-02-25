@@ -889,7 +889,7 @@ Wolfpilot = (function() {
 
                 if (e.target.classList.contains('js-showcase-zoom') ||
 				    (Wolfpilot.windowSize.getDimensions().wWidth > 1024 &&
-				    Wolfpilot.windowSize.getDimensions().wHeight > 768 &&
+				    Wolfpilot.windowSize.getDimensions().wHeight > 765 &&
 				    e.target.classList.contains('showcase__project-details'))) {
 
 					var project = Wolfpilot.getClosestParent(e.target, '.js-showcase-project'),
